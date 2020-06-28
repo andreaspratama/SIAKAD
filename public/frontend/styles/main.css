@@ -1,0 +1,52 @@
+.navbar {
+  background-color: #9797fa;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.navbar .navbar-nav .get-started {
+  background-color: whitesmoke;
+  padding: 8px 20px 8px 20px;
+  color: #9797fa;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar .navbar-nav .get-started:hover {
+  background-color: #fff;
+  color: blue;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #2f281e;
+}
+
+.hero p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #2f281e;
+}
+
+.feature-heading {
+  margin-top: 100px;
+}
+
+.feature-heading h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+}
+/*# sourceMappingURL=main.css.map */
