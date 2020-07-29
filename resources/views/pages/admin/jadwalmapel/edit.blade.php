@@ -67,7 +67,7 @@
                     <option value="{{$item->ruang_id}}">Jangan Diubah</option>
                     @foreach ($ruangs as $ruangs)
                         <option value="{{$ruangs->id}}">
-                          {{$ruangs->nama_ruangs}}
+                          {{$ruangs->nama_ruang}}
                         </option>
                     @endforeach
                   </select>

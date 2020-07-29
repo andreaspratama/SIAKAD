@@ -24,7 +24,7 @@ class SiswaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nisn' => 'required',
+            'nisn' => 'required|unique:siswas,nisn',
             'nama' => 'required|min:3|string',
             'tpt_lahir' => 'required|min:3',
             'tgl_lahir' => 'required',
@@ -41,6 +41,7 @@ class SiswaRequest extends FormRequest
     public function messages()
     {
         return [
+            'nisn.unique' => 'NISN sudah digunakan',
             'nisn.required' => 'NISN tidak boleh kosong',
             'nama.required' => 'Nama tidak boleh kosong',
             'nama.min' => 'Nama minimal 3 karakter',

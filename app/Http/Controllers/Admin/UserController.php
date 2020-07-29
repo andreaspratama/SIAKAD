@@ -73,9 +73,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_user)
     {
-        $item = User::findOrFail($id);
+        $item = User::findOrFail($id_user);
 
         return view('pages.admin.user.edit', [
             'item' => $item
@@ -89,10 +89,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_user)
     {
         $data = $request->all();
-        $item = User::findOrFail($id);
+        $item = User::findOrFail($id_user);
 
         $item->update($data);
 
@@ -105,9 +105,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_user)
     {
-        $item = User::findOrFail($id);
+        $item = User::findOrFail($id_user);
 
         $item->delete();
 

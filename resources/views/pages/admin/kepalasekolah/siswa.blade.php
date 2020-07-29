@@ -5,7 +5,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mt-3 text-gray-800 mb-5">Data Siswa SD IT Bunayya</h1>
+        <h1 class="h3 mt-3 text-gray-800 mb-4">Data Siswa SD IT Bunayya</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">

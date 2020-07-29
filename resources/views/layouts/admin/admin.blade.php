@@ -14,6 +14,8 @@
   @include('includes.admin.style')
   @stack('addon-style')
 
+  @yield('header')
+
 </head>
 
 <body id="page-top">
@@ -67,6 +69,7 @@
       </div>
     </div>
   </div>
+  @yield('footer')
   @stack('prepend-script')
   @include('includes.admin.script')
   @stack('addon-script')

@@ -23,7 +23,7 @@ class JadwalmapelExport implements FromCollection, WithMapping, WithHeadings
             $jadwalmapel->mapel->nama_mapel,
             $jadwalmapel->guru->nama,
             $jadwalmapel->kelas,
-            $jadwalmapel->ruang,
+            $jadwalmapel->ruang->nama_ruang,
             $jadwalmapel->hari,
             $jadwalmapel->jam_mulai,
             $jadwalmapel->jam_selesai,

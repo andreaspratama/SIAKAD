@@ -37,6 +37,10 @@ Route::prefix('/')
             Route::put('siswa/{siswa}/update', 'SiswaController@update');
             Route::get('siswa/{siswa}/destroy', 'SiswaController@destroy');
             Route::post('siswa/{siswa}/nilai', 'SiswaController@nilai');
+            Route::post('/siswa/{id}/nilaiupdate', 'SiswaController@nilaiupdate');
+            Route::get('/siswa/{id}/{idmapel}/nilaitambah', 'SiswaController@nilaitambah');
+            Route::get('/siswa/{siswa}/hapusnilai', 'SiswaController@hapusnilai');
+            Route::get('siswa/{siswa}/nilaiedit', 'SiswaController@nilaiedit');
             Route::get('siswa/exportexcel', 'SiswaController@exportExcel');
             Route::get('siswa/exportpdf', 'SiswaController@exportPdf');
             Route::get('siswa/{siswa}/nilaiexport', 'SiswaController@exportNilaiPdf');

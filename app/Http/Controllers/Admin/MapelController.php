@@ -104,4 +104,12 @@ class MapelController extends Controller
 
         return redirect()->route('mapel.index')->with('status', 'Data Berhasil Dihapus');
     }
+
+    public function hapusnilai($id)
+    {
+        $nilai = Mapel::findOrFail($id);
+        $nilai->delete();
+
+        return redirect('siswa/'.$id.'/show')->with('status', 'Nilai Berhasil Dihapus');
+    }
 }

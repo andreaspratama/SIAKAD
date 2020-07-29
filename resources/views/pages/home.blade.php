@@ -10,7 +10,11 @@
         <div class="row">
             <div class="col align-self-center">
                 <h1 class="mb-3">
-                    Selamat Datang {{auth()->user()->name}}
+                    @if (auth()->user()->role == 'guru')
+                        Selamat Datang Pak {{auth()->user()->name}}
+                    @else
+                        Selamat Datang {{auth()->user()->name}}
+                    @endif
                 </h1>
                 <p class="mb-5">
                     Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang

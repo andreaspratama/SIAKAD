@@ -5,7 +5,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-3">Jadwal Siswa Mapel</h1>
+        <h1 class="h3 mb-4 text-gray-800 mt-3">Jadwal Mata Pelajaran</h1>
 
         @if (session('status'))
             <div class="alert alert-success">

@@ -24,7 +24,7 @@ class JadwalmapelController extends Controller
     public function index()
     {
         $items = Jadwalmapel::with([
-            'mapel', 'guru'
+            'mapel'
         ])->get();
         
         return view('pages.admin.jadwalmapel.index', [

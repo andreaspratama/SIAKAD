@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJenispembayaransTable extends Migration
+class AddStatusToMapelSiswaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateJenispembayaransTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenispembayarans', function (Blueprint $table) {
-            $table->id();
-            $table->string('jenis_pembayaran');
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('mapel_siswa', function (Blueprint $table) {
+            $table->string('status')->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ class CreateJenispembayaransTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jenispembayarans');
+        Schema::table('mapel_siswa', function (Blueprint $table) {
+            //
+        });
     }
 }

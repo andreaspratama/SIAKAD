@@ -3,12 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Siswa extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = [
         'nisn', 'nama', 'tpt_lahir', 'tgl_lahir', 'jns_kelamin', 'agama', 'alamat', 'nama_ortu', 'kelas', 'asal_sklh', 'image', 'user_id'
     ];
@@ -17,8 +14,13 @@ class Siswa extends Model
 
     public function mapel()
     {
-        return $this->belongsToMany(Mapel::class)->withPivot(['nilai_uh1', 'nilai_uh2', 'uts', 'uas']);
+        return $this->belongsToMany(Mapel::class)->withPivot(['nilai_uh1', 'nilai_uh2', 'uts', 'uas', 'status']);
     }
+
+    // public function mapels()
+    // {
+    //     return $this->belongsToMany('App\Mapel');
+    // }
     
     // public function ambilNilai()
     // {

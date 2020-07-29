@@ -15,3 +15,5 @@
   <script src="{{url('backend/js/demo/chart-pie-demo.js')}}"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/js/jqueryui-editable.min.js"></script>
+  <script src="bootstrap-editable/js/bootstrap-editable.js"></script>

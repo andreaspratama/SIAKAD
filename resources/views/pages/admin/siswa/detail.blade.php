@@ -74,6 +74,8 @@
                               <th>Nilai UH2</th>
                               <th>Nilai UTS</th>
                               <th>Nilai UAS</th>
+                              <th>Status</th>
+                              <th>Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -84,6 +86,10 @@
                                     <td>{{$mapel->pivot->nilai_uh2}}</td>
                                     <td>{{$mapel->pivot->uts}}</td>
                                     <td>{{$mapel->pivot->uas}}</td>
+                                    <td>{{$mapel->pivot->status}}</td>
+                                    <td>
+                                      <a href="/siswa/{{$item->id}}/{{$mapel->id}}/nilaitambah" class="btn btn-primary btn-sm">Tambah</a>
+                                    </td>
                                   </tr>
                               @endforeach
                           </tbody>
@@ -97,7 +103,7 @@
 
     </div>
     <!-- /.container-fluid -->
-          <!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -180,6 +186,20 @@
                           @enderror
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="status"><i class="far fa-id-card"></i></span>
+                          </div>
+                          <input type="text" class="form-control @error('status') is-invalid @enderror" placeholder="Status" name="status" value="{{old('status')}}">
+                          @error('status')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                          @enderror
+                        </div>
+                    </div>
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                 </form>
@@ -189,17 +209,36 @@
     </div>
 @endsection
 
+
 @push('prepend-style')
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
 @endpush
 
 @push('addon-script')
-      <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      {{-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-      <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+      <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> --}}
       <script>
         @if (Session::has('status'))
           toastr.success("{{Session::get('status')}}", "Trimakasih")
         @endif
+
+        $.fn.editable.defaults.mode = 'inline';
+
+        $(document).ready(function() {
+            $('.nilai_uh1').editable();
+        });
+        $(document).ready(function() {
+            $('.nilai_uh2').editable();
+        });
+        $(document).ready(function() {
+            $('.uts').editable();
+        });
+        $(document).ready(function() {
+            $('.uas').editable();
+        });
+        $(document).ready(function() {
+            $('.status').editable();
+        });
       </script>
 @endpush

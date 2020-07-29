@@ -168,9 +168,32 @@ class SiswaController extends Controller
     public function nilai(Request $request, $id)
     {
         $siswa = Siswa::findOrFail($id);
-        $siswa->mapel()->attach($request->mapel, ['nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas]);
+        $siswa->mapel()->attach($request->mapel, ['nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
 
-        return redirect('siswa/'.$id.'/show')->with('status', 'Nilai Berhasil Dimasukan');
+        return redirect('siswa/'.$id.'/show')->with('status', 'Nilai Berhasil Ditambahkan');
+    }
+
+    public function nilaitambah($id, $idmapel)
+    {
+        $item = Siswa::findOrFail($id);
+        $nilai = $item->mapel()->findOrFail($idmapel);
+        $mapel = Mapel::all();
+
+        return view('pages.admin.siswa.editnilai', [
+            'item' => $item,
+            'nilai' => $nilai,
+            'mapel' => $mapel
+        ]);
+    }
+
+    public function nilaiupdate(Request $request, $id)
+    {
+        $siswa = Siswa::findOrFail($id); 
+        $siswa->mapel()->updateExistingPivot($request->mapel, ['nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
+
+        // dd($siswa);
+
+        return redirect('siswa/'.$id.'/show')->with('status', 'Nilai Berhasil Ditambahkan');
     }
 
     public function lihatNilai()

@@ -24,7 +24,7 @@ class GuruRequest extends FormRequest
     public function rules()
     {
         return [
-            'nip' => 'required',
+            'nip' => 'required|unique:gurus,nip',
             'nama' => 'required|string|min:3',
             'tpt_lahir' => 'required|min:3',
             'tgl_lahir' => 'required',
@@ -38,6 +38,7 @@ class GuruRequest extends FormRequest
     public function messages()
     {
         return [
+            'nip.unique' => 'NIP sudah digunakan',
             'nip.required' => 'NIP tidak boleh kosong',
             'nama.required' => 'Nama tidak boleh kosong',
             'nama.min' => 'Nama minimal 3 karakter',

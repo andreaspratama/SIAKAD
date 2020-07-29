@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Auth;
 use Siswa;
+use User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller

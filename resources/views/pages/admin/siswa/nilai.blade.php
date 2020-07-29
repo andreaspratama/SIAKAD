@@ -10,7 +10,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-3 text-gray-800 mt-3">Nilai Siswa {{auth()->user()->siswa->nama}}</h1>
-        <a href="/siswa/cetaknilai" class="btn btn-success btn-sm mb-3 mt-3 px-3 py-2">Cetak Nilai</a>
+        {{-- <a href="/siswa/cetaknilai" class="btn btn-success btn-sm mb-3 mt-3 px-3 py-2">Cetak Nilai</a> --}}
 
         @if (session('status'))
             <div class="alert alert-success">
@@ -25,8 +25,9 @@
                             <th>Nama Mapel</th>
                             <th>Nilai UH1</th>
                             <th>Nilai UH2</th>
-                            <th>Nilai uts</th>
-                            <th>Nilai uas</th>
+                            <th>Nilai UTS</th>
+                            <th>Nilai UAS</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@
                                 <td>{{$mapel->pivot->nilai_uh2}}</td>
                                 <td>{{$mapel->pivot->uts}}</td>
                                 <td>{{$mapel->pivot->uas}}</td>
+                                <td>{{$mapel->pivot->status}}</td>
                             </tr>
                         @empty
                             

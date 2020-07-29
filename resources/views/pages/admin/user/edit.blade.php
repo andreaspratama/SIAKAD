@@ -19,7 +19,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="name"><i class="far fa-user"></i></span>
                     </div>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama" name="name" value="{{$item->name}}" disabled>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama" name="name" value="{{$item->name}}">
                     @error('name')
                       <div class="invalid-feedback">
                           {{$message}}
@@ -33,7 +33,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="username"><i class="far fa-user"></i></span>
                     </div>
-                    <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Username" name="username" value="{{$item->username}}" disabled>
+                    <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Username" name="username" value="{{$item->username}}">
                     @error('username')
                       <div class="invalid-feedback">
                           {{$message}}
