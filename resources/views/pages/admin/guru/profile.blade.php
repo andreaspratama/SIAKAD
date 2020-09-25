@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin.admin')
 
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-4">Profile {{auth()->user()->guru->nama}}</h1>
+        <h1 class="h3 mb-3 text-gray-800 mt-4">Profile Bapak {{auth()->user()->guru->nama}}</h1>
 
         @if (session('status'))
             <div class="alert alert-success">

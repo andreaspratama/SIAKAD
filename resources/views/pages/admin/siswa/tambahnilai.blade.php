@@ -9,62 +9,11 @@
 
         <div class="card shadow">
             <div class="card-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Foto</th>
-                        <td>
-                            <img src="{{Storage::url($item->image)}}" alt="" style="width: 250px" class="img-thumbnail">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Nis</th>
-                        <td>{{$item->nisn}}</td>
-                    </tr>
-                    <tr>
-                        <th>Nama</th>
-                        <td>{{$item->nama}}</td>
-                    </tr>
-                    <tr>
-                        <th>Tempat, Tgl Lahir</th>
-                        <td>{{$item->tpt_lahir}}, {{$item->tgl_lahir}}</td>
-                    </tr>
-                    <tr>
-                        <th>Jenis Kelamin</th>
-                        <td>{{$item->jns_kelamin}}</td>
-                    </tr>
-                    <tr>
-                        <th>Agama</th>
-                        <td>{{$item->agama}}</td>
-                    </tr>
-                    <tr>
-                        <th>Alamat</th>
-                        <td>{{$item->alamat}}</td>
-                    </tr>
-                    <tr>
-                        <th>Orang Tua</th>
-                        <td>{{$item->nama_ortu}}</td>
-                    </tr>
-                    <tr>
-                        <th>Kelas</th>
-                        <td>{{$item->kelas}}</td>
-                    </tr>
-                    <tr>
-                        <th>Asal Sekolah</th>
-                        <td>{{$item->asal_sklh}}</td>
-                    </tr>
-                    <tr>
-                        <th>Jumlah Mapel</th>
-                        <td>{{$item->mapel->count()}}</td>
-                    </tr>
-                </table>
-
-                {{-- <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#exampleModal">
-                    Tambah Nilai
-                </button> --}}
-                <a href="/siswa/{{$item->id}}/nilaiexport" class="btn btn-success btn-sm mb-3">Print Nilai</a>
-
                 <div class="card shadow mb-4">
                     <div class="card-body">
+                        <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#exampleModal">
+                            Tambah Nilai
+                        </button>
                       <div class="table-responsive">
                         <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                           <thead>
@@ -75,7 +24,8 @@
                               <th>Nilai UTS</th>
                               <th>Nilai UAS</th>
                               <th>Status</th>
-                              {{-- <th>Aksi</th> --}}
+                              <th>Tahun Akademik</th>
+                              <th>Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -87,9 +37,10 @@
                                     <td>{{$mapel->pivot->uts}}</td>
                                     <td>{{$mapel->pivot->uas}}</td>
                                     <td>{{$mapel->pivot->status}}</td>
-                                    {{-- <td>
+                                    <td>{{$mapel->pivot->thn_akademik}}</td>
+                                    <td>
                                       <a href="/siswa/{{$item->id}}/{{$mapel->id}}/nilaitambah" class="btn btn-primary btn-sm">Tambah</a>
-                                    </td> --}}
+                                    </td>
                                   </tr>
                               @endforeach
                           </tbody>
@@ -97,13 +48,13 @@
                       </div>
                     </div>
                 </div>
-                <a href="/siswa" class="btn btn-secondary btn-sm">Kembali</a>
+                <a href="/nilai" class="btn btn-secondary btn-sm">Kembali</a>
             </div>
         </div>
 
     </div>
     <!-- /.container-fluid -->
-    {{-- <!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -114,7 +65,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <form action="/siswa/{{$item->id}}/nilai" method="POST">
+                <form action="/siswa/{{$item->id}}/nilaitambah" method="POST">
                     @csrf
                     <label for="mapel">Mapel</label>
                     <div class="input-group mb-3">
@@ -126,6 +77,20 @@
                         @foreach ($matapelajarans as $matapelajaran)
                             <option value="{{$matapelajaran->id}}">
                             {{$matapelajaran->nama_mapel}}
+                            </option>
+                        @endforeach
+                    </select>
+                    </div>
+                    <label for="thn_akademik">Tahun Akademik</label>
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="thn_akademik"><i class="fas fa-book-reader"></i></span>
+                    </div>
+                    <select class="custom-select" name="thn_akademik" required>
+                        <option>-- Pilih Akademik --</option>
+                        @foreach ($thnakademiks as $akademik)
+                            <option value="{{$akademik->id}}">
+                            {{$akademik->tahun_akademik}} / {{$akademik->semester}}
                             </option>
                         @endforeach
                     </select>
@@ -206,7 +171,7 @@
             </div>
         </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
 
 

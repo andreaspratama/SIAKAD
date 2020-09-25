@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Jenispem;
-use App\Pembayaran;
+use App\Exkul;
 use Illuminate\Http\Request;
 
-class PembayaranController extends Controller
+class ExkulController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        $jenispems = Jenispem::all();
-        $items = Pembayaran::orderBy('id', 'DESC')->get();
-        return view('pages.admin.pembayaran.index', compact('jenispems', 'items'));
+        $items = Exkul::all();
+
+        return view('pages.admin.exkul.index', compact('items'));
     }
 
     /**
@@ -28,7 +27,7 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        
+        return view('pages.admin.exkul.create');
     }
 
     /**
@@ -40,11 +39,10 @@ class PembayaranController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // dd($data);
 
-        Pembayaran::create($data);
+        Exkul::create($data);
 
-        return redirect()->route('pembayaran.index')->with('status', 'Data berhasil Ditambah');
+        return redirect()->route('exkul.index')->with('status', 'Data berhasil Dibuat');
     }
 
     /**
@@ -55,9 +53,7 @@ class PembayaranController extends Controller
      */
     public function show($id)
     {
-        $item = Pembayaran::findOrFail($id);
-
-        return view('pages.admin.pembayaran.detail', compact('item'));
+        //
     }
 
     /**
@@ -68,10 +64,9 @@ class PembayaranController extends Controller
      */
     public function edit($id)
     {
-        $item = Pembayaran::findOrFail($id);
-        $jenispems = Jenispem::all();
+        $item = Exkul::findOrFail($id);
 
-        return view('pages.admin.pembayaran.edit', compact('jenispems', 'item'));
+        return view('pages.admin.exkul.edit', compact('item'));
     }
 
     /**
@@ -84,11 +79,11 @@ class PembayaranController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $item = Pembayaran::findOrFail($id);
+        $item = Exkul::findOrFail($id);
 
         $item->update($data);
 
-        return redirect()->route('pembayaran.index')->with('status', 'Data berhasil Diubah');
+        return redirect()->route('exkul.index')->with('status', 'Data berhasil Diupdate');
     }
 
     /**
@@ -99,10 +94,10 @@ class PembayaranController extends Controller
      */
     public function destroy($id)
     {
-        $item = Pembayaran::findOrFail($id);
+        $item = Exkul::findOrFail($id);
 
         $item->delete();
 
-        return redirect()->route('pembayaran.index')->with('status', 'Data berhasil Dihapus');
+        return redirect()->route('exkul.index')->with('status', 'Data berhasil Dihapus');
     }
 }

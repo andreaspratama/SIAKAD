@@ -10,7 +10,7 @@ class Thnakademik extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'tahun_akademik', 'is_aktiv'
+        'tahun_akademik', 'semester', 'status'
     ];
 
     protected $hidden = [];

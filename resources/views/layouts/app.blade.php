@@ -15,7 +15,7 @@
     <nav class="navbar py-2 navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="frontend/images/bunayya.png" width="40" alt="">
+                <img src="/frontend/images/bunayya.png" width="40" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,8 @@
                     <a class="nav-item nav-link align-self-center mr-3" href="/home">Home</a>
                     <a class="nav-item nav-link align-self-center mr-3" href="/siswa/jadwal">Jadwal Mapel</a>
                     <a class="nav-item nav-link align-self-center mr-3" href="/siswa/nilai">Nilai</a>
+                    {{-- <a class="nav-item nav-link align-self-center mr-3" href="/siswa/absen">Absen</a>
+                    <a class="nav-item nav-link align-self-center mr-3" href="/siswa/tugas">Tugas</a> --}}
                     <a class="nav-item nav-link align-self-center mr-3" href="/siswa/profile">Profile</a>
                     <a href="/logout" class="btn btn-primary get-started">Keluar</a>
                 </div>
@@ -36,6 +38,7 @@
                     <a class="nav-item nav-link align-self-center mr-3" href="/home">Home</a>
                     <a class="nav-item nav-link align-self-center mr-3" href="/guru/jadwal">Jadwal Mapel</a>
                     <a class="nav-item nav-link align-self-center mr-3" href="/guru/profile">Profile</a>
+                    <a class="nav-item nav-link align-self-center mr-3" href="/guru/tugas">Tugas</a>
                     <a href="/logout" class="btn btn-primary get-started">Keluar</a>
                 </div>
             @endif

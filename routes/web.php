@@ -19,8 +19,11 @@ Route::prefix('/')
     ->namespace('Admin')
     ->group(function(){
         Route::get('/home/admin', 'DashboardController@index')
-        ->name('dashboard')
+        ->name('dashboard.admin')
         ->middleware('auth', 'check:admin');
+        Route::get('/home/guru', 'DashboardController@index')
+        ->name('dashboard.guru')
+        ->middleware('auth', 'check:guru');
         Route::get('/', 'AuthController@login')
         ->name('login');
         Route::post('/postlogin', 'AuthController@postlogin')
@@ -36,9 +39,9 @@ Route::prefix('/')
             Route::get('siswa/{siswa}/edit', 'SiswaController@edit');
             Route::put('siswa/{siswa}/update', 'SiswaController@update');
             Route::get('siswa/{siswa}/destroy', 'SiswaController@destroy');
-            Route::post('siswa/{siswa}/nilai', 'SiswaController@nilai');
-            Route::post('/siswa/{id}/nilaiupdate', 'SiswaController@nilaiupdate');
-            Route::get('/siswa/{id}/{idmapel}/nilaitambah', 'SiswaController@nilaitambah');
+            // Route::post('siswa/{siswa}/nilai', 'SiswaController@nilai');
+            // Route::post('/siswa/{id}/nilaiupdate', 'SiswaController@nilaiupdate');
+            // Route::get('/siswa/{id}/{idmapel}/nilaitambah', 'SiswaController@nilaitambah');
             Route::get('/siswa/{siswa}/hapusnilai', 'SiswaController@hapusnilai');
             Route::get('siswa/{siswa}/nilaiedit', 'SiswaController@nilaiedit');
             Route::get('siswa/exportexcel', 'SiswaController@exportExcel');
@@ -68,25 +71,43 @@ Route::prefix('/')
             Route::get('jadwalmapel/exportpdf', 'JadwalmapelController@exportPdf');
     
             Route::resource('mapel', 'MapelController');
+            Route::resource('exkul', 'ExkulController');
             Route::resource('ruang', 'RuangController');
             Route::resource('thnakademik', 'ThnakademikController');
             Route::resource('sekolah', 'SekolahController');
-            Route::resource('jenispembayaran', 'JenispembayaranController');
+            Route::resource('jenispem', 'JenispemController');
             Route::resource('pembayaran', 'PembayaranController');
+
+            // Route::get('nilai', 'NilaiController@index');
+            // Route::get('siswa/{siswa}/nilai', 'NilaiController@detail');
+            // Route::post('siswa/{siswa}/nilaitambah', 'NilaiController@nilai');
+            // Route::get('/siswa/{id}/{idmapel}/nilaitambah', 'NilaiController@nilaitambah');
+            // Route::post('/siswa/{id}/nilaiupdate', 'NilaiController@nilaiupdate');
             
             Route::resource('user', 'UserController');
         });
 
         Route::group(['middleware' => ['auth', 'check:siswa']], function(){
             Route::get('siswa/profile', 'SiswaController@profile');
+            Route::get('siswa/profile/edit/{id}', 'SiswaController@profileedit');
             Route::get('siswa/nilai', 'SiswaController@lihatNilai');
             Route::get('siswa/jadwal', 'SiswaController@jadwal');
+            Route::get('siswa/absen', 'SiswaController@absen');
+            Route::post('absen', 'SiswaController@absenpros');
+            Route::get('siswa/tugas', 'SiswaController@tugas');
             Route::get('siswa/cetaknilai', 'SiswaController@cetakNilai');
         });
 
         Route::group(['middleware' => ['auth', 'check:guru']], function(){
             Route::get('guru/profile', 'GuruController@profile');
             Route::get('guru/jadwal', 'JadwalmapelController@jadwal');
+            Route::get('guru/tugas', 'TugasController@tugas');
+            Route::get('guru/nilai', 'NilaiController@index');
+            Route::get('siswa/{siswa}/nilai', 'NilaiController@detail');
+            Route::post('siswa/{siswa}/nilaitambah', 'NilaiController@nilai');
+            Route::get('/siswa/{id}/{idmapel}/nilaitambah', 'NilaiController@nilaitambah');
+            Route::post('/siswa/{id}/nilaiupdate', 'NilaiController@nilaiupdate');
+            // Route::post('guru/store', 'TugasController@store');
         });
 
         Route::group(['middleware' => ['auth', 'check:kepala_sekolah']], function(){

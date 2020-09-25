@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThnakademiksTable extends Migration
+class CreatePembayaransTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateThnakademiksTable extends Migration
      */
     public function up()
     {
-        Schema::create('thnakademiks', function (Blueprint $table) {
+        Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
-            $table->string('tahun_akademik', 30);
-            $table->string('semester');
-            $table->string('status');
-            $table->softDeletes();
+            $table->integer('jenispem_id');
+            $table->string('nis');
+            $table->string('nama');
+            $table->integer('kelas');
+            $table->date('tanggal');
+            $table->string('jum_pemb');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateThnakademiksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('thnakademiks');
+        Schema::dropIfExists('pembayarans');
     }
 }

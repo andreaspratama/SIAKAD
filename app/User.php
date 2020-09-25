@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Jadwalmapel::class);
     }
+
+    public function mapel()
+    {
+        return $this->belongsToMany(Mapel::class)->withPivot(['nilai_uh1', 'nilai_uh2', 'uts', 'uas', 'status', 'thn_akademik']);
+    }
 }

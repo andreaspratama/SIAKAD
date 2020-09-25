@@ -66,7 +66,7 @@ class GuruController extends Controller
         
         Guru::create($data);
 
-        return redirect('/guru')->with('status', 'Data Berhasil Ditambahkan');
+        return redirect('guru')->with('status', 'Data Berhasil Ditambahkan');
     }
 
     /**

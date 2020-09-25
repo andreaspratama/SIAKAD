@@ -1,34 +1,48 @@
 @extends('layouts.admin.admin')
 
+@section('title')
+    
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Jadwal Mata Pelajaran</h1>
-
-        <a href="/jadwalmapel/exportexcel" class="btn btn-success btn-sm mb-3 mt-3 px-3 py-2">Laporan Excel</a>
-        <a href="/jadwalmapel/exportpdf" class="btn btn-danger btn-sm mb-3 mt-3 px-3 py-2">Laporan PDF</a>
+        <h1 class="h3 mb-2 text-gray-800 mt-4 mb-4">Masukan Nilai</h1>
+        
         
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
-            <a href="/jadwalmapel/create" class="btn btn-primary btn-sm mb-3 px-3 py-2">
-              <i class="fas fa-plus mr-2"></i>
-              Tambah Jadwal
-            </a>
             <div class="table-responsive">
-              <table class="table table-striped table-sm table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Nama</th>
+                      <th width="200px">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($items as $item)
+                      <tr>
+                        <td>{{$item->nama}}</td>
+                        <td>
+                          <a href="/siswa/{{$item->id}}/nilai" class="btn btn-primary btn-sm">Tambah</a>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+            </div>
+            {{-- <div class="table-responsive">
+              <table class="table table-bordered text-center" id="tablethnakademik" width="100%" cellspacing="0">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Mapel</th>
-                    <th>Guru</th>
-                    <th>Kelas</th>
-                    <th>Ruang</th>
-                    <th>Hari</th>
-                    <th>Jam Mulai</th>
-                    <th>Jam Selesai</th>
+                    <th>Tahun Akademik</th>
+                    <th>Semester</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -36,44 +50,38 @@
                   @forelse ($items as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->mapel->nama_mapel}}</td>
-                        {{-- <td>{{$item->guru->nama}}</td> --}}
-                        @if ($item->guru->nama || $item->guru_id)
-                          <td>{{$item->guru->nama}}</td>
-                        @else
-                          <td>Guru Tidak Ada</td>
-                        @endif
-                        <td>{{$item->kelas}}</td>
-                        <td>{{$item->ruang->nama_ruang}}</td>
-                        <td>{{$item->hari}}</td>
-                        <td>{{$item->jam_mulai}}</td>
-                        <td>{{$item->jam_selesai}}</td>
+                        <td>{{$item->tahun_akademik}}</td>
+                        <td>{{$item->semester}}</td>
+                        <td>{{$item->status}}</td>
                         <td>
-                            <a href="/jadwalmapel/{{$item->id}}/edit" class="btn btn-circle btn-sm btn-warning">
+                            <a href="{{route('thnakademik.edit', $item->id)}}" class="btn btn-sm btn-circle btn-warning">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-sm btn-circle btn-danger delete" jmapel-nama="{{$item->mapel->nama_mapel}}" jmapel-id="{{$item->id}}">
-                                <i class="fa fa-trash"></i>
-                            </a>
+                            <form action="{{route('thnakademik.destroy', $item->id)}}" method="POST" class="d-inline">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-circle btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                   @empty
                     <tr>
-                        <td colspan="9" class="text-center">
+                        <td colspan="4" class="text-center">
                             Data Kosong
                         </td>
                     </tr>
                   @endforelse
                 </tbody>
               </table>
-            </div>
+            </div> --}}
           </div>
         </div>
 
     </div>
     <!-- /.container-fluid -->
 @endsection
-
 @push('prepend-style')
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
@@ -83,7 +91,6 @@
       <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
       <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <script>
         $(document).ready(function() {
           $('#dataTable').DataTable();
@@ -91,11 +98,11 @@
       </script>
       <script>
         $('.delete').click(function(){
-          var $jmapelnama = $(this).attr('jmapel-nama');
-          var $jmapelid = $(this).attr('jmapel-id');
+          var $gurunama = $(this).attr('guru-nama');
+          var $guruid = $(this).attr('guru-id');
           swal({
             title: "Apakah Kamu Yakin",
-            text: "Data Jadwal  Mapel "+$jmapelnama+" Akan Terhapus",
+            text: "Data Guru "+$gurunama+" Akan Terhapus",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -103,9 +110,9 @@
           .then((willDelete) => {
               console.log(willDelete);
             if (willDelete) {
-              window.location = "jadwalmapel/"+$jmapelid+"/destroy";
+              window.location = "guru/"+$guruid+"/destroy";
             } else {
-              swal("Data "+$jmapelnama+" Tidak Terhapus");
+              swal("Data Guru "+$gurunama+" Tidak Terhapus");
             }
           });
         })

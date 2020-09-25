@@ -10,20 +10,20 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
-            <form action="{{route('jenispembayaran.update', $item->id)}}" method="POST">
+            <form action="{{route('jenispem.update', $item->id)}}" method="POST">
                 @method('PUT')
                 @csrf
                 <div class="form-group">
-                  <label for="jenis_pembayaran">Jenis Pembayaran</label>
-                  <input type="text" class="form-control @error('jenis_pembayaran') is-invalid @enderror" name="jenis_pembayaran" placeholder="Kode Mapel" value="{{$item->jenis_pembayaran}}">
-                  @error('jenis_pembayaran')
+                  <label for="jenis">Jenis Pembayaran</label>
+                  <input type="text" class="form-control @error('jenis') is-invalid @enderror" name="jenis" placeholder="Kode Mapel" value="{{$item->jenis}}">
+                  @error('jenis')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
                   @enderror
                 </div>
                 <button type="submit" class="btn btn-success btn-sm">Simpan</button>
-                <a href="{{route('jenispembayaran.index')}}" class="btn btn-secondary btn-sm">Kembali</a>
+                <a href="{{route('jenispem.index')}}" class="btn btn-secondary btn-sm">Kembali</a>
             </form>
           </div>
         </div>

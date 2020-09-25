@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\JenispembayaranRequest;
-use App\Jenispembayaran;
+use App\Jenispem;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class JenispembayaranController extends Controller
+class JenispemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +15,9 @@ class JenispembayaranController extends Controller
      */
     public function index()
     {
-        $items = Jenispembayaran::all();
+        $items = Jenispem::all();
 
-        return view('pages.admin.jenispembayaran.index', [
-            'items' => $items
-        ]);
+        return view('pages.admin.jenispembayaran.index', compact('items'));
     }
 
     /**
@@ -40,13 +36,13 @@ class JenispembayaranController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(JenispembayaranRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
 
-        Jenispembayaran::create($data);
+        Jenispem::create($data);
 
-        return redirect()->route('jenispembayaran.index')->with('status', 'Data Berhasil Ditambahkan');
+        return redirect()->route('jenispem.index')->with('status', 'Data berhasil Ditambah');
     }
 
     /**
@@ -68,11 +64,9 @@ class JenispembayaranController extends Controller
      */
     public function edit($id)
     {
-        $item = Jenispembayaran::findOrFail($id);
+        $item = Jenispem::findOrFail($id);
 
-        return view('pages.admin.jenispembayaran.edit', [
-            'item' => $item
-        ]);
+        return view('pages.admin.jenispembayaran.edit', compact('item'));
     }
 
     /**
@@ -82,14 +76,14 @@ class JenispembayaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(JenispembayaranRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
+        $item = Jenispem::findOrFail($id);
 
-        $item = Jenispembayaran::findOrFail($id);
         $item->update($data);
 
-        return redirect()->route('jenispembayaran.index')->with('status', 'Data Berhasil Diubah');
+        return redirect()->route('jenispem.index')->with('status', 'Data berhasil Diubah');
     }
 
     /**
@@ -100,9 +94,10 @@ class JenispembayaranController extends Controller
      */
     public function destroy($id)
     {
-        $item = Jenispembayaran::findOrFail($id);
+        $item = Jenispem::findOrFail($id);
+
         $item->delete();
 
-        return redirect()->route('jenispembayaran.index')->with('status', 'Data Berhasil Dihapus');
+        return redirect()->route('jenispem.index')->with('status', 'Data berhasil Dihapus');
     }
 }

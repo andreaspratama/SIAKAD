@@ -25,7 +25,8 @@ class ThnakademikRequest extends FormRequest
     {
         return [
             'tahun_akademik' => 'required',
-            'is_aktiv' => 'required'
+            'semester' => 'required',
+            'status' => 'required'
         ];
     }
 }

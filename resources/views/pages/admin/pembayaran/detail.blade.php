@@ -5,42 +5,43 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Detail Pembayaran Spp {{$item->siswa->nama}}</h1>
-
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
+        <h1 class="h3 mb-3 text-gray-800 mt-4">Detail Transaksi {{$item->nama}}</h1>
 
         <div class="card shadow">
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th>Nama</th>
-                        <td>{{$item->siswa->nama}}</td>
+                        <th>Nis</th>
+                        <td>{{$item->nis}}</td>
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td>{{$item->thnakademik->tahun_akademik}}</td>
+                        <td>{{$item->nama}}</td>
                     </tr>
                     <tr>
-                        <th>Semester</th>
-                        <td>{{$item->semester}}</td>
+                        <th>Kelas</th>
+                        <td>{{$item->kelas}}</td>
                     </tr>
                     <tr>
                         <th>Jenis Pembayaran</th>
-                        <td>{{$item->jenispembayaran->jenis_pembayaran}}</td>
+                        <td>{{$item->jenispem->jenis}}</td>
                     </tr>
                     <tr>
-                        <th>Nominal</th>
-                        <td>{{$item->jumlah}}</td>
+                        <th>Jumlah Pembayaran</th>
+                        <td>Rp. {{$item->jum_pemb}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal</th>
+                        <td>{{$item->tanggal}}</td>
+                    </tr>
+                    <tr>
+                        <th>Keterangan</th>
+                        <td>{{$item->keterangan}}</td>
                     </tr>
                 </table>
-                <a href="{{route('pembayaran.index')}}" class="btn btn-secondary btn-sm">Kembali</a>
+                <a href="{{route('pembayaran.index')}}" class="btn btn-secondary">Kembali</a>
             </div>
         </div>
-
       </div>
       <!-- /.container-fluid -->
 @endsection

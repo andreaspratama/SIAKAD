@@ -23,10 +23,17 @@
                   @enderror
                 </div>
                 <div class="form-group">
-                  <label for="is_aktiv">Is Aktiv</label>
-                  <select class="form-control" name="is_aktiv" required>
-                    <option value="Aktiv" @if($item->is_aktiv == 'Aktiv') selected @endif>Aktiv</option>
-                    <option value="Tidak Aktiv" @if($item->is_aktiv == 'Tidak Aktiv') selected @endif>Tidak Aktiv</option>
+                  <label for="semester">Semester</label>
+                  <select class="form-control" name="semester" required>
+                    <option value="Ganjil" @if($item->semester == 'Ganjil') selected @endif>Ganjil</option>
+                    <option value="Genap" @if($item->semester == 'Genap') selected @endif>Genap</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select class="form-control" name="status" required>
+                    <option value="Aktif" @if($item->status == 'Aktif') selected @endif>Aktif</option>
+                    <option value="Tidak Aktif" @if($item->status == 'Tidak Aktif') selected @endif>Tidak Aktif</option>
                   </select>
                 </div>
                 <button type="submit" class="btn btn-success btn-sm">Simpan</button>

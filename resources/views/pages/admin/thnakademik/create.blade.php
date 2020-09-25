@@ -27,15 +27,28 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="is_aktiv">Aktive</label>
+                  <label for="semester">Semester</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <label class="input-group-text" for="is_aktiv"><i class="fas fa-check"></i></label>
+                      <label class="input-group-text" for="semester"><i class="fas fa-check"></i></label>
                     </div>
-                    <select class="custom-select" name="is_aktiv">
-                      <option>-- Pilih --</option>
-                      <option value="Aktive">Aktive</option>
-                      <option value="Tidak Aktive">Tidak Aktive</option>
+                    <select class="custom-select" name="semester">
+                      <option>-- Pilih Semester --</option>
+                      <option value="Ganjil">Ganjil</option>
+                      <option value="Genap">Genap</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="status"><i class="fas fa-check"></i></label>
+                    </div>
+                    <select class="custom-select" name="status">
+                      <option>-- Pilih Status --</option>
+                      <option value="Aktif">Aktif</option>
+                      <option value="Tidak Aktif">Tidak Aktif</option>
                     </select>
                   </div>
                 </div>

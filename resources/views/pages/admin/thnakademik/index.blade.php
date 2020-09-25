@@ -21,7 +21,8 @@
                   <tr>
                     <th>No</th>
                     <th>Tahun Akademik</th>
-                    <th>Is Active</th>
+                    <th>Semester</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -30,7 +31,8 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->tahun_akademik}}</td>
-                        <td>{{$item->is_aktiv}}</td>
+                        <td>{{$item->semester}}</td>
+                        <td>{{$item->status}}</td>
                         <td>
                             <a href="{{route('thnakademik.edit', $item->id)}}" class="btn btn-sm btn-circle btn-warning">
                                 <i class="fa fa-edit"></i>
@@ -57,8 +59,8 @@
           </div>
         </div>
 
-      </div>
-      <!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
 @endsection
 
 @push('prepend-style')

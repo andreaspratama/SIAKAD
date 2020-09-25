@@ -18,7 +18,7 @@
         @endif
         <div class="card shadow">
             <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="table">
                     <thead>
                         <tr>
                             <th>Nama Mapel</th>
