@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Absen Kelas
+    Absen Guru
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-4">Absensi Siswa {{auth()->user()->siswa->nama}}</h1>
+        <h1 class="h3 mb-3 text-gray-800 mt-4">Absensi Guru {{auth()->user()->guru->nama}}</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow">

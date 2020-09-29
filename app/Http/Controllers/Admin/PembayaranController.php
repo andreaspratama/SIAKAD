@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PembayaranRequest;
 use App\Jenispem;
 use App\Pembayaran;
+use PDF;
+use App\Exports\PembayaranExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
@@ -37,7 +41,7 @@ class PembayaranController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PembayaranRequest $request)
     {
         $data = $request->all();
         // dd($data);
@@ -104,5 +108,32 @@ class PembayaranController extends Controller
         $item->delete();
 
         return redirect()->route('pembayaran.index')->with('status', 'Data berhasil Dihapus');
+    }
+
+    // public function cetakPDF()
+    // {
+    //     $pembayaran = Pembayaran::all();
+
+    //     $pdf = PDF::loadview('export.pembayaranpdf', compact('pembayaran'));
+    //     return $pdf->download('laporan-pembayaran.pdf');
+    // }
+
+    // public function cetakEXCEL()
+    // {
+    //     return Excel::download(new PembayaranExport, 'pembayaran.xlsx');
+    // }
+
+    public function cetakPembayaran()
+    {
+        return view('pages.admin.pembayaran.cetakPembayaran');
+    }
+
+    public function cetakPembayaranPertanggal($tglawal, $tglakhir)
+    {
+        // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
+        $pembayaranPertanggal = Pembayaran::all()->whereBetween('tanggal', [$tglawal, $tglakhir]);
+
+        $pdf = PDF::loadview('export.pembayaranpdf', compact('pembayaranPertanggal'));
+        return $pdf->download('laporan-pembayaran.pdf');
     }
 }

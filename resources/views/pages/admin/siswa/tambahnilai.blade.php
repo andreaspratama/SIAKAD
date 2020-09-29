@@ -5,7 +5,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Detail Siswa {{$item->nama}}</h1>
+        <h1 class="h3 mb-2 text-gray-800">Detail Nilai Siswa {{$item->nama}}</h1>
 
         <div class="card shadow">
             <div class="card-body">
@@ -39,7 +39,7 @@
                                     <td>{{$mapel->pivot->status}}</td>
                                     <td>{{$mapel->pivot->thn_akademik}}</td>
                                     <td>
-                                      <a href="/siswa/{{$item->id}}/{{$mapel->id}}/nilaitambah" class="btn btn-primary btn-sm">Tambah</a>
+                                      <a href="/siswa/{{$item->id}}/{{$mapel->id}}/nilaitambah" class="btn btn-primary btn-sm">Tambah / Edit</a>
                                     </td>
                                   </tr>
                               @endforeach
@@ -48,7 +48,7 @@
                       </div>
                     </div>
                 </div>
-                <a href="/nilai" class="btn btn-secondary btn-sm">Kembali</a>
+                <a href="/guru/nilaiProses/{{$item->kelas}}" class="btn btn-secondary btn-sm">Kembali</a>
             </div>
         </div>
 
@@ -77,20 +77,6 @@
                         @foreach ($matapelajarans as $matapelajaran)
                             <option value="{{$matapelajaran->id}}">
                             {{$matapelajaran->nama_mapel}}
-                            </option>
-                        @endforeach
-                    </select>
-                    </div>
-                    <label for="thn_akademik">Tahun Akademik</label>
-                    <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="thn_akademik"><i class="fas fa-book-reader"></i></span>
-                    </div>
-                    <select class="custom-select" name="thn_akademik" required>
-                        <option>-- Pilih Akademik --</option>
-                        @foreach ($thnakademiks as $akademik)
-                            <option value="{{$akademik->id}}">
-                            {{$akademik->tahun_akademik}} / {{$akademik->semester}}
                             </option>
                         @endforeach
                     </select>

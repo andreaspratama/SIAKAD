@@ -32,14 +32,19 @@
                   <div class="input-group-prepend">
                     <label class="input-group-text" for="hari"><i class="fas fa-calendar-day"></i></label>
                   </div>
-                  <select class="custom-select" name="hari">
-                    <option>-- Pilih --</option>
+                  <select class="custom-select @error('hari') is-invalid @enderror" name="hari">
+                    <option>-- Pilih Hari --</option>
                     <option value="Senin">Senin</option>
                     <option value="Selasa">Selasa</option>
                     <option value="Rabu">Rabu</option>
                     <option value="Kamis">Kamis</option>
                     <option value="Jumat">Jumat</option>
                   </select>
+                  @error('hari')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                  @enderror
                 </div>
               </div>
               <div class="form-group">

@@ -18,6 +18,13 @@ class NilaiController extends Controller
         return view('pages.admin.siswa.masuknilai', compact('items'));
     }
 
+    public function proses($kelas)
+    {
+        $pnilai = Siswa::all()->whereBetween('kelas', [$kelas]);
+
+        return view('pages.admin.siswa.prosnilai', compact('pnilai'));
+    }
+
     public function detail($id)
     {
         $item = Siswa::findOrFail($id);
@@ -30,7 +37,7 @@ class NilaiController extends Controller
     public function nilai(Request $request, $id)
     {
         $siswa = Siswa::findOrFail($id);
-        $siswa->mapel()->attach($request->mapel, ['thn_akademik' => $request->thn_akademik, 'nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
+        $siswa->mapel()->attach($request->mapel, ['nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
 
         return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Ditambahkan');
     }

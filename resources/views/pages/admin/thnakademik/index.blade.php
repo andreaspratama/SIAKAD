@@ -16,7 +16,7 @@
               Tambah Akademik
             </a>
             <div class="table-responsive">
-              <table class="table table-bordered text-center" id="tablethnakademik" width="100%" cellspacing="0">
+              <table class="table table-bordered text-center table-sm" id="tablethnakademik" width="100%" cellspacing="0">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -27,32 +27,26 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @forelse ($items as $item)
+                  @foreach ($items as $item)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->tahun_akademik}}</td>
-                        <td>{{$item->semester}}</td>
-                        <td>{{$item->status}}</td>
-                        <td>
-                            <a href="{{route('thnakademik.edit', $item->id)}}" class="btn btn-sm btn-circle btn-warning">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <form action="{{route('thnakademik.destroy', $item->id)}}" method="POST" class="d-inline">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-circle btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
+                      <td>{{$loop->iteration}}</td>
+                      <td>{{$item->tahun_akademik}}</td>
+                      <td>{{$item->semester}}</td>
+                      <td>{{$item->status}}</td>
+                      <td>
+                          <a href="{{route('thnakademik.edit', $item->id)}}" class="btn btn-sm btn-circle btn-warning">
+                              <i class="fa fa-edit"></i>
+                          </a>
+                          <form action="{{route('thnakademik.destroy', $item->id)}}" method="POST" class="d-inline">
+                              @csrf
+                              @method('delete')
+                              <button class="btn btn-circle btn-sm btn-danger">
+                                  <i class="fa fa-trash"></i>
+                              </button>
+                          </form>
+                      </td>
                     </tr>
-                  @empty
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            Data Kosong
-                        </td>
-                    </tr>
-                  @endforelse
+                  @endforeach
                 </tbody>
               </table>
             </div>

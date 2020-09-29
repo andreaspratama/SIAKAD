@@ -25,20 +25,26 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-code"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="NIS..." name="nis" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control @error('nis') is-invalid @enderror" placeholder="NIS..." name="nis" aria-describedby="basic-addon1" value="{{old('nis')}}">
+                        @error('nis')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Nama..." name="nama" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama..." name="nama" aria-describedby="basic-addon1" value="{{old('nama')}}">
+                        @error('nama')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-layer-group"></i></label>
                         </div>
-                        <select class="custom-select" id="inputGroupSelect01" name="kelas">
-                          <option selected>Kelas...</option>
+                        <select class="custom-select @error('kelas') is-invalid @enderror" id="inputGroupSelect01" name="kelas">
+                          <option selected>-- Pilih Kelas --</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -46,6 +52,9 @@
                           <option value="5">5</option>
                           <option value="6">6</option>
                         </select>
+                        @error('kelas')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -64,14 +73,17 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-day"></i></span>
                         </div>
-                        <input type="date" class="form-control" placeholder="Tanggal..." name="tanggal" aria-describedby="basic-addon1">
+                        <input type="date" class="form-control @error('tanggal') is-invalid @enderror" placeholder="Tanggal..." name="tanggal" aria-describedby="basic-addon1" value="{{old('tanggal')}}">
+                        @error('tanggal')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-money-check-alt"></i></label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01" name="jenispem_id">
-                          <option selected>Jenis Pembayaran...</option>
+                          <option selected>-- Pilih Pembayaran --</option>
                           @foreach ($jenispems as $jenis)
                             <option value="{{$jenis->id}}">{{$jenis->jenis}}</option>
                           @endforeach
@@ -81,13 +93,19 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-dollar-sign"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Jumlah Pembayaran..." name="jum_pemb" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control @error('jum_pemb') is-invalid @enderror" placeholder="Jumlah Pembayaran..." name="jum_pemb" aria-describedby="basic-addon1" value="{{old('jum_pemb')}}">
+                        @error('jum_pemb')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-info-circle"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Keterangan..." name="keterangan" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control @error('keterangan') is-invalid @enderror" placeholder="Keterangan..." name="keterangan" aria-describedby="basic-addon1" value="{{old('keterangan')}}">
+                        @error('keterangan')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                       </div>
                       <button class="btn btn-primary">Transaksi</button>
                     </div>
@@ -103,6 +121,8 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
+            {{-- <a href="{{route('pembayaran.cetakexcel')}}" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
+            <a href="{{route('pembayaran.cetakpdf')}}" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a> --}}
             <div class="table-responsive">
               <table class="table table-striped table-sm table-bordered text-center" id="tablePembayaran" width="100%" cellspacing="0">
                 <thead>

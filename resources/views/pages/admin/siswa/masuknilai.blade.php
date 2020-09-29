@@ -15,67 +15,16 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Nama</th>
-                      <th width="200px">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($items as $item)
-                      <tr>
-                        <td>{{$item->nama}}</td>
-                        <td>
-                          <a href="/siswa/{{$item->id}}/nilai" class="btn btn-primary btn-sm">Tambah</a>
-                        </td>
-                      </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-            </div>
-            {{-- <div class="table-responsive">
-              <table class="table table-bordered text-center" id="tablethnakademik" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Tahun Akademik</th>
-                    <th>Semester</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @forelse ($items as $item)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->tahun_akademik}}</td>
-                        <td>{{$item->semester}}</td>
-                        <td>{{$item->status}}</td>
-                        <td>
-                            <a href="{{route('thnakademik.edit', $item->id)}}" class="btn btn-sm btn-circle btn-warning">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <form action="{{route('thnakademik.destroy', $item->id)}}" method="POST" class="d-inline">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-circle btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                  @empty
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            Data Kosong
-                        </td>
-                    </tr>
-                  @endforelse
-                </tbody>
-              </table>
-            </div> --}}
+            <label for="">Kelas</label>
+            <select class="form-control mb-3" id="kelas">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <a href="" onclick="this.href='/guru/nilaiProses/'+ document.getElementById('kelas').value" class="btn btn-primary"><i class="fas fa-spinner mr-2"></i>Proses Nilai</a>
           </div>
         </div>
 

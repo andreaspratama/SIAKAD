@@ -5,58 +5,50 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        
-        @if (session('status'))
-        <div class="alert alert-success">
-          {{ session('status') }}
-        </div>
-        @endif
-        
+        <h1 class="h3 mb-2 text-gray-800">Proses Nilai</h1>
+
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
-            <a href="{{route('sekolah.create')}}" class="btn btn-primary btn-sm mb-3 px-3 py-2">
-              <i class="fas fa-plus mr-2"></i>
-              Tambah Data
-            </a>
+            
+            {{-- <a href="{{route('pembayaran.cetakpdf')}}" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a> --}}
             <div class="table-responsive">
-              <table class="table table-bordered text-center table-sm" id="tabledatasekolah" width="100%" cellspacing="0">
+              <table class="table table-striped table-sm table-bordered text-center" id="tablePembayaran" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>No</th>
+                    <th>NO</th>
                     <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>Email</th>
-                    <th>No Telepon</th>
-                    <th>Akreditasi</th>
-                    <th>Kepala Sekolah</th>
-                    <th>Image</th>
+                    <th>Kelas</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($items as $item)
+                  @foreach ($pnilai as $pn)
                     <tr>
-                      <td>{{$loop->iteration}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->alamat}}</td>
-                      <td>{{$item->email}}</td>
-                      <td>{{$item->no_tlpn}}</td>
-                      <td>{{$item->akreditasi}}</td>
-                      <td>{{$item->kepala_sklh}}</td>
-                      <td>
-                          <img src="{{Storage::url($item->image)}}" alt="" style="width: 650px" class="img-thumbnail">
-                      </td>
-                      <td>
-                          <a href="{{route('sekolah.edit', $item->id)}}" class="btn btn-circle btn-warning">
-                              <i class="fa fa-edit"></i>
-                          </a>
-                      </td>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$pn->nama}}</td>
+                        <td>{{$pn->kelas}}</td>
+                        <td>
+                            <a href="/siswa/{{$pn->id}}/nilai" class="btn btn-sm btn-primary">
+                                Nilai
+                            </a>
+                            {{-- <a href="{{route('pembayaran.edit', $pn->id)}}" class="btn btn-circle btn-sm btn-warning">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <form action="{{route('pembayaran.destroy', $pn->id)}}" method="POST" class="d-inline">
+                              @csrf
+                              @method('delete')
+                              <button class="btn btn-circle btn-sm btn-danger">
+                                  <i class="fa fa-trash"></i>
+                              </button>
+                          </form> --}}
+                        </td>
                     </tr>
                   @endforeach
                 </tbody>
               </table>
             </div>
+            <a href="/guru/nilai" class="btn btn-secondary btn-sm mt-3 px-3 py-2"><i class="fas fa-backward mr-2"></i> Input Nilai Kelas Lain</a>
           </div>
         </div>
 
@@ -74,7 +66,7 @@
       <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
       <script>
         $(document).ready(function() {
-          $('#tabledatasekolah').DataTable();
+          $('#tablePembayaran').DataTable();
         } );
       </script>
       <script>

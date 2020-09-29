@@ -17,7 +17,6 @@ class CreateMapelSiswaTable extends Migration
             $table->id();
             $table->integer('siswa_id');
             $table->integer('mapel_id');
-            $table->string('thn_akademik');
             $table->integer('nilai_uh1')->nullable();
             $table->integer('nilai_uh2')->nullable();
             $table->integer('uts')->nullable();

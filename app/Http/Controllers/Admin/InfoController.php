@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ExkulRequest;
-use App\Exkul;
+use App\Http\Requests\Admin\InfoRequest;
+use App\Info;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class ExkulController extends Controller
+class InfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,9 @@ class ExkulController extends Controller
      */
     public function index()
     {
-        $items = Exkul::all();
+        $items = Info::all();
 
-        return view('pages.admin.exkul.index', compact('items'));
+        return view('pages.admin.info.index', compact('items'));
     }
 
     /**
@@ -28,7 +29,7 @@ class ExkulController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.exkul.create');
+        return view('pages.admin.info.create');
     }
 
     /**
@@ -37,13 +38,17 @@ class ExkulController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ExkulRequest $request)
+    public function store(InfoRequest $request)
     {
         $data = $request->all();
+        $data['slug'] = Str::slug($request->judul);
+        $data['image'] = $request->file('image')->store(
+            'assets/gallery', 'public'
+        );
 
-        Exkul::create($data);
+        Info::create($data);
 
-        return redirect()->route('exkul.index')->with('status', 'Data berhasil Dibuat');
+        return redirect()->route('info.index')->with('status', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -65,9 +70,7 @@ class ExkulController extends Controller
      */
     public function edit($id)
     {
-        $item = Exkul::findOrFail($id);
-
-        return view('pages.admin.exkul.edit', compact('item'));
+        //
     }
 
     /**
@@ -79,12 +82,7 @@ class ExkulController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $item = Exkul::findOrFail($id);
-
-        $item->update($data);
-
-        return redirect()->route('exkul.index')->with('status', 'Data berhasil Diupdate');
+        //
     }
 
     /**
@@ -95,10 +93,6 @@ class ExkulController extends Controller
      */
     public function destroy($id)
     {
-        $item = Exkul::findOrFail($id);
-
-        $item->delete();
-
-        return redirect()->route('exkul.index')->with('status', 'Data berhasil Dihapus');
+        //
     }
 }

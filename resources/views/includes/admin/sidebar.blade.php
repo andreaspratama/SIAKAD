@@ -50,7 +50,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-folder"></i>
+        <i class="fas fa-money-bill-wave-alt"></i>
         <span>Pembayaran</span>
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -58,14 +58,14 @@
           <h6 class="collapse-header">Custom Components:</h6>
           <a class="collapse-item" href="{{route('jenispem.index')}}">Jenis Pembayaran</a>
           <a class="collapse-item" href="{{route('pembayaran.index')}}">Pembayaran</a>
+          <a class="collapse-item" href="{{route('pembayaran.cetak')}}">Cetak Pembayaran</a>
         </div>
       </div>
     </li>
-
     <li class="nav-item">
-      <a class="nav-link" href="/nilai">
-        <i class="fas fa-book-reader"></i>
-        <span>Nilai</span></a>
+      <a class="nav-link" href="{{route('info.index')}}">
+        <i class="fas fa-newspaper"></i>
+        <span>Info</span></a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/user">

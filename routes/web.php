@@ -76,7 +76,10 @@ Route::prefix('/')
             Route::resource('thnakademik', 'ThnakademikController');
             Route::resource('sekolah', 'SekolahController');
             Route::resource('jenispem', 'JenispemController');
+            Route::get('cetakPembayaran', 'PembayaranController@cetakPembayaran')->name('pembayaran.cetak');
+            Route::get('cetakPembayaranPertanggal/{tglawal}/{tglakhir}', 'PembayaranController@cetakPembayaranPertanggal')->name('pembayaran.cetaktgl');
             Route::resource('pembayaran', 'PembayaranController');
+            Route::resource('info', 'InfoController');
 
             // Route::get('nilai', 'NilaiController@index');
             // Route::get('siswa/{siswa}/nilai', 'NilaiController@detail');
@@ -89,11 +92,11 @@ Route::prefix('/')
 
         Route::group(['middleware' => ['auth', 'check:siswa']], function(){
             Route::get('siswa/profile', 'SiswaController@profile');
+            Route::get('siswa/info', 'SiswaController@info');
+            Route::get('siswa/info/{slug}', 'SiswaController@infoLebih');
             Route::get('siswa/profile/edit/{id}', 'SiswaController@profileedit');
             Route::get('siswa/nilai', 'SiswaController@lihatNilai');
             Route::get('siswa/jadwal', 'SiswaController@jadwal');
-            Route::get('siswa/absen', 'SiswaController@absen');
-            Route::post('absen', 'SiswaController@absenpros');
             Route::get('siswa/tugas', 'SiswaController@tugas');
             Route::get('siswa/cetaknilai', 'SiswaController@cetakNilai');
         });
@@ -102,7 +105,10 @@ Route::prefix('/')
             Route::get('guru/profile', 'GuruController@profile');
             Route::get('guru/jadwal', 'JadwalmapelController@jadwal');
             Route::get('guru/tugas', 'TugasController@tugas');
+            Route::get('guru/absen', 'GuruController@absen');
+            Route::post('absen', 'GuruController@absenpros');
             Route::get('guru/nilai', 'NilaiController@index');
+            Route::get('guru/nilaiProses/{kelas}', 'NilaiController@proses');
             Route::get('siswa/{siswa}/nilai', 'NilaiController@detail');
             Route::post('siswa/{siswa}/nilaitambah', 'NilaiController@nilai');
             Route::get('/siswa/{id}/{idmapel}/nilaitambah', 'NilaiController@nilaitambah');

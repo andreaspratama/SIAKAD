@@ -26,31 +26,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @forelse ($items as $item)
+                  @foreach ($items as $item)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->kode_ruang}}</td>
-                        <td>{{$item->nama_ruang}}</td>
-                        <td>
-                            <a href="{{route('ruang.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <form action="{{route('ruang.destroy', $item->id)}}" method="POST" class="d-inline">
-                              @csrf
-                              @method('delete')
-                              <button class="btn btn-circle btn-sm btn-danger">
-                                  <i class="fa fa-trash"></i>
-                              </button>
-                          </form>
-                        </td>
+                      <td>{{$loop->iteration}}</td>
+                      <td>{{$item->kode_ruang}}</td>
+                      <td>{{$item->nama_ruang}}</td>
+                      <td>
+                          <a href="{{route('ruang.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
+                              <i class="fa fa-edit"></i>
+                          </a>
+                          <form action="{{route('ruang.destroy', $item->id)}}" method="POST" class="d-inline">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-circle btn-sm btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                      </td>
                     </tr>
-                  @empty
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            Data Kosong
-                        </td>
-                    </tr>
-                  @endforelse
+                  @endforeach
                 </tbody>
               </table>
             </div>

@@ -7,8 +7,10 @@ use App\Http\Requests\Admin\GuruRequest;
 use App\Guru;
 use App\User;
 use App\Mapel;
+use App\Absen;
 use App\Exports\GuruExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -138,6 +140,79 @@ class GuruController extends Controller
         $item->delete();
 
         return redirect('/guru')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    public function absen() 
+    {
+        $this->timeZone('Asia/Jakarta');
+        $user_id = Auth::user()->id;
+        $date = date("Y-m-d");
+        $cek_absen = Absen::where(['user_id' => $user_id, 'tanggal' => $date])
+                            ->get()
+                            ->first();
+        if(is_null($cek_absen)) {
+            $info = array(
+                "status" => "Anda Belum Mengisi Absen Hari Ini",
+                "btnIn" => "",
+                "btnOut" => "disabled"
+            );
+        } elseif($cek_absen->time_out == NULL) {
+            $info = array(
+                "status" => "Jangan Lupa Absen Keluar",
+                "btnIn" => "disabled",
+                "btnOut" => ""
+            );
+        } else {
+            $info = array(
+                "status" => "Absensi Hari Ini Telah Berakhir",
+                "btnIn" => "disabled",
+                "btnOut" => "disabled"
+            );
+        }
+
+        $items = Absen::where('user_id', $user_id)->orderBy('id', 'DESC')->paginate(10);
+        return view('pages.admin.guru.absen', compact('items', 'info'));
+    }
+
+    public function absenpros(Request $request)
+    {
+        $this->timeZone('Asia/Jakarta');
+        $user_id = Auth::user()->id;
+        $date = date("Y-m-d");
+        $time = date("H:i:s");
+        $note = $request->note;
+
+        $absen = new Absen;
+        
+        // Absen Masuk
+        if (isset($request["btnIn"])) {
+            // Cek Double Data
+            $cek_double = $absen->where(['tanggal' => $date, 'user_id' => $user_id])
+                    ->count();
+            if($cek_double > 0) {
+                return redirect()->back();
+            }
+            $absen->create([
+                'user_id' => $user_id,
+                'tanggal' => $date,
+                'time_in' => $time,
+                'note' => $note]);
+            return redirect()->back(); 
+        } 
+        // Absen Keluar
+        elseif (isset($request["btnOut"])) {
+            $absen->where(['tanggal' => $date, 'user_id' => $user_id])
+                    ->update([
+                        'time_out' => $time,
+                        'note' => $note]);
+            return redirect()->back();
+        }
+        return $request->all(); 
+    }
+
+    public function timeZone($location) 
+    {
+        return date_default_timezone_set($location);
     }
 
     public function profile()

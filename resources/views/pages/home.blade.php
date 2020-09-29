@@ -20,9 +20,9 @@
                 <p class="mb-5">
                     @if (auth()->user()->role == 'guru')
                         Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang <br>
-                        @if (auth()->user()->role == 'guru')
+                        {{-- @if (auth()->user()->role == 'guru')
                             <a href="{{route('dashboard.guru')}}" class="btn btn-primary mt-3">Masuk Dashboard</a>
-                        @endif
+                        @endif --}}
                     @endif
                     @if (auth()->user()->role == 'siswa')
                         Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang <br>

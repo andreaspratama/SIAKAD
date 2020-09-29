@@ -5,10 +5,10 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Jadwal Mata Pelajaran</h1>
+        <h1 class="h3 text-gray-800">Jadwal Mata Pelajaran</h1>
 
-        <a href="/jadwalmapel/exportexcel" class="btn btn-success btn-sm mb-3 mt-3 px-3 py-2">Laporan Excel</a>
-        <a href="/jadwalmapel/exportpdf" class="btn btn-danger btn-sm mb-3 mt-3 px-3 py-2">Laporan PDF</a>
+        <a href="/jadwalmapel/exportexcel" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
+        <a href="/jadwalmapel/exportpdf" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
         
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -33,37 +33,31 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @forelse ($items as $item)
+                  @foreach ($items as $item)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->mapel->nama_mapel}}</td>
-                        {{-- <td>{{$item->guru->nama}}</td> --}}
-                        @if ($item->guru->nama || $item->guru_id)
-                          <td>{{$item->guru->nama}}</td>
-                        @else
-                          <td>Guru Tidak Ada</td>
-                        @endif
-                        <td>{{$item->kelas}}</td>
-                        <td>{{$item->ruang->nama_ruang}}</td>
-                        <td>{{$item->hari}}</td>
-                        <td>{{$item->jam_mulai}}</td>
-                        <td>{{$item->jam_selesai}}</td>
-                        <td>
-                            <a href="/jadwalmapel/{{$item->id}}/edit" class="btn btn-circle btn-sm btn-warning">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a href="#" class="btn btn-sm btn-circle btn-danger delete" jmapel-nama="{{$item->mapel->nama_mapel}}" jmapel-id="{{$item->id}}">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
+                      <td>{{$loop->iteration}}</td>
+                      <td>{{$item->mapel->nama_mapel}}</td>
+                      {{-- <td>{{$item->guru->nama}}</td> --}}
+                      @if ($item->guru->nama || $item->guru_id)
+                        <td>{{$item->guru->nama}}</td>
+                      @else
+                        <td>Guru Tidak Ada</td>
+                      @endif
+                      <td>{{$item->kelas}}</td>
+                      <td>{{$item->ruang->nama_ruang}}</td>
+                      <td>{{$item->hari}}</td>
+                      <td>{{$item->jam_mulai}}</td>
+                      <td>{{$item->jam_selesai}}</td>
+                      <td>
+                          <a href="/jadwalmapel/{{$item->id}}/edit" class="btn btn-circle btn-sm btn-warning">
+                              <i class="fa fa-edit"></i>
+                          </a>
+                          <a href="#" class="btn btn-sm btn-circle btn-danger delete" jmapel-nama="{{$item->mapel->nama_mapel}}" jmapel-id="{{$item->id}}">
+                              <i class="fa fa-trash"></i>
+                          </a>
+                      </td>
                     </tr>
-                  @empty
-                    <tr>
-                        <td colspan="9" class="text-center">
-                            Data Kosong
-                        </td>
-                    </tr>
-                  @endforelse
+                  @endforeach
                 </tbody>
               </table>
             </div>

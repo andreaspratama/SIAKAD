@@ -1,0 +1,928 @@
+body {
+  font-family: 'Recursive', sans-serif;
+  height: 100%;
+}
+
+.navbar .navbar-brand img {
+  width: 50px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+  color: #050591;
+  font-weight: 600;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.navbar .navbar-nav .nav-item .active {
+  color: blue;
+}
+
+.navbar .navbar-nav .nav-item .active:hover {
+  text-decoration: none;
+}
+
+.jumbotron {
+  position: relative;
+  height: 460px;
+  background-image: url("/frontend/images/foto2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .jumbo-title {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 130px;
+}
+
+.jumbotron .jumbo-title h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 40px;
+  color: #fff;
+}
+
+.jumbotron .jumbo-button {
+  text-align: center;
+}
+
+.jumbotron .jumbo-button .btn-join {
+  padding: 5px 30px 5px 30px;
+  background-color: transparent;
+  border: 2px solid blue;
+  color: #fff;
+}
+
+.jumbotron .jumbo-button .btn-join:hover {
+  background-color: blue;
+}
+
+.jumbotron .container {
+  position: relative;
+  z-index: 1;
+}
+
+.jumbotron::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+  position: absolute;
+  bottom: 0;
+}
+
+.profile {
+  margin-top: 50px;
+}
+
+.profile .profile-title h1 {
+  text-align: center;
+  font-size: 35px;
+}
+
+.profile .profile-desc {
+  font-size: 20px;
+  color: grey;
+}
+
+.profile .profile-img img {
+  width: 100%;
+}
+
+.ibadah {
+  margin-top: 50px;
+  background-color: #f0f0f0;
+}
+
+.ibadah .ibadah-title h1 {
+  text-align: center;
+  font-size: 35px;
+}
+
+.ibadah .ibadah-img img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.ibadah .ibadah-detail span {
+  color: blue;
+}
+
+.mate-title h1 {
+  text-align: center;
+}
+
+.carousel .carousel-inner img {
+  height: 500px;
+}
+
+.carousel .carousel-inner .carousel-caption .btn-mate {
+  padding: 5px 30px 5px 30px;
+  background-color: transparent;
+  border: 2px solid blue;
+  color: #fff;
+}
+
+.carousel .carousel-inner .carousel-caption .btn-mate:hover {
+  background-color: blue;
+}
+
+.service {
+  margin-top: 50px;
+}
+
+.service .serviceTitle h1 {
+  text-align: center;
+}
+
+.service .serviceContent .cardService {
+  border-radius: 50px 0px 50px 0px;
+  min-height: 300px;
+  background-color: #ddd;
+  background-size: 100% 100%;
+  margin-bottom: 18px;
+  padding-top: 75px;
+  position: relative;
+}
+
+.service .serviceContent .cardService #detailSatu {
+  display: none;
+}
+
+.service .serviceContent .cardService #detailSatu h3 {
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailSatu p {
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailSatu span {
+  color: blue;
+  font-size: 25px;
+}
+
+.service .serviceContent .cardService #detailSatu .btn-selengkapnya {
+  background-color: #ff5a46;
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailSatu .btn-selengkapnya:hover {
+  background-color: transparent;
+  border: 1px solid #ff5a46;
+  color: #ff5a46;
+}
+
+.service .serviceContent .cardService #detailDua {
+  display: none;
+}
+
+.service .serviceContent .cardService #detailDua h3 {
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailDua p {
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailDua span {
+  color: blue;
+  font-size: 25px;
+}
+
+.service .serviceContent .cardService #detailDua .btn-selengkapnya {
+  background-color: #ff5a46;
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailDua .btn-selengkapnya:hover {
+  background-color: transparent;
+  border: 1px solid #ff5a46;
+  color: #ff5a46;
+}
+
+.service .serviceContent .cardService #detailTiga {
+  display: none;
+}
+
+.service .serviceContent .cardService #detailTiga h3 {
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailTiga p {
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailTiga span {
+  color: blue;
+  font-size: 25px;
+}
+
+.service .serviceContent .cardService #detailTiga .btn-selengkapnya {
+  background-color: #ff5a46;
+  color: #fff;
+}
+
+.service .serviceContent .cardService #detailTiga .btn-selengkapnya:hover {
+  background-color: transparent;
+  border: 1px solid #ff5a46;
+  color: #ff5a46;
+}
+
+.service .serviceContent .cardService #detailSatu {
+  z-index: 1;
+  position: relative;
+}
+
+.service .serviceContent .cardService #detailDua {
+  z-index: 1;
+  position: relative;
+}
+
+.service .serviceContent .cardService #detailTiga {
+  z-index: 1;
+  position: relative;
+}
+
+.service .serviceContent .cardService::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  border-radius: 50px 0px 50px 0px;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+  bottom: 0;
+}
+
+.subscribe {
+  margin-top: 30px;
+  background-color: blue;
+  padding: 20px 0px 20px 0px;
+}
+
+.subscribe .sub-title {
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.subscribe .form-sub input {
+  width: 85%;
+  height: 50px;
+  position: relative;
+  padding-left: 10px;
+  border: blue;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.subscribe .form-sub .btnSub {
+  position: absolute;
+  border-radius: 0px 5px 5px 0px;
+  height: 50px;
+  width: 70px;
+  background-color: #04045c;
+  border: #04045c;
+}
+
+.subscribe .form-sub .btnSub span {
+  color: #fff;
+}
+
+.subscribe .form-sub .btnSub:hover {
+  background-color: #fff;
+}
+
+.subscribe .form-sub .btnSub:hover span {
+  color: blue;
+}
+
+.footer {
+  background-color: #00003c;
+}
+
+.footer .detail-sos img {
+  width: 75px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.footer .detail-sos p {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.footer .detail-sos .social-media a {
+  text-decoration: none;
+  margin-right: 12px;
+}
+
+.footer .detail-sos .social-media .ig i {
+  color: #fff;
+}
+
+.footer .detail-sos .social-media .ig i:hover {
+  color: #ff4500;
+}
+
+.footer .detail-sos .social-media .fb i {
+  color: #fff;
+}
+
+.footer .detail-sos .social-media .fb i:hover {
+  color: #3b5998;
+}
+
+.footer .detail-sos .social-media .tw i {
+  color: #fff;
+}
+
+.footer .detail-sos .social-media .tw i:hover {
+  color: #00acee;
+}
+
+.footer .footer-end {
+  color: #fff;
+  text-align: center;
+}
+
+.footer h3 {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+.footer .detail-contact span {
+  color: blue;
+}
+
+.footer .detail-contact p {
+  color: #fff;
+}
+
+.events .eventsJudul {
+  margin-bottom: 50px;
+}
+
+.events .eventEvent {
+  margin-bottom: 25px;
+}
+
+.events .eventEvent .eventImg img {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 15px;
+}
+
+.events .eventEvent .eventComponent h3 {
+  margin-bottom: 10px;
+}
+
+.events .eventEvent .eventComponent .detailsEvents {
+  margin-bottom: 20px;
+}
+
+.events .eventEvent .eventComponent .detailsEvents .detail {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.events .eventEvent .eventComponent .detailsEvents .detail span {
+  color: blue;
+  margin-right: 4px;
+}
+
+.events .eventEvent .eventComponent .descriptionEvents {
+  margin-bottom: 25px;
+  color: #494949;
+}
+
+.events .eventEvent .eventComponent .btn-read {
+  border: 2px solid blue;
+  color: blue;
+  padding: 10px 20px 10px 20px;
+}
+
+.fellas {
+  position: relative;
+  height: 538px;
+  background-image: url("/frontend/images/fellas.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.fellas .fellas-title h1 {
+  text-align: center;
+  font-size: 62px;
+  color: #fff;
+  margin-top: 190px;
+  margin-bottom: 20px;
+}
+
+.fellas .btn-fellas {
+  border: 2px solid blue;
+  color: #fff;
+  padding: 10px 20px 10px 20px;
+}
+
+.fellas .container {
+  position: relative;
+  z-index: 1;
+}
+
+.fellas::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  position: absolute;
+  bottom: 0;
+}
+
+.descriptionFelas {
+  margin-top: 55px;
+  margin-bottom: 55px;
+}
+
+.descriptionFelas .descriptionTitle {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.descriptionFelas .descriptionTitle h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.descriptionFelas .descriptionContent p {
+  text-align: center;
+  font-size: 20px;
+}
+
+.cFellas {
+  margin-bottom: 30px;
+}
+
+.cFellas .carousel-inner .carousel-item {
+  background-color: green;
+}
+
+.cFellas .carousel-inner .carousel-item img {
+  height: 400px;
+  width: 100%;
+}
+
+.usher {
+  position: relative;
+  padding: 30px 0px 30px 0px;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-image: url("/frontend/images/usher.jpg");
+}
+
+.usher .formUsher {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.usher .container {
+  position: relative;
+  z-index: 1;
+}
+
+.usher::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  bottom: 0;
+}
+
+.media {
+  position: relative;
+  padding: 30px 0px 30px 0px;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-image: url("/frontend/images/media.jpg");
+}
+
+.media .formMedia {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.media .container {
+  position: relative;
+  z-index: 1;
+}
+
+.media::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  bottom: 0;
+}
+
+.dance {
+  position: relative;
+  padding: 30px 0px 30px 0px;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-image: url("/frontend/images/dance.jpg");
+}
+
+.dance .formDance {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dance .container {
+  position: relative;
+  z-index: 1;
+}
+
+.dance::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  bottom: 0;
+}
+
+.music {
+  position: relative;
+  padding: 30px 0px 30px 0px;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-image: url("/frontend/images/music.jpg");
+}
+
+.music .formMusic {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.music .container {
+  position: relative;
+  z-index: 1;
+}
+
+.music::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  bottom: 0;
+}
+
+.crew {
+  position: relative;
+  padding: 30px 0px 30px 0px;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-image: url("/frontend/images/crew.jpg");
+}
+
+.crew .formCrew {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.crew .container {
+  position: relative;
+  z-index: 1;
+}
+
+.crew::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  bottom: 0;
+}
+
+.pw {
+  position: relative;
+  padding: 30px 0px 30px 0px;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-image: url("/frontend/images/vocal.jpg");
+}
+
+.pw .formPw {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pw .container {
+  position: relative;
+  z-index: 1;
+}
+
+.pw::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  bottom: 0;
+}
+
+.pr {
+  position: relative;
+  padding: 30px 0px 30px 0px;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-image: url("/frontend/images/pr.jpg");
+}
+
+.pr .formPr {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pr .container {
+  position: relative;
+  z-index: 1;
+}
+
+.pr::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  bottom: 0;
+}
+
+.jemaat {
+  position: relative;
+  padding: 30px 0px 30px 0px;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-image: url("/frontend/images/jemaat.jpg");
+}
+
+.jemaat .formJemaat {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jemaat .container {
+  position: relative;
+  z-index: 1;
+}
+
+.jemaat::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5));
+  bottom: 0;
+}
+
+.leaders {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.leaders .leadersTitle h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.leaders .cardLeadersImg {
+  width: 70%;
+  margin-bottom: 20px;
+  min-height: 480px;
+}
+
+.leaders .cardLeadersImg img {
+  width: 100%;
+  height: 400px;
+}
+
+.leaders .cardLeadersImg .nameLeaders {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.leaders .cardLeadersImg .nameLeaders p {
+  margin-bottom: 0px;
+}
+
+.leaders .cardLeadersImg .nameLeaders .nama {
+  font-size: 22px;
+}
+
+.leaders .cardLeadersImg .nameLeaders .jabatan {
+  color: black;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+.leaders .cardLeadersImg .sosmed {
+  margin-top: 17px;
+  text-align: center;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem {
+  display: inline-block;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem .ig {
+  margin-right: 20px;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem .ig i {
+  color: #333;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem .ig i:hover {
+  color: #ff4500;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem .fb {
+  margin-right: 20px;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem .fb i {
+  color: #333;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem .fb i:hover {
+  color: #3b5998;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem .tw i {
+  color: #333;
+}
+
+.leaders .cardLeadersImg .sosmed .sosmedItem .tw i:hover {
+  color: #00acee;
+}
+
+.leaders .item {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.leaders .item .itemTitle {
+  margin-bottom: 15px;
+}
+
+.leaders .item .itemTitle h2 {
+  font-size: 32px;
+}
+
+.leaders .item .itemTitle span {
+  color: blue;
+  margin-right: 10px;
+}
+
+.leaders .item .itemContent {
+  font-size: 16px;
+  color: #7a7a7a;
+}
+
+.leaders .item .itemButton .btn-item {
+  color: #050591;
+}
+
+.leaders .item .itemButton .btn-item:hover {
+  color: blue;
+}
+
+.contact .contactTitle {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.contact .contactTitle h2 {
+  text-align: center;
+}
+
+.contact .map {
+  margin-bottom: 30px;
+}
+
+.contact .map iframe {
+  width: 100%;
+}
+
+.contact .contactInfo {
+  margin-bottom: 25px;
+}
+
+.contact .contactInfo .contactInfoTitle {
+  margin-bottom: 15px;
+}
+
+.contact .contactInfo .contactInfoTitle h2 {
+  font-size: 45px;
+}
+
+.contact .contactInfo .detailContact p {
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+
+.contact .contactForm {
+  margin-bottom: 25px;
+}
+
+.contact .contactForm .contactFormTitle {
+  margin-bottom: 15px;
+}
+
+.contact .contactForm .contactFormTitle h2 {
+  font-size: 45px;
+}
+
+.contact .contactForm .form .card {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 992px) {
+  .navbar .nav-item {
+    margin-left: 15px;
+  }
+  .navbar .dropdown-menu {
+    background-color: #050591;
+  }
+  .navbar .dropdown-menu .dropdown-item {
+    background-color: #050591;
+    color: #fff;
+  }
+  .navbar .dropdown-menu .dropdown-item:hover {
+    background-color: blue;
+  }
+  .jumbotron {
+    height: 559px;
+  }
+  .jumbotron .jumbo-title h1 {
+    font-size: 60px;
+  }
+  .jumbotron .jumbo-button .btn-join {
+    padding: 10px 40px 10px 40px;
+  }
+  .carousel .carousel-inner .carousel-item img {
+    height: 780px;
+  }
+  .ibadah .ibadah-img img {
+    height: 450px;
+  }
+  .cFellas {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+  }
+  .cFellas .carousel-inner .carousel-item img {
+    height: 500px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .leaders .cardLeadersImg img {
+    width: 100%;
+    height: 350px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
