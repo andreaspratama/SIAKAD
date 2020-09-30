@@ -14,4 +14,9 @@ class Jenispem extends Model
     {
         return $this->hasMany('App\Pembayaran');
     }
+
+    public function onlinepem()
+    {
+        return $this->hasMany('App\Onlinepemb');
+    }
 }

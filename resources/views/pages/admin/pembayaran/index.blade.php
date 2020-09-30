@@ -121,8 +121,8 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
-            {{-- <a href="{{route('pembayaran.cetakexcel')}}" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
-            <a href="{{route('pembayaran.cetakpdf')}}" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a> --}}
+            <a href="{{route('pembayaran.cetakexcel')}}" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
+            <a href="{{route('pembayaran.cetakpdf')}}" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
             <div class="table-responsive">
               <table class="table table-striped table-sm table-bordered text-center" id="tablePembayaran" width="100%" cellspacing="0">
                 <thead>

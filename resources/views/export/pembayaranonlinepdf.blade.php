@@ -12,35 +12,31 @@
   </head>
   <body>
     {{-- <img src="{{url('foto/bunayya.png')}}" alt=""> --}}
-    <h3 class="text-center mb-3">Laporan Data Pembayaran</h3>
+    <h3 class="text-center mb-3">Laporan Data Pembayaran Online</h3>
     <table class="table table-striped table-bordered text-center table-sm">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Jenis Pembayaran</th>
-                <th>NIS</th>
+                <th>NISN</th>
                 <th>Nama</th>
-                <th>Kelas</th>
+                <th>Jenis Pembayaran</th>
                 <th>Tanggal</th>
-                <th>Jumlah</th>
-                <th>Keterangan</th>
+                <th>Kelas</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($pembayaran as $p)
+            @forelse ($pembayaranonline as $po)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$p->jenispem->jenis}}</td>
-                    <td>{{$p->nis}}</td>
-                    <td>{{$p->nama}}</td>
-                    <td>{{$p->kelas}}</td>
-                    <td>{{$p->tanggal}}</td>
-                    <td>Rp. {{number_format($p->jum_pemb)}}</td>
-                    <td>{{$p->keterangan}}</td>
+                    <td>{{$po->nisn}}</td>
+                    <td>{{$po->nama}}</td>
+                    <td>{{$po->jenispem->jenis}}</td>
+                    <td>{{$po->tanggal}}</td>
+                    <td>{{$po->kelas}}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8" class="text-center">
+                    <td colspan="7" class="text-center">
                         Data Kosong
                     </td>
                 </tr>

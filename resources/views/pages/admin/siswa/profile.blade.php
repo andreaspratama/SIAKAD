@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Profile {{auth()->user()->siswa->nama}}    
+    Profile | SD IT Bunayya    
 @endsection
 
 @section('content')
@@ -10,7 +10,6 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800 mt-4 mb-2">Profile {{auth()->user()->siswa->nama}}</h1>
-        <a href="/siswa/profile/edit" class="btn btn-warning mb-3">Edit Profile</a>
 
         <!-- DataTales Example -->
         <div class="card shadow">

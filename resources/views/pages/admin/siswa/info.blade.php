@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Info Akademik   
+    Info Akademik | SD IT Bunayya  
 @endsection
 
 @section('content')

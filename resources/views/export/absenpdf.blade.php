@@ -8,39 +8,35 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Data Pembayaran</title>
+    <title>Data Absen</title>
   </head>
   <body>
     {{-- <img src="{{url('foto/bunayya.png')}}" alt=""> --}}
-    <h3 class="text-center mb-3">Laporan Data Pembayaran</h3>
+    <h3 class="text-center mb-3">Laporan Data Absen</h3>
     <table class="table table-striped table-bordered text-center table-sm">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Jenis Pembayaran</th>
-                <th>NIS</th>
                 <th>Nama</th>
-                <th>Kelas</th>
                 <th>Tanggal</th>
-                <th>Jumlah</th>
-                <th>Keterangan</th>
+                <th>Jam Masuk</th>
+                <th>Jam Keluar</th>
+                <th>Catatan</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($pembayaran as $p)
+            @forelse ($absen as $a)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$p->jenispem->jenis}}</td>
-                    <td>{{$p->nis}}</td>
-                    <td>{{$p->nama}}</td>
-                    <td>{{$p->kelas}}</td>
-                    <td>{{$p->tanggal}}</td>
-                    <td>Rp. {{number_format($p->jum_pemb)}}</td>
-                    <td>{{$p->keterangan}}</td>
+                    <td>{{$a->user->name}}</td>
+                    <td>{{$a->tanggal}}</td>
+                    <td>{{$a->time_in}}</td>
+                    <td>{{$a->time_out}}</td>
+                    <td>{{$a->note}}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8" class="text-center">
+                    <td colspan="6" class="text-center">
                         Data Kosong
                     </td>
                 </tr>

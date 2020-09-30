@@ -10,6 +10,7 @@
   <meta name="author" content="">
 
   <title>SB Admin 2 - Dashboard</title>
+  <link rel="shortcut icon" href="{{url('../../foto/bunayya.png')}}">
   @stack('prepend-style')
   @include('includes.admin.style')
   @stack('addon-style')

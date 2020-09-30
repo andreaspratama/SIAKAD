@@ -110,18 +110,18 @@ class PembayaranController extends Controller
         return redirect()->route('pembayaran.index')->with('status', 'Data berhasil Dihapus');
     }
 
-    // public function cetakPDF()
-    // {
-    //     $pembayaran = Pembayaran::all();
+    public function cetakPDF()
+    {
+        $pembayaran = Pembayaran::all();
 
-    //     $pdf = PDF::loadview('export.pembayaranpdf', compact('pembayaran'));
-    //     return $pdf->download('laporan-pembayaran.pdf');
-    // }
+        $pdf = PDF::loadview('export.pembayaranpdf', compact('pembayaran'));
+        return $pdf->download('laporan-pembayaran.pdf');
+    }
 
-    // public function cetakEXCEL()
-    // {
-    //     return Excel::download(new PembayaranExport, 'pembayaran.xlsx');
-    // }
+    public function cetakEXCEL()
+    {
+        return Excel::download(new PembayaranExport, 'pembayaran.xlsx');
+    }
 
     public function cetakPembayaran()
     {
@@ -133,7 +133,7 @@ class PembayaranController extends Controller
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
         $pembayaranPertanggal = Pembayaran::all()->whereBetween('tanggal', [$tglawal, $tglakhir]);
 
-        $pdf = PDF::loadview('export.pembayaranpdf', compact('pembayaranPertanggal'));
+        $pdf = PDF::loadview('export.pembayaranpertanggalpdf', compact('pembayaranPertanggal'));
         return $pdf->download('laporan-pembayaran.pdf');
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     @stack('prepend-style')
+    <link rel="shortcut icon" href="{{url('../../foto/bunayya.png')}}">
     <link rel="stylesheet" href="{{url('frontend/libraries/bootstrap/css/bootstrap.css')}}">
     {{-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -33,6 +34,7 @@
                     <a class="nav-item nav-link align-self-center mr-3" href="/siswa/nilai">Nilai</a>
                     {{-- <a class="nav-item nav-link align-self-center mr-3" href="/siswa/tugas">Tugas</a> --}}
                     <a class="nav-item nav-link align-self-center mr-3" href="/siswa/profile">Profile</a>
+                    <a class="nav-item nav-link align-self-center mr-3" href="{{route('upload.index')}}">Upload Pembayaran</a>
                     <a class="nav-item nav-link align-self-center mr-3" href="/siswa/info">Info</a>
                     <a href="/logout" class="btn btn-primary get-started">Keluar</a>
                 </div>

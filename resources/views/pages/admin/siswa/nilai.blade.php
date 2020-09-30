@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    
+    Nilai | SD IT Bunayya
 @endsection
 
 @section('content')

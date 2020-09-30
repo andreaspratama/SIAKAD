@@ -78,8 +78,19 @@ Route::prefix('/')
             Route::resource('jenispem', 'JenispemController');
             Route::get('cetakPembayaran', 'PembayaranController@cetakPembayaran')->name('pembayaran.cetak');
             Route::get('cetakPembayaranPertanggal/{tglawal}/{tglakhir}', 'PembayaranController@cetakPembayaranPertanggal')->name('pembayaran.cetaktgl');
+            Route::get('cetakPembayaranPdf', 'PembayaranController@cetakPDF')->name('pembayaran.cetakpdf');
+            Route::get('cetakPembayaranExcel', 'PembayaranController@cetakEXCEL')->name('pembayaran.cetakexcel');
             Route::resource('pembayaran', 'PembayaranController');
             Route::resource('info', 'InfoController');
+            Route::get('cetakAbsen', 'AbsenController@cetakAbsen')->name('absen.cetak');
+            Route::get('cetakAbsenPertanggal/{tglawal}/{tglakhir}', 'AbsenController@cetakAbsenPertanggal')->name('absen.cetaktgl');
+            Route::get('cetakAbsenPdf', 'AbsenController@cetakPDF')->name('absen.cetakpdf');
+            Route::get('cetakAbsenExcel', 'AbsenController@cetakEXCEL')->name('absen.cetakexcel');
+            Route::resource('absen', 'AbsenController');
+            Route::get('cetakPembayaranOnlinePdf', 'OnlinepembController@cetakPDF')->name('pembayaranonline.cetakpdf');
+            Route::get('cetakPembayaranOnlineExcel', 'OnlinepembController@cetakEXCEL')->name('pembayaranonline.cetakexcel');
+            Route::get('buktiPembOnline', 'OnlinepembController@indexadmin')->name('online.pemb');
+            Route::get('buktiPembOnline/{id}/detail', 'OnlinepembController@detail')->name('detail.pemb');
 
             // Route::get('nilai', 'NilaiController@index');
             // Route::get('siswa/{siswa}/nilai', 'NilaiController@detail');
@@ -99,6 +110,7 @@ Route::prefix('/')
             Route::get('siswa/jadwal', 'SiswaController@jadwal');
             Route::get('siswa/tugas', 'SiswaController@tugas');
             Route::get('siswa/cetaknilai', 'SiswaController@cetakNilai');
+            Route::resource('upload', 'OnlinepembController');
         });
 
         Route::group(['middleware' => ['auth', 'check:guru']], function(){

@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Mapel::class)->withPivot(['nilai_uh1', 'nilai_uh2', 'uts', 'uas', 'status', 'thn_akademik']);
     }
+
+    public function absen()
+    {
+        return $this->hasMany('App\Absen');
+    }
 }

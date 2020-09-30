@@ -58,7 +58,21 @@
           <h6 class="collapse-header">Custom Components:</h6>
           <a class="collapse-item" href="{{route('jenispem.index')}}">Jenis Pembayaran</a>
           <a class="collapse-item" href="{{route('pembayaran.index')}}">Pembayaran</a>
-          <a class="collapse-item" href="{{route('pembayaran.cetak')}}">Cetak Pembayaran</a>
+          <a class="collapse-item" href="{{route('online.pemb')}}">Pembayaran Online</a>
+          <a class="collapse-item" href="{{route('pembayaran.cetak')}}">Cetak Pertanggal</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-users"></i>
+        <span>Absen</span>
+      </a>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Custom Components:</h6>
+          <a class="collapse-item" href="{{route('absen.index')}}">Absen</a>
+          <a class="collapse-item" href="{{route('absen.cetak')}}">Cetak Pertanggal</a>
         </div>
       </div>
     </li>

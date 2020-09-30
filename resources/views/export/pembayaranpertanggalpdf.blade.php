@@ -27,7 +27,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($pembayaran as $p)
+            @forelse ($pembayaranPertanggal as $p)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$p->jenispem->jenis}}</td>

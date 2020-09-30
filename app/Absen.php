@@ -11,4 +11,9 @@ class Absen extends Model
     protected $fillable = [
         'user_id', 'tanggal', 'time_in', 'time_out', 'note'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
