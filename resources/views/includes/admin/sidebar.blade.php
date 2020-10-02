@@ -45,6 +45,7 @@
           <a class="collapse-item" href="{{route('ruang.index')}}">Ruang Kelas</a>
           <a class="collapse-item" href="{{route('exkul.index')}}">Data Exkul</a>
           <a class="collapse-item" href="/jadwalmapel">Jadwal Pelajaran</a>
+          <a class="collapse-item" href="{{route('tinggalkelas.index')}}">Data Tinggal Kelas</a>
         </div>
       </div>
     </li>

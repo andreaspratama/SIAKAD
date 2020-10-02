@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    Tambah Info Akademik
+    Edit Info Akademik
 @endsection
 
 @section('content')
@@ -9,20 +9,21 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tambah Data Info</h1>
+        <h1 class="h3 mb-2 text-gray-800">Edit Data Info</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
-            <form action="{{route('info.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('info.update', $item->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                   <label for="judul">Judul</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="judul"><i class="fas fa-code"></i></span>
                     </div>
-                    <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul..." name="judul" value="{{old('judul')}}">
+                    <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul..." name="judul" value="{{$item->judul}}">
                     @error('judul')
                       <div class="invalid-feedback">
                           {{$message}}
@@ -31,12 +32,12 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="tanggal">Nama Info</label>
+                  <label for="tanggal">Tanggal</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="tanggal"><i class="fas fa-calendar-day"></i></span>
                     </div>
-                    <input type="date" class="form-control @error('tanggal') is-invalid @enderror" placeholder="Nama Info" name="tanggal" value="{{old('tanggal')}}">
+                    <input type="date" class="form-control @error('tanggal') is-invalid @enderror" placeholder="Nama Info" name="tanggal" value="{{$item->tanggal}}">
                     @error('tanggal')
                       <div class="invalid-feedback">
                           {{$message}}
@@ -55,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3">{{$item->deskripsi}}</textarea>
                     @error('deskripsi')
                       <div class="invalid-feedback">
                           {{$message}}

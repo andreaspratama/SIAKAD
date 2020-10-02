@@ -45,6 +45,7 @@ Route::prefix('/')
             Route::get('/siswa/{siswa}/hapusnilai', 'SiswaController@hapusnilai');
             Route::get('siswa/{siswa}/nilaiedit', 'SiswaController@nilaiedit');
             Route::get('siswa/exportexcel', 'SiswaController@exportExcel');
+            Route::post('siswa/importexcel', 'SiswaController@importExcel')->name('importexcel');
             Route::get('siswa/exportpdf', 'SiswaController@exportPdf');
             Route::get('siswa/{siswa}/nilaiexport', 'SiswaController@exportNilaiPdf');
             
@@ -71,6 +72,10 @@ Route::prefix('/')
             Route::get('jadwalmapel/exportpdf', 'JadwalmapelController@exportPdf');
     
             Route::resource('mapel', 'MapelController');
+            Route::get('cetakTglklsPdf', 'TinggalkelasController@cetakPDF')->name('tglkelas.cetakpdf');
+            Route::get('cetakTglklsExcel', 'TinggalkelasController@cetakEXCEL')->name('tglkelas.cetakexcel');
+            Route::get('siswa/{tinggalkelas}/tinggalkelas', 'TinggalkelasController@hapus')->name('tglkelas');
+            Route::resource('tinggalkelas', 'TinggalkelasController');
             Route::resource('exkul', 'ExkulController');
             Route::resource('ruang', 'RuangController');
             Route::resource('thnakademik', 'ThnakademikController');

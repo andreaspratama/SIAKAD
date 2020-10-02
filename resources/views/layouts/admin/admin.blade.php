@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>@yield('title')</title>
   <link rel="shortcut icon" href="{{url('../../foto/bunayya.png')}}">
   @stack('prepend-style')
   @include('includes.admin.style')

@@ -1,5 +1,9 @@
 @extends('layouts.admin.admin')
 
+@section('title')
+    Tambah Data Exkul
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">

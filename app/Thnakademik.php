@@ -14,4 +14,9 @@ class Thnakademik extends Model
     ];
 
     protected $hidden = [];
+
+    public function tglkelas()
+    {
+        return $this->hasMany('App\Tinggalkelas');
+    }
 }

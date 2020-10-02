@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    Data Info Akademik
+    Data Siswa Tinggal Kelas
 @endsection
 
 @section('content')
@@ -9,23 +9,29 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 text-gray-800">Info Akademik</h1>
+        <h1 class="h3 text-gray-800">Siswa Tinggal Kelas</h1>
+
+        <a href="{{route('tglkelas.cetakexcel')}}" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
+        <a href="{{route('tglkelas.cetakpdf')}}" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
         
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
-            <a href="{{route('info.create')}}" class="btn btn-primary btn-sm mb-3 px-3 py-2">
+            <a href="{{route('tinggalkelas.create')}}" class="btn btn-primary btn-sm mb-3 px-3 py-2">
               <i class="fas fa-plus mr-2"></i>
-              Tambah Info
+              Tambah Data
             </a>
             <div class="table-responsive">
               <table class="table table-striped table-sm table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Judul</th>
-                    <th>Tanggal</th>
-                    <th>Image</th>
+                    <th>NISN</th>
+                    <th>Nama</th>
+                    <th>Asal Kelas</th>
+                    <th>Tinggal Kelas</th>
+                    <th>Tahun Akademik</th>
+                    <th>Alasan</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -33,20 +39,25 @@
                   @foreach ($items as $item)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$item->judul}}</td>
-                      <td>{{$item->tanggal}}</td>
+                      <td>{{$item->nisn}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->asal_kls}}</td>
+                      <td>{{$item->tgl_kls}}</td>
+                      <td>{{$item->thnakademik->tahun_akademik}} / {{$item->thnakademik->semester}}</td>
+                      <td>{{$item->alasan}}</td>
                       <td>
-                        <img src="{{Storage::url($item->image)}}" alt="" style="width: 150px" class="img-thumbnail">
-                      </td>
-                      <td>
-                          <a href="{{route('info.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
+                          <a href="{{route('tinggalkelas.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                               <i class="fa fa-edit"></i>
                           </a>
-                          <form action="{{route('info.destroy', $item->id)}}" method="POST" class="d-inline">
+                          <a href="#" class="btn btn-sm btn-circle btn-danger delete" tgl-id="{{$item->id}}">
+                              <i class="fa fa-trash"></i>
+                          </a>
+                          {{-- <form action="" method="POST" class="d-inline" tgl-id = "{{$item->id}}">
                             @csrf
-                            @method('delete')
-                            <button class="btn btn-danger btn-circle btn-sm"><i class="fa fa-trash"></i></button>
-                          </form>
+                            <button class="btn btn-danger btn-sm btn-circle delete">
+                              <i class="fas fa-trash"></i>
+                            </button>
+                          </form> --}}
                       </td>
                     </tr>
                   @endforeach
@@ -58,6 +69,7 @@
 
     </div>
     <!-- /.container-fluid -->
+    @include('sweetalert::alert')
 @endsection
 
 @push('prepend-style')
@@ -69,19 +81,18 @@
       <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
       <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
       <script>
         $(document).ready(function() {
           $('#dataTable').DataTable();
         } );
       </script>
-      {{-- <script>
+      <script>
         $('.delete').click(function(){
-          var $jmapelnama = $(this).attr('jmapel-nama');
-          var $jmapelid = $(this).attr('jmapel-id');
+          var $tglid = $(this).attr('tgl-id');
           swal({
             title: "Apakah Kamu Yakin",
-            text: "Data Jadwal  Mapel "+$jmapelnama+" Akan Terhapus",
+            text: "Data Akan Terhapus",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -89,13 +100,13 @@
           .then((willDelete) => {
               console.log(willDelete);
             if (willDelete) {
-              window.location = "info/"+$jmapelid+"/destroy";
+              window.location = "siswa/"+$tglid+"/tinggalkelas";
             } else {
-              swal("Data "+$jmapelnama+" Tidak Terhapus");
+              swal("Data Tidak Terhapus");
             }
           });
         })
-      </script> --}}
+      </script>
       <script>
         @if (Session::has('status'))
           toastr.success("{{Session::get('status')}}", "Trimakasih")

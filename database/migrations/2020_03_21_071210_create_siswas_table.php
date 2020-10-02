@@ -25,7 +25,7 @@ class CreateSiswasTable extends Migration
             $table->string('nama_ortu');
             $table->integer('kelas');
             $table->string('asal_sklh');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

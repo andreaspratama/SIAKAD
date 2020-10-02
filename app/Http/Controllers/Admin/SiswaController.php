@@ -13,6 +13,7 @@ use App\Tugas;
 use App\Info;
 // use Auth;
 use App\Exports\SiswaExport;
+use App\Imports\SiswaImport;
 use App\Exports\nilaiSiswaExport;
 use App\Exports\NilaiExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -78,6 +79,8 @@ class SiswaController extends Controller
         
         return redirect('/siswa')->with('status', 'Data Berhasil Ditambahkan');
     }
+
+    
 
     /**
      * Display the specified resource.
@@ -231,6 +234,20 @@ class SiswaController extends Controller
     public function exportExcel() 
     {
         return Excel::download(new SiswaExport, 'Siswa.xlsx');
+    }
+
+    public function importExcel(Request $request)
+    {
+        // Excel::import(new SiswaImport, $request->file('DataSiswa'));
+
+        $file = $request->file('file');
+        // dd($file);
+        $namaFile = $file->getClientOriginalName();
+        $file->move('DataSiswa', $namaFile);
+
+        Excel::import(new SiswaImport, public_path('/DataSiswa/'.$namaFile));
+
+        return redirect('/siswa')->with('status', 'Data Berhasil Ditambahkan');
     }
 
     public function exportPdf()

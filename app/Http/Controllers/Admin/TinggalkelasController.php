@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\InfoRequest;
-use App\Info;
+use App\Tinggalkelas;
+use App\Thnakademik;
+use PDF;
+use App\Exports\TinggalkelasExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class InfoController extends Controller
+class TinggalkelasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +19,13 @@ class InfoController extends Controller
      */
     public function index()
     {
-        $items = Info::all();
-
-        return view('pages.admin.info.index', compact('items'));
+        $items = Tinggalkelas::with([
+            'thnakademik'
+        ])->get();
+        
+        return view('pages.admin.tglkelas.index', [
+            'items' => $items
+        ]);
     }
 
     /**
@@ -29,7 +35,9 @@ class InfoController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.info.create');
+        $thnakads = Thnakademik::all();
+
+        return view('pages.admin.tglkelas.create', compact('thnakads'));
     }
 
     /**
@@ -38,17 +46,13 @@ class InfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InfoRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->judul);
-        $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
-        );
 
-        Info::create($data);
+        Tinggalkelas::create($data);
 
-        return redirect()->route('info.index')->with('status', 'Data Berhasil Ditambahkan');
+        return redirect()->route('tinggalkelas.index')->with('success', 'Data Berhasil Dibuat');
     }
 
     /**
@@ -70,9 +74,13 @@ class InfoController extends Controller
      */
     public function edit($id)
     {
-        $item = Info::findOrFail($id);
+        $thnakads = Thnakademik::all();
+        $item = Tinggalkelas::findOrFail($id);
 
-        return view('pages.admin.info.edit', compact('item')); 
+        return view('pages.admin.tglkelas.edit', [
+            'thnakads' => $thnakads,
+            'item' => $item
+        ]);
     }
 
     /**
@@ -85,15 +93,11 @@ class InfoController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->judul);
-        $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
-        );
-        $item = Info::findOrFail($id);
+        $item = Tinggalkelas::findOrFail($id);
 
         $item->update($data);
 
-        return redirect()->route('info.index')->with('status', 'Data Berhasil Diupdate');
+        return redirect()->route('tinggalkelas.index')->with('success', 'Data Berhasil Diupdate');
     }
 
     /**
@@ -104,10 +108,28 @@ class InfoController extends Controller
      */
     public function destroy($id)
     {
-        $item = Info::findOrFail($id);
+        
+    }
+
+    public function hapus($id)
+    {
+        $item = Tinggalkelas::findOrFail($id);
 
         $item->delete();
 
-        return redirect()->route('info.index')->with('status', 'Data Berhasil Dihapus');
+        return redirect()->route('tinggalkelas.index');
+    }
+
+    public function cetakPDF()
+    {
+        $tgl = Tinggalkelas::all();
+
+        $pdf = PDF::loadview('export.tglpdf', compact('tgl'));
+        return $pdf->download('laporan-tglkelas.pdf');
+    }
+
+    public function cetakEXCEL()
+    {
+        return Excel::download(new TinggalkelasExport, 'tglkelas.xlsx');
     }
 }

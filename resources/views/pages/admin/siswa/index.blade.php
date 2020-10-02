@@ -1,5 +1,9 @@
 @extends('layouts.admin.admin')
 
+@section('title')
+    Data Siswa
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -9,6 +13,9 @@
         
         <a href="/siswa/exportexcel" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
         <a href="/siswa/exportpdf" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
+        <button type="button" class="btn btn-primary btn-sm mb-3 px-3 py-2" data-toggle="modal" data-target="#exampleModal">
+          Import Data
+        </button>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -57,6 +64,28 @@
 
       </div>
       <!-- /.container-fluid -->
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Import Data Siswa</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="{{route('importexcel')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                  <input type="file" class="form-control-file" name="file">
+                </div>
+                <button type="submit" class="btn btn-primary float-right">Save changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection
 
 @push('prepend-style')
