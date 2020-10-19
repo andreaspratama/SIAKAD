@@ -35,7 +35,7 @@
                     {{-- <a class="nav-item nav-link align-self-center mr-3" href="/siswa/tugas">Tugas</a> --}}
                     <a class="nav-item nav-link align-self-center mr-3" href="/siswa/profile">Profile</a>
                     <a class="nav-item nav-link align-self-center mr-3" href="{{route('upload.index')}}">Upload Pembayaran</a>
-                    <a class="nav-item nav-link align-self-center mr-3" href="/siswa/info">Info</a>
+                    <a class="nav-item nav-link align-self-center mr-3" href="/siswa/absen">Absen</a>
                     <a href="/logout" class="btn btn-primary get-started">Keluar</a>
                 </div>
             @endif
@@ -55,6 +55,11 @@
                     <a class="nav-item nav-link align-self-center mr-3" href="/kepalasekolah/guru">Guru</a>
                     <a class="nav-item nav-link align-self-center mr-3" href="/kepalasekolah/jadwalmapel">Jadwal</a>
                     <a href="/logout" class="btn btn-primary get-started">Keluar</a>
+                </div>
+            @endif
+            @if(auth()->user()->role == 'admin')
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link align-self-center mr-3" href="/home/admin">Dashboard</a>
                 </div>
             @endif
             </div>

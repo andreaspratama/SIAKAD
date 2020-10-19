@@ -1,5 +1,9 @@
 @extends('layouts.admin.admin')
 
+@section('title')
+    Tambah atau Edit Nilai
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">

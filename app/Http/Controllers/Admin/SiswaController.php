@@ -11,6 +11,7 @@ use App\Mapel;
 use App\Sekolah;
 use App\Tugas;
 use App\Info;
+use App\Absensiswa;
 // use Auth;
 use App\Exports\SiswaExport;
 use App\Imports\SiswaImport;
@@ -279,17 +280,75 @@ class SiswaController extends Controller
         return $pdf->download('nilaisiswa.pdf');
     }
 
-    public function info()
+    public function absen() 
     {
-        $items = Info::orderBy('id', 'DESC')->paginate(5);
+        $this->timeZone('Asia/Jakarta');
+        $user_id = Auth::user()->id;
+        $date = date("Y-m-d");
+        $cek_absen = Absensiswa::where(['user_id' => $user_id, 'tanggal' => $date])
+                            ->get()
+                            ->first();
+        if(is_null($cek_absen)) {
+            $info = array(
+                "status" => "Anda Belum Mengisi Absen Hari Ini",
+                "btnIn" => "",
+                "btnOut" => "disabled"
+            );
+        } else {
+            $info = array(
+                "status" => "Absensi Hari Ini Telah Berakhir",
+                "btnIn" => "disabled",
+                "btnOut" => "disabled"
+            );
+            // $info = array(
+            //     "status" => "Jangan Lupa Absen Keluar",
+            //     "btnIn" => "disabled",
+            //     "btnOut" => ""
+            // );
+        } 
 
-        return view('pages.admin.siswa.info', compact('items'));
+        $items = Absensiswa::where('user_id', $user_id)->orderBy('id', 'DESC')->paginate(10);
+        return view('pages.admin.siswa.absen', compact('items', 'info'));
     }
 
-    public function infoLebih($slug)
+    public function absenpros(Request $request)
     {
-        $item = Info::where('slug', $slug)->first();
+        $this->timeZone('Asia/Jakarta');
+        $user_id = Auth::user()->id;
+        $date = date("Y-m-d");
+        $time = date("H:i:s");
+        $note = $request->note;
 
-        return view('pages.admin.siswa.infolebih', compact('item'));
+        $absen = new Absensiswa;
+        
+        // Absen Masuk
+        if (isset($request["btnIn"])) {
+            // Cek Double Data
+            $cek_double = $absen->where(['tanggal' => $date, 'user_id' => $user_id])
+                    ->count();
+            if($cek_double > 0) {
+                return redirect()->back();
+            }
+            $absen->create([
+                'user_id' => $user_id,
+                'tanggal' => $date,
+                'time_in' => $time,
+                'note' => $note]);
+            return redirect()->back(); 
+        } 
+        // Absen Keluar
+        // elseif (isset($request["btnOut"])) {
+        //     $absen->where(['tanggal' => $date, 'user_id' => $user_id])
+        //             ->update([
+        //                 'time_out' => $time,
+        //                 'note' => $note]);
+        //     return redirect()->back();
+        // }
+        // return $request->all(); 
+    }
+
+    public function timeZone($location) 
+    {
+        return date_default_timezone_set($location);
     }
 }

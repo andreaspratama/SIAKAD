@@ -49,7 +49,7 @@
                       <td>{{$item->akreditasi}}</td>
                       <td>{{$item->kepala_sklh}}</td>
                       <td>
-                          <img src="{{Storage::url($item->image)}}" alt="" style="width: 650px" class="img-thumbnail">
+                          <img src="{{Storage::url($item->image)}}" alt="" style="width: 250px" class="img-thumbnail">
                       </td>
                       <td>
                           <a href="{{route('sekolah.edit', $item->id)}}" class="btn btn-circle btn-warning">

@@ -11,8 +11,8 @@
         <!-- Page Heading -->
         <h1 class="h3 text-gray-800">Data Absen</h1>
         
-        <a href="{{route('absen.cetakexcel')}}" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
-        <a href="{{route('absen.cetakpdf')}}" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
+        <a href="" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
+        <a href="" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">

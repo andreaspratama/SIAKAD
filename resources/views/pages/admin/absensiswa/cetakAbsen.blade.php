@@ -5,7 +5,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Cetak Absen Pertanggal Guru</h1>
+        <h1 class="h3 mb-2 text-gray-800">Cetak Absen Pertanggal Siswa</h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
@@ -23,7 +23,7 @@
                 </div>
                 <input type="date" class="form-control" id="tglakhir" name="tglakhir" aria-describedby="basic-addon1">
             </div>
-            <a href="" onclick="this.href='/cetakAbsenPertanggal/'+ document.getElementById('tglawal').value + '/' + document.getElementById('tglakhir').value" class="btn btn-primary"><i class="fas fa-print mr-2"></i>Cetak Laporan</a>
+            <a href="" onclick="this.href='/cetakAbsenPertanggalSiswa/'+ document.getElementById('tglawal').value + '/' + document.getElementById('tglakhir').value" class="btn btn-primary"><i class="fas fa-print mr-2"></i>Cetak Laporan</a>
           </div>
         </div>
       </div>

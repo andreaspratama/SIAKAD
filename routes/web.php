@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/home', 'HomeController@index');
+Route::get('/home/info/{slug}', 'HomeController@infoLebih');
 
 Route::prefix('/')
     ->namespace('Admin')
@@ -88,10 +89,15 @@ Route::prefix('/')
             Route::resource('pembayaran', 'PembayaranController');
             Route::resource('info', 'InfoController');
             Route::get('cetakAbsen', 'AbsenController@cetakAbsen')->name('absen.cetak');
-            Route::get('cetakAbsenPertanggal/{tglawal}/{tglakhir}', 'AbsenController@cetakAbsenPertanggal')->name('absen.cetaktgl');
-            Route::get('cetakAbsenPdf', 'AbsenController@cetakPDF')->name('absen.cetakpdf');
-            Route::get('cetakAbsenExcel', 'AbsenController@cetakEXCEL')->name('absen.cetakexcel');
+            Route::get('cetakAbsenPertanggal/{tglawal}/{tglakhir}', 'AbsenController@cetakAbsenPertanggal')->name('absenguru.cetaktgl');
+            Route::get('cetakAbsenPdf', 'AbsenController@cetakPDF')->name('absenguru.cetakpdf');
+            Route::get('cetakAbsenExcel', 'AbsenController@cetakEXCEL')->name('absenguru.cetakexcel');
             Route::resource('absen', 'AbsenController');
+            Route::get('cetakAbsenSiswa', 'AbsensiswaController@cetakAbsen')->name('absensiswa.cetak');
+            Route::get('cetakAbsenPertanggalSiswa/{tglawal}/{tglakhir}', 'AbsensiswaController@cetakAbsenPertanggal')->name('absensiswa.cetaktgl');
+            Route::get('cetakAbsenPdf', 'AbsensiswaController@cetakPDF')->name('absensiswa.cetakpdf');
+            Route::get('cetakAbsenExcel', 'AbsensiswaController@cetakEXCEL')->name('absensiswa.cetakexcel');
+            Route::resource('absensiswa', 'AbsensiswaController');
             Route::get('cetakPembayaranOnlinePdf', 'OnlinepembController@cetakPDF')->name('pembayaranonline.cetakpdf');
             Route::get('cetakPembayaranOnlineExcel', 'OnlinepembController@cetakEXCEL')->name('pembayaranonline.cetakexcel');
             Route::get('buktiPembOnline', 'OnlinepembController@indexadmin')->name('online.pemb');
@@ -108,8 +114,10 @@ Route::prefix('/')
 
         Route::group(['middleware' => ['auth', 'check:siswa']], function(){
             Route::get('siswa/profile', 'SiswaController@profile');
-            Route::get('siswa/info', 'SiswaController@info');
-            Route::get('siswa/info/{slug}', 'SiswaController@infoLebih');
+            Route::get('siswa/absen', 'SiswaController@absen');
+            Route::post('absensiswa', 'SiswaController@absenpros');
+            // Route::get('siswa/info', 'SiswaController@info');
+            // Route::get('siswa/info/{slug}', 'SiswaController@infoLebih');
             Route::get('siswa/profile/edit/{id}', 'SiswaController@profileedit');
             Route::get('siswa/nilai', 'SiswaController@lihatNilai');
             Route::get('siswa/jadwal', 'SiswaController@jadwal');

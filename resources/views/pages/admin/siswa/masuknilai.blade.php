@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    
+    Nilai
 @endsection
 
 @section('content')

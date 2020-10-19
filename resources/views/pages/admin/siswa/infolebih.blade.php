@@ -19,7 +19,7 @@
                     {{$item->deskripsi}}
                 </p>
             </div>
-            <a href="/siswa/info" class="btn btn-secondary btn-sm">Kembali</a>
+            <a href="/home" class="btn btn-secondary btn-sm">Kembali</a>
         </div>
 
     </div>

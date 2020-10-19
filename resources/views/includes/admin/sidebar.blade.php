@@ -72,8 +72,10 @@
       <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Custom Components:</h6>
-          <a class="collapse-item" href="{{route('absen.index')}}">Absen</a>
-          <a class="collapse-item" href="{{route('absen.cetak')}}">Cetak Pertanggal</a>
+          <a class="collapse-item" href="{{route('absen.index')}}">Absen Guru</a>
+          <a class="collapse-item" href="{{route('absensiswa.index')}}">Absen Siswa</a>
+          <a class="collapse-item" href="{{route('absen.cetak')}}">Cetak Pertanggal Guru</a>
+          <a class="collapse-item" href="{{route('absensiswa.cetak')}}">Cetak Pertanggal Siswa</a>
         </div>
       </div>
     </li>
