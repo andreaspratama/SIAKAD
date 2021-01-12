@@ -25,10 +25,9 @@ class PembayaranRequest extends FormRequest
     {
         return [
             'jenispem_id' => 'required|integer|exists:jenispems,id',
-            'nis' => 'required',
+            'nisn' => 'required|exists:siswas,nisn',
             'nama' => 'required|min:3',
             'kelas' => 'required',
-            'tanggal' => 'required|date',
             'jum_pemb' => 'required',
             'keterangan' => 'required'
         ];
@@ -38,12 +37,12 @@ class PembayaranRequest extends FormRequest
     {
         return [
             'jenispem_id.required' => 'Jenis Pembayaran tidak boleh kosong',
-            'nis.required' => 'NIS tidak boleh kosong',
+            'nisn.required' => 'NISN tidak boleh kosong',
+            'nisn.exists' => 'NISN tidak sesuai',
             'nama.required' => 'Nama tidak boleh kosong',
             'nama.min' => 'Nama minimal 3 karakter',
             'nama.string' => 'Nama harus huruf',
             'kelas.required' => 'Kelas tidak boleh kosong',
-            'tanggal.required' => 'Tanggal tidak boleh kosong',
             'jum_pemb.required' => 'Jumlah Pembayaran tidak boleh kosong',
             'keterangan.required' => 'Keterangan tidak boleh kosong'
         ];

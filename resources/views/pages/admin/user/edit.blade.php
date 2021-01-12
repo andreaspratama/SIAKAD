@@ -1,5 +1,9 @@
 @extends('layouts.admin.admin')
 
+@section('title')
+    Edit User
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -45,17 +49,20 @@
                   <label for="role">Roles</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <label class="input-group-text" for="role"><i class="fas fa-venus-mars"></i></label>
+                      <label class="input-group-text" for="role"><i class="fas fa-user"></i></label>
                     </div>
                     <select class="custom-select" name="role">
                       <option>-- Pilih --</option>
                       <option value="siswa" @if($item->role == 'siswa') selected @endif>Siswa</option>
                       <option value="admin" @if($item->role == 'admin') selected @endif>Admin</option>
                       <option value="guru" @if($item->role == 'guru') selected @endif>Guru</option>
-                      <option value="kepala_sekolah" @if($item->role == 'kepala_sekolah') selected @endif>Kepala Sekolah</option>
-                      <option value="wali_kelas" @if($item->role == 'wali_kelas') selected @endif>Wali Kelas</option>
                     </select>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label for="image">Foto</label>
+                  <input type="file" class="form-control-file" name="image">
+                  <p class="text-danger">Masukan Foto Bila Perlu</p>
                 </div>
                 <button type="submit" class="btn btn-success btn-sm">Simpan</button>
                 <button type="reset" class="btn btn-warning btn-sm">Reset</button>

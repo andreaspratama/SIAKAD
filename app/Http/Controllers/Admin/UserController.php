@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -89,12 +90,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_user)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $item = User::findOrFail($id_user);
+        $data = User::findOrFail($id);
 
-        $item->update($data);
+        if(request('image')) {
+            Storage::delete($data->image);
+            $image = request()->file('image')->store('assets/gallery', 'public');
+        } elseif($data->image) {
+            $image = $data->image;
+        } else {
+            $image = null;
+        }
+
+        $data->update([
+            'name' => $request->name,
+            'username' => $request->username,
+            'role' => $request->role,
+            'image' => $image
+        ]);
 
         return redirect()->route('user.index')->with('status', 'Data Berhasil Diubah');
     }
@@ -106,6 +120,15 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id_user)
+    {
+        // $item = User::findOrFail($id_user);
+
+        // $item->delete();
+
+        // return redirect()->route('user.index')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    public function hapus($id_user)
     {
         $item = User::findOrFail($id_user);
 

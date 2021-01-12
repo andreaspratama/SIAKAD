@@ -31,7 +31,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-code"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="NIS..." name="nis" value="{{$item->nis}}" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="NISN..." name="nisn" value="{{$item->nisn}}" aria-describedby="basic-addon1">
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -68,12 +68,6 @@
                     <div class="card-body">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-day"></i></span>
-                        </div>
-                        <input type="date" class="form-control" placeholder="Tanggal..." name="tanggal" value="{{$item->tanggal}}" aria-describedby="basic-addon1">
-                      </div>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-money-check-alt"></i></label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01" name="jenispem_id">
@@ -95,7 +89,7 @@
                         </div>
                         <input type="text" class="form-control" placeholder="Keterangan..." name="keterangan" value="{{$item->keterangan}}" aria-describedby="basic-addon1">
                       </div>
-                      <button class="btn btn-primary">Ubah Transaksi</button>
+                      <button class="btn btn-primary">Ubah Pembayaran</button>
                       <a href="{{route('pembayaran.index')}}" class="btn btn-secondary">Batal</a>
                     </div>
                   </div>

@@ -29,8 +29,8 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-code"></i></span>
                         </div>
-                        <input type="text" class="form-control @error('nis') is-invalid @enderror" placeholder="NIS..." name="nis" aria-describedby="basic-addon1" value="{{old('nis')}}">
-                        @error('nis')
+                        <input type="text" class="form-control @error('nisn') is-invalid @enderror" placeholder="NISN..." name="nisn" aria-describedby="basic-addon1" value="{{old('nisn')}}">
+                        @error('nisn')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                       </div>
@@ -73,15 +73,6 @@
                       Data Pembayaran
                     </div>
                     <div class="card-body">
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-day"></i></span>
-                        </div>
-                        <input type="date" class="form-control @error('tanggal') is-invalid @enderror" placeholder="Tanggal..." name="tanggal" aria-describedby="basic-addon1" value="{{old('tanggal')}}">
-                        @error('tanggal')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                      </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-money-check-alt"></i></label>
@@ -145,7 +136,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->nama}}</td>
                         <td>{{$item->jenispem->jenis}}</td>
-                        <td>Rp. {{$item->jum_pemb}}</td>
+                        <td>Rp. {{number_format($item->jum_pemb)}}</td>
                         <td>{{$item->tanggal}}</td>
                         <td>
                             <a href="{{route('pembayaran.show', $item->id)}}" class="btn btn-circle btn-sm btn-info">
@@ -154,13 +145,16 @@
                             <a href="{{route('pembayaran.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <form action="{{route('pembayaran.destroy', $item->id)}}" method="POST" class="d-inline">
+                            <a href="#" class="btn btn-sm btn-circle btn-danger delete" pembayaran-id="{{$item->id}}">
+                              <i class="fa fa-trash"></i>
+                            </a>
+                            {{-- <form action="{{route('pembayaran.destroy', $item->id)}}" method="POST" class="d-inline">
                               @csrf
                               @method('delete')
                               <button class="btn btn-circle btn-sm btn-danger">
                                   <i class="fa fa-trash"></i>
                               </button>
-                          </form>
+                          </form> --}}
                         </td>
                     </tr>
                   @endforeach
@@ -186,6 +180,26 @@
         $(document).ready(function() {
           $('#tablePembayaran').DataTable();
         } );
+      </script>
+      <script>
+        $('.delete').click(function(){
+          var $pembayaranid = $(this).attr('pembayaran-id');
+          swal({
+            title: "Apakah Kamu Yakin",
+            text: "Data Pembayaran Akan Terhapus",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+              console.log(willDelete);
+            if (willDelete) {
+              window.location = "pembayaran/"+$pembayaranid+"/hapus";
+            } else {
+              swal("Data Tidak Terhapus");
+            }
+          });
+        })
       </script>
       <script>
         @if (Session::has('status'))

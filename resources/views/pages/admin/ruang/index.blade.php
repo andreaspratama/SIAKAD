@@ -39,13 +39,16 @@
                           <a href="{{route('ruang.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                               <i class="fa fa-edit"></i>
                           </a>
-                          <form action="{{route('ruang.destroy', $item->id)}}" method="POST" class="d-inline">
+                          <a href="#" class="btn btn-sm btn-circle btn-danger delete" ruang-id="{{$item->id}}">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                          {{-- <form action="{{route('ruang.destroy', $item->id)}}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button class="btn btn-circle btn-sm btn-danger">
                                 <i class="fa fa-trash"></i>
                             </button>
-                        </form>
+                        </form> --}}
                       </td>
                     </tr>
                   @endforeach
@@ -71,6 +74,26 @@
         $(document).ready(function() {
           $('#tableRuang').DataTable();
         } );
+      </script>
+      <script>
+        $('.delete').click(function(){
+          var $ruangid = $(this).attr('ruang-id');
+          swal({
+            title: "Apakah Kamu Yakin",
+            text: "Data Ruang Akan Terhapus",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+              console.log(willDelete);
+            if (willDelete) {
+              window.location = "ruang/"+$ruangid+"/hapus";
+            } else {
+              swal("Data Tidak Terhapus");
+            }
+          });
+        })
       </script>
       <script>
         @if (Session::has('status'))

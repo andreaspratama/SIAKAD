@@ -7,9 +7,11 @@ use App\Http\Requests\Admin\OnlinepembRequest;
 use App\Jenispem;
 use App\Onlinepemb;
 use PDF;
+use Carbon\Carbon;
 use App\Exports\PembayaranonlineExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OnlinepembController extends Controller
 {
@@ -42,12 +44,37 @@ class OnlinepembController extends Controller
      */
     public function store(OnlinepembRequest $request)
     {
-        $data = $request->all();
-        $data['image'] = $request->file('image')->store(
+        $tanggal = Carbon::now();
+
+        $pemb = new Onlinepemb;
+        $pemb->nisn = Auth::user()->siswa->nisn;
+        $pemb->nama = Auth::user()->siswa->nama;
+        $pemb->jenispem_id = $request->jenispem_id;
+        $pemb->tanggal = $tanggal;
+        $pemb->kelas = $request->kelas;
+        $pemb->image = $request->file('image')->store(
             'assets/gallery', 'public'
         );
 
-        Onlinepemb::create($data);
+        // dd($pemb);
+        $pemb->save();
+        // $data = Onlinepemb::create([
+        //     'nisn' => $request->nisn,
+        //     'nama' => $request->nama,
+        //     'jenispem_id' => $request->jenispem_id,
+        //     'tanggal' => $tanggal,
+        //     'kelas' => $request->kelas,
+        //     'image' => $request->file('image')->store(
+        //         'assets/gallery', 'public'
+        //     )
+        // ]);
+        // dd($data);
+        // $data = $request->all();
+        // $data['image'] = $request->file('image')->store(
+        //     'assets/gallery', 'public'
+        // );
+
+        // Onlinepemb::create($data);
 
         return redirect()->route('upload.index')->with('success', 'Upload Pembayaran Sukses');
     }

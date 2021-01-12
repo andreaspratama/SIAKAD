@@ -52,7 +52,7 @@ class TinggalkelasController extends Controller
 
         Tinggalkelas::create($data);
 
-        return redirect()->route('tinggalkelas.index')->with('success', 'Data Berhasil Dibuat');
+        return redirect()->route('tinggalkelas.index')->with('status', 'Data Berhasil Dibuat');
     }
 
     /**
@@ -97,7 +97,7 @@ class TinggalkelasController extends Controller
 
         $item->update($data);
 
-        return redirect()->route('tinggalkelas.index')->with('success', 'Data Berhasil Diupdate');
+        return redirect()->route('tinggalkelas.index')->with('status', 'Data Berhasil Diupdate');
     }
 
     /**
@@ -117,7 +117,7 @@ class TinggalkelasController extends Controller
 
         $item->delete();
 
-        return redirect()->route('tinggalkelas.index');
+        return redirect()->route('tinggalkelas.index')->with('status', 'Data Berhasil Dihapus');
     }
 
     public function cetakPDF()

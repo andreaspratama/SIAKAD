@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,23 +24,18 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'username' => 'required',
-            'password' => 'required|min:3',
-            'role' => 'required',
-            'image' => 'required'
+            'username' => 'required|exists:users,username',
+            'password' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Nama tidak boleh kosong',
             'username.required' => 'Username tidak boleh kosong',
-            'password.min' => 'Password minimal 3 karakter',
+            'username.exists' => 'Username tidak sesuai',
             'password.required' => 'Password tidak boleh kosong',
-            'role.required' => 'Role tidak boleh kosong',
-            'image.required' => 'Foto tidak boleh kosong'
+            'password.exists' => 'Password tidak sesuai',
         ];
     }
 }

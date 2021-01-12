@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RuangRequest;
 use App\Ruang;
+use App\Jadwalmapel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -98,8 +99,20 @@ class RuangController extends Controller
      */
     public function destroy($id)
     {
+        // $item = Ruang::findOrFail($id);
+        // $item->delete();
+
+        // Jadwalmapel::where('ruang_id', $id)->delete();
+
+        // return redirect()->route('ruang.index')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    public function hapus($id)
+    {
         $item = Ruang::findOrFail($id);
         $item->delete();
+
+        Jadwalmapel::where('ruang_id', $id)->delete();
 
         return redirect()->route('ruang.index')->with('status', 'Data Berhasil Dihapus');
     }

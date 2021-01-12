@@ -95,6 +95,15 @@ class ExkulController extends Controller
      */
     public function destroy($id)
     {
+        // $item = Exkul::findOrFail($id);
+
+        // $item->delete();
+
+        // return redirect()->route('exkul.index')->with('status', 'Data berhasil Dihapus');
+    }
+
+    public function hapus($id)
+    {
         $item = Exkul::findOrFail($id);
 
         $item->delete();

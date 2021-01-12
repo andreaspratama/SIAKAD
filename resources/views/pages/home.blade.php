@@ -14,14 +14,14 @@
                 @foreach ($infos as $item)
                     <div class="eventEvent" data-aos="zoom-in">
                         <div class="row">
-                            <div class="col-lg-3 eventImg">
-                                <img src="{{Storage::url($item->image)}}" alt="" class="img-thumbnail">
+                            <div class="col-lg-3 eventImg mb-2">
+                                <img src="{{Storage::url($item->image)}}" alt="" class="img-thumbnail" style="width: 200px">
                             </div>
-                            <div class="col-lg-9 eventComponent  align-self-center">
+                            <div class="col-lg-9 eventComponent  align-self-center mb-2">
                                 <h3>{{$item->judul}}</h3>
                                 <div class="detailsEvents">
                                     <div class="detail">
-                                        <span><i class="fa fa-calendar"></i></span>
+                                        <span><i class="fas fa-calendar"></i></span>
                                         {{$item->tanggal}}
                                     </div>
                                 </div>
@@ -30,7 +30,7 @@
                                         {{Str::limit($item->deskripsi, 200, '...')}}
                                     </p>
                                 </div>
-                                <a href="/home/info/{{$item->slug}}" class="btn btn-read">Read More</a>
+                                <a href="/home/info/{{$item->slug}}" class="btn btn-read">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -106,11 +106,15 @@
                             </div>
                         </div>
                         @endforeach
-                            {{-- <div class="row">
+                            <div class="row">
                                 <div class="col text-center">
-                                <p>Tahun Ajaran {{$thnakademik->tahun_akademik}} / {{$thnakademik->semester}}</p>
+                                @foreach ($thnakademiks as $akdm)
+                                    @if ($akdm->status == 'Aktif')
+                                        <p>Tahun Akademik {{$akdm->tahun_akademik}} / {{$akdm->semester}}</p>
+                                    @endif
+                                @endforeach
                                 </div>
-                            </div> --}}
+                            </div>
                         {{-- @foreach ($thnakademik as $akademik)
                             <div class="row">
                             <div class="col text-center">
@@ -127,3 +131,16 @@
     </div>
     <!-- /.container-fluid -->
 @endsection
+
+@push('addon-style')
+    <style>
+        .eventEvent .eventComponent .btn-read{
+            background-color: blue;
+            color: #fff;
+        }
+        .eventEvent .eventComponent .btn-read:hover{
+            background-color: rgb(74, 74, 248);
+            color: #fff;
+        }
+    </style>
+@endpush

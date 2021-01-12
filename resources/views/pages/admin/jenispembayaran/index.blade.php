@@ -33,13 +33,16 @@
                           <a href="{{route('jenispem.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                               <i class="fa fa-edit"></i>
                           </a>
-                          <form action="{{route('jenispem.destroy', $item->id)}}" method="POST" class="d-inline">
+                          <a href="#" class="btn btn-sm btn-circle btn-danger delete" jenispem-id="{{$item->id}}">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                          {{-- <form action="{{route('jenispem.destroy', $item->id)}}" method="POST" class="d-inline">
                               @csrf
                               @method('delete')
                               <button class="btn btn-circle btn-danger btn-sm">
                                   <i class="fa fa-trash"></i>
                               </button>
-                          </form>
+                          </form> --}}
                       </td>
                     </tr>
                   @endforeach
@@ -70,11 +73,10 @@
       </script>
       <script>
         $('.delete').click(function(){
-          var $jmapelnama = $(this).attr('jmapel-nama');
-          var $jmapelid = $(this).attr('jmapel-id');
+          var $jenispemid = $(this).attr('jenispem-id');
           swal({
             title: "Apakah Kamu Yakin",
-            text: "Data Jadwal  Mapel "+$jmapelnama+" Akan Terhapus",
+            text: "Data Jenis Pembayaran Akan Terhapus",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -82,9 +84,9 @@
           .then((willDelete) => {
               console.log(willDelete);
             if (willDelete) {
-              window.location = "jadwalmapel/"+$jmapelid+"/destroy";
+              window.location = "jenispem/"+$jenispemid+"/hapus";
             } else {
-              swal("Data "+$jmapelnama+" Tidak Terhapus");
+              swal("Data Tidak Terhapus");
             }
           });
         })

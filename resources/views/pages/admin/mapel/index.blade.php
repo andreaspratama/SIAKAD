@@ -38,13 +38,16 @@
                         <a href="{{route('mapel.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <form action="{{route('mapel.destroy', $item->id)}}" method="POST" class="d-inline">
+                        <a href="#" class="btn btn-sm btn-circle btn-danger delete" mapel-id="{{$item->id}}">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                        {{-- <form action="{{route('mapel.destroy', $item->id)}}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button class="btn btn-circle btn-sm btn-danger">
                                 <i class="fa fa-trash"></i>
                             </button>
-                        </form>
+                        </form> --}}
                     </td>
                     </tr>
                   @endforeach
@@ -71,6 +74,26 @@
         $(document).ready(function() {
           $('#tableMapel').DataTable();
         } );
+      </script>
+      <script>
+        $('.delete').click(function(){
+          var $mapelid = $(this).attr('mapel-id');
+          swal({
+            title: "Apakah Kamu Yakin",
+            text: "Data Mapel Akan Terhapus",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+              console.log(willDelete);
+            if (willDelete) {
+              window.location = "mapel/"+$mapelid+"/hapus";
+            } else {
+              swal("Data Tidak Terhapus");
+            }
+          });
+        })
       </script>
       <script>
         @if (Session::has('status'))

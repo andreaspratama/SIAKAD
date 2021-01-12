@@ -1,5 +1,9 @@
 @extends('layouts.admin.admin')
 
+@section('title')
+    Data User
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -40,13 +44,16 @@
                             <a href="{{route('user.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <form action="{{route('user.destroy', $item->id)}}" onclick=”return confirm(‘Yakin Hapus?’)” method="POST" class="d-inline">
+                            <a href="#" class="btn btn-sm btn-circle btn-danger delete" user-id="{{$item->id}}">
+                              <i class="fa fa-trash"></i>
+                            </a>
+                            {{-- <form action="{{route('user.destroy', $item->id)}}" onclick=”return confirm(‘Yakin Hapus?’)” method="POST" class="d-inline">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-circle btn-sm btn-danger">
                                     <i class="fa fa-trash"></i>
                                 </button>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                   @empty
@@ -80,6 +87,26 @@
         $(document).ready(function() {
           $('#User').DataTable();
         } );
+      </script>
+      <script>
+        $('.delete').click(function(){
+          var $userid = $(this).attr('user-id');
+          swal({
+            title: "Apakah Kamu Yakin",
+            text: "Data User Akan Terhapus",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+              console.log(willDelete);
+            if (willDelete) {
+              window.location = "user/"+$userid+"/hapus";
+            } else {
+              swal("Data Tidak Terhapus");
+            }
+          });
+        })
       </script>
       <script>
         @if (Session::has('status'))

@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    Data Absen Guru
+    Data Absen Siswa
 @endsection
 
 @section('content')

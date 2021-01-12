@@ -69,7 +69,7 @@
 
     </div>
     <!-- /.container-fluid -->
-    @include('sweetalert::alert')
+    {{-- @include('sweetalert::alert') --}}
 @endsection
 
 @push('prepend-style')

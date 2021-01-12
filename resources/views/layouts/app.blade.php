@@ -72,7 +72,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center pt-4 pb-4">
             <div class="col-auto text-gray-500 font-weight-light text-center">
-                &copy; SD IT Bunayya 2020
+                &copy; SD IT Bunayya 2021
             </div>
         </div>
     </div>

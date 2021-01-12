@@ -161,6 +161,11 @@
                   @enderror
                 </div>
               </div>
+              <div class="form-group">
+                <label for="image">Foto</label>
+                <input type="file" class="form-control-file" name="image">
+                <p class="text-danger">Masukan Foto Bila Perlu</p>
+              </div>
               <button type="submit" class="btn btn-success btn-sm">Simpan</button>
               <a href="/siswa" class="btn btn-secondary btn-sm">Kembali</a>
             </form>

@@ -34,7 +34,7 @@
                       <td>{{$item->nama}}</td>
                       <td>{{$item->kelas}}</td>
                       <td>
-                        <img src="{{Storage::url($item->image)}}" alt="" class="img-thumbnail">
+                        <img src="{{Storage::url($item->image)}}" alt="" class="img-thumbnail" height="30%" width="40%">
                       </td>
                       <td>
                         <a href="{{route('detail.pemb', $item->id)}}" class="btn btn-info btn-sm btn-circle"><i class="fas fa-eye"></i></a>

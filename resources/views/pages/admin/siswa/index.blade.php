@@ -13,9 +13,9 @@
         
         <a href="/siswa/exportexcel" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
         <a href="/siswa/exportpdf" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
-        <button type="button" class="btn btn-primary btn-sm mb-3 px-3 py-2" data-toggle="modal" data-target="#exampleModal">
+        {{-- <button type="button" class="btn btn-primary btn-sm mb-3 px-3 py-2" data-toggle="modal" data-target="#exampleModal">
           Import Data
-        </button>
+        </button> --}}
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">

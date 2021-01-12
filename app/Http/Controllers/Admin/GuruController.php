@@ -8,12 +8,14 @@ use App\Guru;
 use App\User;
 use App\Mapel;
 use App\Absen;
+use App\Jadwalmapel;
 use App\Exports\GuruExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class GuruController extends Controller
 {
@@ -110,20 +112,41 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nip' => 'required',
-            'nama' => 'required',
-            'tpt_lahir' => 'required',
-            'tgl_lahir' => 'required',
-            'jns_kelamin' => 'required',
-            'agama' => 'required',
-            'alamat' => 'required'
+        $data = Guru::findOrFail($id);
+
+        if(request('image')) {
+            Storage::delete($data->image);
+            $image = request()->file('image')->store('assets/gallery', 'public');
+        } elseif($data->image) {
+            $image = $data->image;
+        } else {
+            $image = null;
+        }
+
+        $data->update([
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'tpt_lahir' => $request->tpt_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jns_kelamin' => $request->jns_kelamin,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'image' => $image
         ]);
+        // $request->validate([
+        //     'nip' => 'required',
+        //     'nama' => 'required',
+        //     'tpt_lahir' => 'required',
+        //     'tgl_lahir' => 'required',
+        //     'jns_kelamin' => 'required',
+        //     'agama' => 'required',
+        //     'alamat' => 'required'
+        // ]);
 
-        $data = $request->all();
+        // $data = $request->all();
 
-        $item = Guru::findOrFail($id);
-        $item->update($data);
+        // $item = Guru::findOrFail($id);
+        // $item->update($data);
 
         return redirect('/guru')->with('status', 'Data Berhasil Diubah');
     }
@@ -138,6 +161,8 @@ class GuruController extends Controller
     {
         $item = Guru::findOrFail($id);
         $item->delete();
+
+        Jadwalmapel::where('guru_id', $id)->delete();
 
         return redirect('/guru')->with('status', 'Data Berhasil Dihapus');
     }
