@@ -10,12 +10,6 @@
 
         <!-- Page Heading -->
         
-        @if (session('status'))
-        <div class="alert alert-success">
-          {{ session('status') }}
-        </div>
-        @endif
-        
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">

@@ -100,6 +100,15 @@ class ThnakademikController extends Controller
      */
     public function destroy($id)
     {
+        // $item = Thnakademik::findOrFail($id);
+
+        // $item->delete();
+
+        // return redirect()->route('thnakademik.index')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    public function hapus($id)
+    {
         $item = Thnakademik::findOrFail($id);
 
         $item->delete();

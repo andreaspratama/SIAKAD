@@ -41,13 +41,16 @@
                           <a href="{{route('exkul.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                               <i class="fa fa-edit"></i>
                           </a>
-                          <form action="{{route('exkul.destroy', $item->id)}}" method="POST" class="d-inline">
+                          <a href="#" class="btn btn-sm btn-circle btn-danger delete" exkul-id="{{$item->id}}">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                          {{-- <form action="{{route('exkul.destroy', $item->id)}}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button class="btn btn-circle btn-sm btn-danger">
                                 <i class="fa fa-trash"></i>
                             </button>
-                        </form>
+                        </form> --}}
                       </td>
                     </tr>
                   @endforeach
@@ -73,6 +76,26 @@
         $(document).ready(function() {
           $('#tableExkul').DataTable();
         } );
+      </script>
+      <script>
+        $('.delete').click(function(){
+          var $exkulid = $(this).attr('exkul-id');
+          swal({
+            title: "Apakah Kamu Yakin",
+            text: "Data Exkul Akan Terhapus",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+              console.log(willDelete);
+            if (willDelete) {
+              window.location = "exkul/"+$exkulid+"/hapus";
+            } else {
+              swal("Data Tidak Terhapus");
+            }
+          });
+        })
       </script>
       <script>
         @if (Session::has('status'))

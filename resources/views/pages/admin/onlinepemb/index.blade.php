@@ -17,24 +17,6 @@
                 <form class="col-lg-8 ml-auto mr-auto" action="{{route('upload.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                      <label for="nisn">NISN</label>
-                      <input type="text" class="form-control @error('nisn') is-invalid @enderror" id="nisn" name="nisn" placeholder="Masukan Nisn..." value="{{old('nisn')}}">
-                      @error('nisn')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                      @enderror
-                    </div>
-                    <div class="form-group">
-                      <label for="nama">Nama</label>
-                      <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Masukan Nama..." value="{{old('nama')}}">
-                      @error('nama')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                      @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="jenispem_id">Jenis Pembayaran</label>
                         <select class="form-control @error('jenispem_id') is-invalid @enderror" id="jenispem_id" name="jenispem_id">
                           <option>-- Pilih Jenis Pembayaran --</option>
@@ -48,7 +30,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="tanggal">Tanggal</label>
                         <input type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal" placeholder="Masukan Tanggal..." value="{{old('tanggal')}}">
                         @error('tanggal')
@@ -56,7 +38,7 @@
                               {{$message}}
                           </div>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="kelas">Kelas</label>
                         <select class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">

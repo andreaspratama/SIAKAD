@@ -22,6 +22,7 @@ use PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -124,31 +125,56 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $messages = [
-            'required' => 'Tidak boleh kosong',
-            'min' => 'Minimal 3 karakter'
-        ];
+        $data = Siswa::findOrFail($id);
 
-        $this->validate($request, [
-            'nisn' => 'required',
-            'nama' => 'required|min:3|string',
-            'tpt_lahir' => 'required|min:3',
-            'tgl_lahir' => 'required',
-            'jns_kelamin' => 'required',
-            'agama' => 'required',
-            'alamat' => 'required',
-            'nama_ortu' => 'required',
-            'kelas' => 'required',
-            'asal_sklh' => 'required'
-        ], $messages);
+        if(request('image')) {
+            Storage::delete($data->image);
+            $image = request()->file('image')->store('assets/gallery', 'public');
+        } elseif($data->image) {
+            $image = $data->image;
+        } else {
+            $image = null;
+        }
 
-        $data = $request->all();
+        $data->update([
+            'nisn' => $request->nisn,
+            'nama' => $request->nama,
+            'tpt_lahir' => $request->tpt_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jns_kelamin' => $request->jns_kelamin,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat,
+            'nama_ortu' => $request->nama_ortu,
+            'kelas' => $request->kelas,
+            'asal_sklh' => $request->asal_sklh,
+            'image' => $image
+        ]);
+
+        // $messages = [
+        //     'required' => 'Tidak boleh kosong',
+        //     'min' => 'Minimal 3 karakter'
+        // ];
+
+        // $this->validate($request, [
+        //     'nisn' => 'required',
+        //     'nama' => 'required|min:3|string',
+        //     'tpt_lahir' => 'required|min:3',
+        //     'tgl_lahir' => 'required',
+        //     'jns_kelamin' => 'required',
+        //     'agama' => 'required',
+        //     'alamat' => 'required',
+        //     'nama_ortu' => 'required',
+        //     'kelas' => 'required',
+        //     'asal_sklh' => 'required'
+        // ], $messages);
+
+        // $data = $request->all();
         // // $data['image'] = $request->file('image')->store(
         // //     'assets/gallery', 'public'
         // );
 
-        $item = Siswa::findOrFail($id);
-        $item->update($data);
+        // $item = Siswa::findOrFail($id);
+        // $item->update($data);
 
         return redirect('/siswa')->with('status', 'Data Berhasil Diubah');
     }

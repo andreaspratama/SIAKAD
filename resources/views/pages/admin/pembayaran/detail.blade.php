@@ -9,14 +9,14 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-4">Detail Transaksi {{$item->nama}}</h1>
+        <h1 class="h3 mb-3 text-gray-800 mt-4">Detail Pembayaran {{$item->nama}}</h1>
 
         <div class="card shadow">
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th>Nis</th>
-                        <td>{{$item->nis}}</td>
+                        <th>Nisn</th>
+                        <td>{{$item->nisn}}</td>
                     </tr>
                     <tr>
                         <th>Nama</th>
@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <th>Jumlah Pembayaran</th>
-                        <td>Rp. {{$item->jum_pemb}}</td>
+                        <td>Rp. {{number_format($item->jum_pemb)}}</td>
                     </tr>
                     <tr>
                         <th>Tanggal</th>

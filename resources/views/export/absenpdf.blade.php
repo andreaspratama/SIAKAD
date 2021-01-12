@@ -12,7 +12,7 @@
   </head>
   <body>
     {{-- <img src="{{url('foto/bunayya.png')}}" alt=""> --}}
-    <h3 class="text-center mb-3">Laporan Data Absen</h3>
+    <h3 class="text-center mb-3">Laporan Data Absen Guru</h3>
     <table class="table table-striped table-bordered text-center table-sm">
         <thead>
             <tr>

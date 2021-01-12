@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\PembayaranRequest;
 use App\Jenispem;
 use App\Pembayaran;
 use PDF;
+use Carbon\Carbon;
 use App\Exports\PembayaranExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
@@ -43,10 +44,22 @@ class PembayaranController extends Controller
      */
     public function store(PembayaranRequest $request)
     {
-        $data = $request->all();
-        // dd($data);
+        $tanggal = Carbon::now();
 
-        Pembayaran::create($data);
+        $pemb = new Pembayaran;
+        $pemb->nisn = $request->nisn;
+        $pemb->nama = $request->nama;
+        $pemb->jenispem_id = $request->jenispem_id;
+        $pemb->tanggal = $tanggal;
+        $pemb->kelas = $request->kelas;
+        $pemb->jum_pemb = $request->jum_pemb;
+        $pemb->keterangan = $request->keterangan;
+
+        $pemb->save();
+        // $data = $request->all();
+        // // dd($data);
+
+        // Pembayaran::create($data);
 
         return redirect()->route('pembayaran.index')->with('status', 'Data berhasil Ditambah');
     }
@@ -87,10 +100,19 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $item = Pembayaran::findOrFail($id);
+        $tanggal = Carbon::now();
 
-        $item->update($data);
+        $pemb = Pembayaran::find($id);
+
+        $pemb->nisn = $request->nisn;
+        $pemb->nama = $request->nama;
+        $pemb->jenispem_id = $request->jenispem_id;
+        $pemb->tanggal = $tanggal;
+        $pemb->kelas = $request->kelas;
+        $pemb->jum_pemb = $request->jum_pemb;
+        $pemb->keterangan = $request->keterangan;
+        
+        $pemb->save();
 
         return redirect()->route('pembayaran.index')->with('status', 'Data berhasil Diubah');
     }
@@ -102,6 +124,15 @@ class PembayaranController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        // $item = Pembayaran::findOrFail($id);
+
+        // $item->delete();
+
+        // return redirect()->route('pembayaran.index')->with('status', 'Data berhasil Dihapus');
+    }
+
+    public function hapus($id)
     {
         $item = Pembayaran::findOrFail($id);
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\LoginRequest;
 use Auth;
 use Siswa;
 use User;
@@ -19,12 +20,13 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/');
     }
+    
     public function postlogin(Request $request)
     {
         if(Auth::attempt($request->only('username', 'password'))){
             return redirect('/home');
         }
 
-        return redirect('/');
+        return redirect('/')->with('status', 'Username dan Password tidak sesuai');
     }
 }

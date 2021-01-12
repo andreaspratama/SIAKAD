@@ -11,12 +11,13 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $thnakademik = Thnakademik::where('status', 'Aktif')->first();
+        // $thnakademik = Thnakademik::where('status', 'Aktif')->first();
+        $thnakademiks = Thnakademik::all();
         $items = Sekolah::all();
         $infos = Info::orderBy('id', 'DESC')->paginate(5);
         return view('pages.home', [
             'items' => $items,
-            'thnakademik' => $thnakademik,
+            'thnakademiks' => $thnakademiks,
             'infos' => $infos
         ]);
     }

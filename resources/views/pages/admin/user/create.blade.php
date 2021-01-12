@@ -1,5 +1,9 @@
 @extends('layouts.admin.admin')
 
+@section('title')
+    Tambah User
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -58,14 +62,13 @@
                   <label for="role">Roles</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <label class="input-group-text" for="role"><i class="fas fa-info-circle"></i></label>
+                      <label class="input-group-text" for="role"><i class="fas fa-user"></i></label>
                     </div>
                     <select class="custom-select" name="role">
                       <option>-- Pilih --</option>
                       <option value="admin">Admin</option>
                       <option value="guru">Guru</option>
-                      <option value="kepala_sekolah">Kepala Sekolah</option>
-                      <option value="wali_kelas">Wali Kelas</option>
+                      <option value="siswa">Siswa</option>
                     </select>
                   </div>
                 </div>

@@ -94,6 +94,15 @@ class JenispemController extends Controller
      */
     public function destroy($id)
     {
+        // $item = Jenispem::findOrFail($id);
+
+        // $item->delete();
+
+        // return redirect()->route('jenispem.index')->with('status', 'Data berhasil Dihapus');
+    }
+
+    public function hapus($id)
+    {
         $item = Jenispem::findOrFail($id);
 
         $item->delete();

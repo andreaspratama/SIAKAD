@@ -56,16 +56,12 @@
                         <th>Asal Sekolah</th>
                         <td>{{$item->asal_sklh}}</td>
                     </tr>
-                    <tr>
-                        <th>Jumlah Mapel</th>
-                        <td>{{$item->mapel->count()}}</td>
-                    </tr>
                 </table>
 
                 {{-- <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#exampleModal">
                     Tambah Nilai
                 </button> --}}
-                <a href="/siswa/{{$item->id}}/nilaiexport" class="btn btn-success btn-sm mb-3">Print Nilai</a>
+                {{-- <a href="/siswa/{{$item->id}}/nilaiexport" class="btn btn-success btn-sm mb-3">Print Nilai</a>
 
                 <div class="card shadow mb-4">
                     <div class="card-body">
@@ -79,7 +75,7 @@
                               <th>Nilai UTS</th>
                               <th>Nilai UAS</th>
                               <th>Status</th>
-                              {{-- <th>Aksi</th> --}}
+                              <th>Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -91,16 +87,16 @@
                                     <td>{{$mapel->pivot->uts}}</td>
                                     <td>{{$mapel->pivot->uas}}</td>
                                     <td>{{$mapel->pivot->status}}</td>
-                                    {{-- <td>
+                                    <td>
                                       <a href="/siswa/{{$item->id}}/{{$mapel->id}}/nilaitambah" class="btn btn-primary btn-sm">Tambah</a>
-                                    </td> --}}
+                                    </td>
                                   </tr>
                               @endforeach
                           </tbody>
                         </table>
                       </div>
                     </div>
-                </div>
+                </div> --}}
                 <a href="/siswa" class="btn btn-secondary btn-sm">Kembali</a>
             </div>
         </div>

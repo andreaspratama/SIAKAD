@@ -38,7 +38,7 @@ class InfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InfoRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->judul);
@@ -84,14 +84,32 @@ class InfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->judul);
-        $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
-        );
-        $item = Info::findOrFail($id);
+        $data = Info::findOrFail($id);
 
-        $item->update($data);
+        if(request('image')) {
+            Storage::delete($data->image);
+            $image = request()->file('image')->store('assets/gallery', 'public');
+        } elseif($data->image) {
+            $image = $data->image;
+        } else {
+            $image = null;
+        }
+
+        $data->update([
+            'judul' => $request->judul,
+            'slug' => Str::slug($request->judul),
+            'tanggal' => $request->tanggal,
+            'deskripsi' => $request->deskripsi,
+            'image' => $image
+        ]);
+        // $data = $request->all();
+        // $data['slug'] = Str::slug($request->judul);
+        // $data['image'] = $request->file('image')->store(
+        //     'assets/gallery', 'public'
+        // );
+        // $item = Info::findOrFail($id);
+
+        // $item->update($data);
 
         return redirect()->route('info.index')->with('status', 'Data Berhasil Diupdate');
     }
@@ -103,6 +121,15 @@ class InfoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        // $item = Info::findOrFail($id);
+
+        // $item->delete();
+
+        // return redirect()->route('info.index')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    public function hapus($id)
     {
         $item = Info::findOrFail($id);
 

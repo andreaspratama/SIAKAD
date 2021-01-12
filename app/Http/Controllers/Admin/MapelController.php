@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MapelRequest;
 use App\Mapel;
 use App\Siswa;
+use App\Jadwalmapel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -99,8 +100,20 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
+        // $item = Mapel::findOrFail($id);
+        // $item->delete();
+
+        // Jadwalmapel::where('mapel_id', $id)->delete();
+
+        // return redirect()->route('mapel.index')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    public function hapus($id)
+    {
         $item = Mapel::findOrFail($id);
         $item->delete();
+
+        Jadwalmapel::where('mapel_id', $id)->delete();
 
         return redirect()->route('mapel.index')->with('status', 'Data Berhasil Dihapus');
     }

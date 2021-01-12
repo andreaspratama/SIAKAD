@@ -42,11 +42,14 @@
                           <a href="{{route('info.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                               <i class="fa fa-edit"></i>
                           </a>
-                          <form action="{{route('info.destroy', $item->id)}}" method="POST" class="d-inline">
+                          <a href="#" class="btn btn-sm btn-circle btn-danger delete" info-id="{{$item->id}}">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                          {{-- <form action="{{route('info.destroy', $item->id)}}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger btn-circle btn-sm"><i class="fa fa-trash"></i></button>
-                          </form>
+                          </form> --}}
                       </td>
                     </tr>
                   @endforeach
@@ -75,13 +78,12 @@
           $('#dataTable').DataTable();
         } );
       </script>
-      {{-- <script>
+      <script>
         $('.delete').click(function(){
-          var $jmapelnama = $(this).attr('jmapel-nama');
-          var $jmapelid = $(this).attr('jmapel-id');
+          var $infoid = $(this).attr('info-id');
           swal({
             title: "Apakah Kamu Yakin",
-            text: "Data Jadwal  Mapel "+$jmapelnama+" Akan Terhapus",
+            text: "Data Info Akan Terhapus",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -89,13 +91,13 @@
           .then((willDelete) => {
               console.log(willDelete);
             if (willDelete) {
-              window.location = "info/"+$jmapelid+"/destroy";
+              window.location = "info/"+$infoid+"/hapus";
             } else {
-              swal("Data "+$jmapelnama+" Tidak Terhapus");
+              swal("Data Tidak Terhapus");
             }
           });
         })
-      </script> --}}
+      </script>
       <script>
         @if (Session::has('status'))
           toastr.success("{{Session::get('status')}}", "Trimakasih")

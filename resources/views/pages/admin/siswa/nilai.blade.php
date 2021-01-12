@@ -15,9 +15,9 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-body">
-            <a href="/siswa/cetaknilai" class="btn btn-success mb-3">Cetak Nilai</a>
+            {{-- <a href="/siswa/cetaknilai" class="btn btn-success mb-3">Cetak Nilai</a> --}}
             <div class="table-responsive">
-              <table class="table table-bordered text-center table-striped" id="tableGuru" width="100%" cellspacing="0">
+              <table class="table table-bordered text-center table-striped" id="table" width="100%" cellspacing="0">
                 <thead>
                   <tr>
                     <th>Mapel</th>
@@ -92,3 +92,20 @@
     </div>
     <!-- /.container-fluid -->
 @endsection
+
+@push('prepend-style')
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+@endpush
+
+@push('addon-script')
+      <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+      <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('#table').DataTable();
+        } );
+      </script>
+@endpush

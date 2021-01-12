@@ -72,26 +72,33 @@ Route::prefix('/')
             Route::get('jadwalmapel/exportexcel', 'JadwalmapelController@exportExcel');
             Route::get('jadwalmapel/exportpdf', 'JadwalmapelController@exportPdf');
     
+            Route::get('mapel/{mapel}/hapus', 'MapelController@hapus');
             Route::resource('mapel', 'MapelController');
             Route::get('cetakTglklsPdf', 'TinggalkelasController@cetakPDF')->name('tglkelas.cetakpdf');
             Route::get('cetakTglklsExcel', 'TinggalkelasController@cetakEXCEL')->name('tglkelas.cetakexcel');
             Route::get('siswa/{tinggalkelas}/tinggalkelas', 'TinggalkelasController@hapus')->name('tglkelas');
             Route::resource('tinggalkelas', 'TinggalkelasController');
+            Route::get('exkul/{exkul}/hapus', 'ExkulController@hapus');
             Route::resource('exkul', 'ExkulController');
+            Route::get('ruang/{ruang}/hapus', 'RuangController@hapus');
             Route::resource('ruang', 'RuangController');
+            Route::get('thnakademik/{thnakademik}/hapus', 'ThnakademikController@hapus');
             Route::resource('thnakademik', 'ThnakademikController');
             Route::resource('sekolah', 'SekolahController');
+            Route::get('jenispem/{jenispem}/hapus', 'JenispemController@hapus');
             Route::resource('jenispem', 'JenispemController');
             Route::get('cetakPembayaran', 'PembayaranController@cetakPembayaran')->name('pembayaran.cetak');
             Route::get('cetakPembayaranPertanggal/{tglawal}/{tglakhir}', 'PembayaranController@cetakPembayaranPertanggal')->name('pembayaran.cetaktgl');
             Route::get('cetakPembayaranPdf', 'PembayaranController@cetakPDF')->name('pembayaran.cetakpdf');
             Route::get('cetakPembayaranExcel', 'PembayaranController@cetakEXCEL')->name('pembayaran.cetakexcel');
+            Route::get('pembayaran/{pembayaran}/hapus', 'PembayaranController@hapus');
             Route::resource('pembayaran', 'PembayaranController');
+            Route::get('info/{info}/hapus', 'InfoController@hapus');
             Route::resource('info', 'InfoController');
             Route::get('cetakAbsen', 'AbsenController@cetakAbsen')->name('absen.cetak');
             Route::get('cetakAbsenPertanggal/{tglawal}/{tglakhir}', 'AbsenController@cetakAbsenPertanggal')->name('absenguru.cetaktgl');
-            Route::get('cetakAbsenPdf', 'AbsenController@cetakPDF')->name('absenguru.cetakpdf');
-            Route::get('cetakAbsenExcel', 'AbsenController@cetakEXCEL')->name('absenguru.cetakexcel');
+            Route::get('cetakAbsenPdfGuru', 'AbsenController@cetakPDF')->name('absenguru.cetakpdf');
+            Route::get('cetakAbsenExcelGuru', 'AbsenController@cetakEXCEL')->name('absenguru.cetakexcel');
             Route::resource('absen', 'AbsenController');
             Route::get('cetakAbsenSiswa', 'AbsensiswaController@cetakAbsen')->name('absensiswa.cetak');
             Route::get('cetakAbsenPertanggalSiswa/{tglawal}/{tglakhir}', 'AbsensiswaController@cetakAbsenPertanggal')->name('absensiswa.cetaktgl');
@@ -108,7 +115,7 @@ Route::prefix('/')
             // Route::post('siswa/{siswa}/nilaitambah', 'NilaiController@nilai');
             // Route::get('/siswa/{id}/{idmapel}/nilaitambah', 'NilaiController@nilaitambah');
             // Route::post('/siswa/{id}/nilaiupdate', 'NilaiController@nilaiupdate');
-            
+            Route::get('user/{user}/hapus', 'UserController@hapus');
             Route::resource('user', 'UserController');
         });
 
