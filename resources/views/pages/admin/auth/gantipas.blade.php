@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Login | SD IT Bunayya</title>
+  <title>Reset Password | SD IT Bunayya</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{url('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -44,18 +44,31 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Sistem Informasi Akademik SD IT Bunayya</h1>
                   </div>
-                  <form class="user" method="POST" action="/postlogin">
+                  <form class="user" method="POST" action="{{route('postreset')}}">
                     @csrf
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan Username (NISN / NIP)" name="username">
+                      <input type="text" class="form-control form-control-user @error('username') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan Username (NISN / NIP)" name="username" value="{{old('username')}}">
+                      @error('username')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                      @enderror
                     </div>
+                    {{-- <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukan Password Lama" name="password-lama">
+                    </div> --}}
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukan Password" name="password">
+                      <input type="password" class="form-control form-control-user @error('password-baru') is-invalid @enderror" id="exampleInputPassword" placeholder="Masukan Password Baru" name="password-baru" value="{{old('password-baru')}}">
+                      @error('password-baru')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                      @enderror
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block mb-3">
-                      Masuk
+                      Reset
                     </button>
-                    <a href="{{route('reset')}}" style="text-decoration: none; font-size: 15px;">Reset Password</a>
+                    <a href="{{route('login')}}" style="text-decoration: none; font-size: 15px;">Login</a>
                   </form>
                 </div>
               </div>
@@ -82,10 +95,6 @@
   <script>
     @if (Session::has('status'))
       toastr["warning"]("Username / Password tidak sesuai")
-      // toastr.error("{{Session::get('status')}}", "Trimakasih")
-    @endif
-    @if (Session::has('statusreset'))
-      toastr["success"]("Password berhasil diubah")
       // toastr.error("{{Session::get('status')}}", "Trimakasih")
     @endif
   </script>

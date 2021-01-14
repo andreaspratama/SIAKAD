@@ -113,16 +113,16 @@ class MapelController extends Controller
         $item = Mapel::findOrFail($id);
         $item->delete();
 
-        Jadwalmapel::where('mapel_id', $id)->delete();
+        // Jadwalmapel::where('mapel_id', $id)->delete();
 
         return redirect()->route('mapel.index')->with('status', 'Data Berhasil Dihapus');
     }
 
-    public function hapusnilai($id)
-    {
-        $nilai = Mapel::findOrFail($id);
-        $nilai->delete();
+    // public function hapusnilai($id)
+    // {
+    //     $nilai = Mapel::findOrFail($id);
+    //     $nilai->delete();
 
-        return redirect('siswa/'.$id.'/show')->with('status', 'Nilai Berhasil Dihapus');
-    }
+    //     return redirect('siswa/'.$id.'/show')->with('status', 'Nilai Berhasil Dihapus');
+    // }
 }

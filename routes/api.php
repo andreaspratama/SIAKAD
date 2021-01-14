@@ -18,4 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/siswa/{id}/tambahnilai', 'ApiController@tambahnilai');
+// Route::post('/siswa/{id}/tambahnilai', 'ApiController@tambahnilai');
+Route::post('login', 'API\AuthController@login');
+Route::get('siswa', 'API\SiswaController@index');
+Route::get('jadwal', 'API\JadwalController@index');
+Route::post('onlinepem', 'API\OnlinepemController@proses');

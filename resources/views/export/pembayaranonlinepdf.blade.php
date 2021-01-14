@@ -30,7 +30,13 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$po->nisn}}</td>
                     <td>{{$po->nama}}</td>
-                    <td>{{$po->jenispem->jenis}}</td>
+                    <td>
+                        @if ($po->jenispem == 0)
+                            Jenis Pembayaran Terhapus
+                        @else
+                            {{$po->jenispem->jenis}}
+                        @endif
+                    </td>
                     <td>{{$po->tanggal}}</td>
                     <td>{{$po->kelas}}</td>
                 </tr>

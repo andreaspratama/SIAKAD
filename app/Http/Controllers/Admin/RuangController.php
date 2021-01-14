@@ -112,7 +112,7 @@ class RuangController extends Controller
         $item = Ruang::findOrFail($id);
         $item->delete();
 
-        Jadwalmapel::where('ruang_id', $id)->delete();
+        // Jadwalmapel::where('ruang_id', $id)->delete();
 
         return redirect()->route('ruang.index')->with('status', 'Data Berhasil Dihapus');
     }

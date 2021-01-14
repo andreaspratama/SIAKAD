@@ -28,10 +28,28 @@
         <tbody>
             @foreach ($jadwal as $j)
                 <tr>
-                    <td>{{$j->mapel->nama_mapel}}</td>
-                    <td>{{$j->guru->nama}}</td>
+                    <td>
+                        @if ($j->mapel == null)
+                            Mapel Terhapus
+                        @else
+                            {{$j->mapel->nama_mapel}}
+                        @endif
+                    </td>
+                    <td>
+                        @if ($j->guru == null)
+                            Guru Terhapus
+                        @else
+                            {{$j->guru->nama}}
+                        @endif
+                    </td>
                     <td>{{$j->kelas}}</td>
-                    <td>{{$j->ruang->nama_ruang}}</td>
+                    <td>
+                        @if ($j->ruang == null)
+                            Ruang Terhapus
+                        @else
+                            {{$j->ruang->nama_ruang}}
+                        @endif
+                    </td>
                     <td>{{$j->hari}}</td>
                     <td>{{$j->jam_mulai}}</td>
                     <td>{{$j->jam_selesai}}</td>

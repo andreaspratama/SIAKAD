@@ -34,7 +34,13 @@
                     </tr>
                     <tr>
                         <th>Jenis Pembayaran</th>
-                        <td>{{$item->jenispem->jenis}}</td>
+                        <td>
+                            @if ($item->jenispem == 0)
+                                Jenis Pembayaran Terhapus
+                            @else
+                                {{$item->jenispem->jenis}}
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <th>Kelas</th>

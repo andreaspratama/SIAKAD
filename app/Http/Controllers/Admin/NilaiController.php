@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Mapel;
 use App\Siswa;
+use App\Jadwalmapel;
 use App\Thnakademik;
 use App\User;
 use Illuminate\Http\Request;
@@ -14,8 +15,8 @@ class NilaiController extends Controller
 {
     public function index()
     {
-        $items = Siswa::all();
-        return view('pages.admin.siswa.masuknilai', compact('items'));
+        // $items = Jadwalmapel::all();
+        return view('pages.admin.siswa.masuknilai');
     }
 
     public function proses($kelas)
@@ -29,9 +30,8 @@ class NilaiController extends Controller
     {
         $item = Siswa::findOrFail($id);
         $matapelajarans = Mapel::all();
-        $thnakademiks = Thnakademik::all();
 
-        return view('pages.admin.siswa.tambahnilai', compact('item', 'matapelajarans', 'thnakademiks'));
+        return view('pages.admin.siswa.tambahnilai', compact('item', 'matapelajarans'));
     }
 
     public function nilai(Request $request, $id)
@@ -63,5 +63,13 @@ class NilaiController extends Controller
         // dd($siswa);
 
         return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Ditambahkan');
+    }
+
+    public function nilaihapus($id, $idmapel)
+    {
+        $siswa = Siswa::findOrFail($id);
+        $siswa->mapel()->detach($idmapel);
+
+        return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Dihapus');
     }
 }

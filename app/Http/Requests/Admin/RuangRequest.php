@@ -24,7 +24,7 @@ class RuangRequest extends FormRequest
     public function rules()
     {
         return [
-            'kode_ruang' => 'required',
+            'kode_ruang' => 'required|unique:ruangs,kode_ruang',
             'nama_ruang' => 'required'
         ];
     }
@@ -33,6 +33,7 @@ class RuangRequest extends FormRequest
     {
         return [
             'kode_ruang.required' => 'Kode Ruang tidak boleh kosong',
+            'kode_ruang.unique' => 'Kode Ruang telah digunakan',
             'nama_ruang.required' => 'Nama Ruang tidak boleh kosong'
         ];
     }

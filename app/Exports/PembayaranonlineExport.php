@@ -19,10 +19,16 @@ class PembayaranonlineExport implements FromCollection, WithMapping, WithHeading
 
     public function map($pembayaranonline): array
     {
+        if ($pembayaranonline->jenispem == null) {
+            $rjenispem = "Jenis Pembayaran Terhapus";
+        } else {
+            $rjenispem = $pembayaranonline->jenispem->jenis;
+        }
+
         return [
             $pembayaranonline->nisn,
             $pembayaranonline->nama,
-            $pembayaranonline->jenispem->jenis,
+            $rjenispem,
             $pembayaranonline->tanggal,
             $pembayaranonline->kelas,
         ];

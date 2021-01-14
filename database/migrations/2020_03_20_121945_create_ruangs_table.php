@@ -17,7 +17,6 @@ class CreateRuangsTable extends Migration
             $table->id();	
             $table->string('kode_ruang');
             $table->string('nama_ruang');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800 mt-4 mb-4">Nilai {{auth()->user()->name}}</h1>
+        <h1 class="h3 mb-2 text-gray-800 mt-4 mb-4">Nilai {{$item->nama}}</h1>
         
         
         <!-- DataTales Example -->
@@ -37,55 +37,11 @@
                         <td>{{$mapel->pivot->uts}}</td>
                         <td>{{$mapel->pivot->uas}}</td>
                         <td>{{$mapel->pivot->status}}</td>
-                        {{-- <td>
-                          <a href="/siswa/{{$item->id}}/{{$mapel->id}}/nilaitambah" class="btn btn-primary btn-sm">Tambah</a>
-                        </td> --}}
                       </tr>
                     @endforeach
                 </tbody>
               </table>
             </div>
-            {{-- <div class="table-responsive">
-              <table class="table table-bordered text-center" id="tablethnakademik" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Tahun Akademik</th>
-                    <th>Semester</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @forelse ($items as $item)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->tahun_akademik}}</td>
-                        <td>{{$item->semester}}</td>
-                        <td>{{$item->status}}</td>
-                        <td>
-                            <a href="{{route('thnakademik.edit', $item->id)}}" class="btn btn-sm btn-circle btn-warning">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <form action="{{route('thnakademik.destroy', $item->id)}}" method="POST" class="d-inline">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-circle btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                  @empty
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            Data Kosong
-                        </td>
-                    </tr>
-                  @endforelse
-                </tbody>
-              </table>
-            </div> --}}
           </div>
         </div>
 

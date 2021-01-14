@@ -113,6 +113,7 @@ class GuruController extends Controller
     public function update(Request $request, $id)
     {
         $data = Guru::findOrFail($id);
+        $update_guru = $data->user_id;
 
         if(request('image')) {
             Storage::delete($data->image);
@@ -133,6 +134,14 @@ class GuruController extends Controller
             'alamat' => $request->alamat,
             'image' => $image
         ]);
+
+        $baru = User::find($update_guru);
+        $baru->name = $request->nama;
+        $baru->image = $image;
+        $baru->username = $request->nip;
+        $baru->password = bcrypt($request->nip);
+        $baru->remember_token = Str::random(60);
+        $baru->save();
         // $request->validate([
         //     'nip' => 'required',
         //     'nama' => 'required',
@@ -162,9 +171,17 @@ class GuruController extends Controller
         $item = Guru::findOrFail($id);
         $item->delete();
 
-        Jadwalmapel::where('guru_id', $id)->delete();
+        // Jadwalmapel::where('guru_id', $id)->delete();
+
+        $hapus_guru = $item->user_id;
+        User::where('id', $hapus_guru)->delete();
 
         return redirect('/guru')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    public function timeZone($location) 
+    {
+        return date_default_timezone_set($location);
     }
 
     public function absen() 
@@ -233,11 +250,6 @@ class GuruController extends Controller
             return redirect()->back();
         }
         return $request->all(); 
-    }
-
-    public function timeZone($location) 
-    {
-        return date_default_timezone_set($location);
     }
 
     public function profile()

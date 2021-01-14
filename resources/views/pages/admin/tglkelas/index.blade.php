@@ -43,7 +43,13 @@
                       <td>{{$item->nama}}</td>
                       <td>{{$item->asal_kls}}</td>
                       <td>{{$item->tgl_kls}}</td>
-                      <td>{{$item->thnakademik->tahun_akademik}} / {{$item->thnakademik->semester}}</td>
+                      <td>
+                        @if ($item->thnakademik == 0)
+                            Tahun Akademik Terhapus
+                        @else
+                            {{$item->thnakademik->tahun_akademik}}
+                        @endif
+                      </td>
                       <td>{{$item->alasan}}</td>
                       <td>
                           <a href="{{route('tinggalkelas.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">

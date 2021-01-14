@@ -17,7 +17,6 @@ class CreateMapelsTable extends Migration
             $table->id();
             $table->string('kode_mapel');
             $table->string('nama_mapel');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

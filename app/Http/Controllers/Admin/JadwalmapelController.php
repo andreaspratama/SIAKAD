@@ -110,7 +110,7 @@ class JadwalmapelController extends Controller
         $item = Jadwalmapel::findOrFail($id);
         $item->update($data);
 
-        return redirect('/jadwalmapel');
+        return redirect('/jadwalmapel')->with('status', 'Data Berhasil Diubah');
     }
 
     /**
@@ -124,7 +124,7 @@ class JadwalmapelController extends Controller
         $item = Jadwalmapel::findOrFail($id);
         $item->delete();
 
-        return redirect('/jadwalmapel');
+        return redirect('/jadwalmapel')->with('status', 'Data Berhasil Dihapus');
     } 
 
     public function jadwal()

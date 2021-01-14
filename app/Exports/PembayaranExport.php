@@ -19,9 +19,15 @@ class PembayaranExport implements FromCollection, WithMapping, WithHeadings
 
     public function map($pembayaran): array
     {
+        if ($pembayaran->jenispem == null) {
+            $rjenispem = "Jenis Pembayaran Terhapus";
+        } else {
+            $rjenispem = $pembayaran->jenispem->jenis;
+        }
+
         return [
-            $pembayaran->jenispem->jenis,
-            $pembayaran->nis,
+            $rjenispem,
+            $pembayaran->nisn,
             $pembayaran->nama,
             $pembayaran->kelas,
             $pembayaran->tanggal,
@@ -34,7 +40,7 @@ class PembayaranExport implements FromCollection, WithMapping, WithHeadings
     {
         return [
             'Jenis Pembayaran',
-            'NIS',
+            'NISN',
             'Nama',
             'Kelas',
             'Tanggal',

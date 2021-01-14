@@ -27,7 +27,7 @@
                 </div>
                 <input type="date" class="form-control" id="tglakhir" name="tglakhir" aria-describedby="basic-addon1">
             </div>
-            <a href="" onclick="this.href='/cetakPembayaranPertanggal/'+ document.getElementById('tglawal').value + '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary"><i class="fas fa-print mr-2"></i>Cetak Laporan</a>
+            <a href="" onclick="this.href='/cetakPembayaranPertanggal/'+ document.getElementById('tglawal').value + '/' + document.getElementById('tglakhir').value" class="btn btn-primary"><i class="fas fa-print mr-2"></i>Cetak Laporan</a>
           </div>
         </div>
       </div>
