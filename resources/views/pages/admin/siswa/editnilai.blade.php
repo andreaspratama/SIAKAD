@@ -21,7 +21,7 @@
                     <span class="input-group-text" id="mapel"><i class="fas fa-book-reader"></i></span>
                 </div>
                 <select class="custom-select" name="mapel" required>
-                    <option value="{{$nilai->pivot->mapel_id}}">-- Pilih Mapel --</option>
+                    <option value="{{$nilai->pivot->mapel_id}}">-- Ubah Mapel Bila Perlu --</option>
                     @foreach ($mapel as $mapel)
                         <option value="{{$mapel->id}}">
                         {{$mapel->nama_mapel}}

@@ -18,7 +18,7 @@
             <tr>
                 <th>No</th>
                 <th>Jenis Pembayaran</th>
-                <th>NIS</th>
+                <th>NISN</th>
                 <th>Nama</th>
                 <th>Kelas</th>
                 <th>Tanggal</th>
@@ -30,8 +30,14 @@
             @forelse ($pembayaranPertanggal as $p)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$p->jenispem->jenis}}</td>
-                    <td>{{$p->nis}}</td>
+                    <td>
+                        @if ($p->jenispem == 0)
+                            Jenis Pembayaran Terhapus
+                        @else
+                            {{$p->jenispem->jenis}}
+                        @endif
+                    </td>
+                    <td>{{$p->nisn}}</td>
                     <td>{{$p->nama}}</td>
                     <td>{{$p->kelas}}</td>
                     <td>{{$p->tanggal}}</td>

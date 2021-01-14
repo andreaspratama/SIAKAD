@@ -22,14 +22,20 @@
                 <th>Nama</th>
                 <th>Asal Kelas</th>
                 <th>Tinggal Kelas</th>
-                <th>Alesan</th>
+                <th>Alasan</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($tgl as $p)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$p->thnakademik->tahun_akademik}}</td>
+                    <td>
+                        @if ($p->thnakademik == 0)
+                            Tahun Akademik Terhapus
+                        @else
+                            {{$p->thnakademik->tahun_akademik}}
+                        @endif
+                    </td>
                     <td>{{$p->nisn}}</td>
                     <td>{{$p->nama}}</td>
                     <td>{{$p->asal_kls}}</td>

@@ -19,8 +19,15 @@ class TinggalkelasExport implements FromCollection, WithMapping, WithHeadings
 
     public function map($tgl): array
     {
+        if ($tgl->thnakademik == 0) {
+            $t = "Tahun Akademik Terhapus";
+        } else {
+            $t = $tgl->thnakademik->tahun_akademik;
+        }
+        
+
         return [
-            $tgl->thnakademik->tahun_akademik,
+            $t,
             $tgl->nisn,
             $tgl->nama,
             $tgl->asal_kls,

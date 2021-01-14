@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-3">Jadwal Siswa {{auth()->user()->name}}</h1>
+        <h1 class="h3 mb-3 text-gray-800 mt-3">Jadwal Siswa {{auth()->user()->siswa->nama}}</h1>
 
         @if (session('status'))
             <div class="alert alert-success">
@@ -35,10 +35,28 @@
                             @foreach ($items as $item)
                                 @if (auth()->user()->siswa->kelas === $item->kelas)
                                     <tr>
-                                        <td>{{$item->mapel->nama_mapel}}</td>
-                                        <td>{{$item->guru->nama}}</td>
+                                        <td>
+                                            @if ($item->mapel == null)
+                                                Mapel Terhapus
+                                            @else
+                                                {{$item->mapel->nama_mapel}}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($item->guru == null)
+                                                Guru Terhapus
+                                            @else
+                                                {{$item->guru->nama}}
+                                            @endif
+                                        </td>
                                         <td>{{$item->kelas}}</td>
-                                        <td>{{$item->ruang->nama_ruang}}</td>
+                                        <td>
+                                            @if ($item->ruang == null)
+                                                Ruang Terhapus
+                                            @else
+                                                {{$item->ruang->nama_ruang}}
+                                            @endif
+                                        </td>
                                         <td>{{$item->hari}}</td>
                                         <td>{{$item->jam_mulai}}</td>
                                         <td>{{$item->jam_selesai}}</td>

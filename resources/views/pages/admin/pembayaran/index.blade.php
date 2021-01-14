@@ -135,7 +135,13 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->nama}}</td>
-                        <td>{{$item->jenispem->jenis}}</td>
+                        <td>
+                          @if ($item->jenispem == 0)
+                              Jenis Pembayaran Terhapus
+                          @else
+                              {{$item->jenispem->jenis}}
+                          @endif
+                        </td>
                         <td>Rp. {{number_format($item->jum_pemb)}}</td>
                         <td>{{$item->tanggal}}</td>
                         <td>

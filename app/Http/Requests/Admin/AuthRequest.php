@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MapelRequest extends FormRequest
+class AuthRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,18 @@ class MapelRequest extends FormRequest
     public function rules()
     {
         return [
-            'kode_mapel' => 'required|unique:mapels,kode_mapel',
-            'nama_mapel' => 'required'
+            'username' => 'required|exists:users,username',
+            'password-baru' => 'required|min:5'
         ];
     }
 
     public function messages()
     {
         return [
-            'kode_mapel.required' => 'Kode Mapel tidak boleh kosong',
-            'kode_mapel.unique' => 'Kode Mapel telah digunakan',
-            'nama_mapel.required' => 'Nama Mapel tidak boleh kosong'
+            'username.required' => 'Username tidak boleh kosong',
+            'username.exists' => 'Username tidak ditemukan',
+            'password-baru.required' => 'Password tidak boleh kosong',
+            'password-baru.min' => 'Password minimal 5 karakter'
         ];
     }
 }

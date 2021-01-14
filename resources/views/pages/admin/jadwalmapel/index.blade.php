@@ -40,15 +40,28 @@
                   @foreach ($items as $item)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$item->mapel->nama_mapel}}</td>
-                      {{-- <td>{{$item->guru->nama}}</td> --}}
-                      @if ($item->guru->nama || $item->guru_id)
-                        <td>{{$item->guru->nama}}</td>
-                      @else
-                        <td>Guru Tidak Ada</td>
-                      @endif
+                      <td>
+                        @if ($item->mapel == null)
+                            Mapel Terhapus
+                        @else
+                            {{$item->mapel->nama_mapel}}
+                        @endif
+                      </td>
+                      <td>
+                          @if ($item->guru == null)
+                              Guru Terhapus
+                          @else
+                              {{$item->guru->nama}}
+                          @endif
+                      </td>
                       <td>{{$item->kelas}}</td>
-                      <td>{{$item->ruang->nama_ruang}}</td>
+                      <td>
+                          @if ($item->ruang == null)
+                              Ruang Terhapus
+                          @else
+                              {{$item->ruang->nama_ruang}}
+                          @endif
+                      </td>
                       <td>{{$item->hari}}</td>
                       <td>{{$item->jam_mulai}}</td>
                       <td>{{$item->jam_selesai}}</td>
@@ -56,7 +69,7 @@
                           <a href="/jadwalmapel/{{$item->id}}/edit" class="btn btn-circle btn-sm btn-warning">
                               <i class="fa fa-edit"></i>
                           </a>
-                          <a href="#" class="btn btn-sm btn-circle btn-danger delete" jmapel-nama="{{$item->mapel->nama_mapel}}" jmapel-id="{{$item->id}}">
+                          <a href="#" class="btn btn-sm btn-circle btn-danger delete" jmapel-id="{{$item->id}}">
                               <i class="fa fa-trash"></i>
                           </a>
                       </td>
@@ -89,11 +102,11 @@
       </script>
       <script>
         $('.delete').click(function(){
-          var $jmapelnama = $(this).attr('jmapel-nama');
+          // var $jmapelnama = $(this).attr('jmapel-nama');
           var $jmapelid = $(this).attr('jmapel-id');
           swal({
             title: "Apakah Kamu Yakin",
-            text: "Data Jadwal  Mapel "+$jmapelnama+" Akan Terhapus",
+            text: "Data Jadwal  Mapel Akan Terhapus",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -103,7 +116,7 @@
             if (willDelete) {
               window.location = "jadwalmapel/"+$jmapelid+"/destroy";
             } else {
-              swal("Data "+$jmapelnama+" Tidak Terhapus");
+              swal("Data Tidak Terhapus");
             }
           });
         })

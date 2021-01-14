@@ -3,12 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Jadwalmapel extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = [
         'mapel_id', 'guru_id', 'ruang_id', 'kelas', 'hari', 'jam_mulai', 'jam_selesai'
     ];

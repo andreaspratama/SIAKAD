@@ -18,7 +18,6 @@ class CreateThnakademiksTable extends Migration
             $table->string('tahun_akademik', 30);
             $table->string('semester');
             $table->string('status');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

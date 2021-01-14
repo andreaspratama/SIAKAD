@@ -126,6 +126,8 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         $data = Siswa::findOrFail($id);
+        $update_siswa = $data->user_id;
+        // dd($j);
 
         if(request('image')) {
             Storage::delete($data->image);
@@ -149,6 +151,14 @@ class SiswaController extends Controller
             'asal_sklh' => $request->asal_sklh,
             'image' => $image
         ]);
+
+        $baru = User::find($update_siswa);
+        $baru->name = $request->nama;
+        $baru->image = $image;
+        $baru->username = $request->nisn;
+        $baru->password = bcrypt($request->nisn);
+        $baru->remember_token = Str::random(60);
+        $baru->save();
 
         // $messages = [
         //     'required' => 'Tidak boleh kosong',
@@ -189,6 +199,9 @@ class SiswaController extends Controller
     {
         $item = Siswa::findOrFail($id);
         $item->delete();
+
+        $hapus_siswa = $item->user_id;
+        User::where('id', $hapus_siswa)->delete();
 
         return redirect('/siswa')->with('status', 'Data berhasil Dihapus');
     }
@@ -306,6 +319,11 @@ class SiswaController extends Controller
         return $pdf->download('nilaisiswa.pdf');
     }
 
+    public function timeZone($location) 
+    {
+        return date_default_timezone_set($location);
+    }
+
     public function absen() 
     {
         $this->timeZone('Asia/Jakarta');
@@ -371,10 +389,5 @@ class SiswaController extends Controller
         //     return redirect()->back();
         // }
         // return $request->all(); 
-    }
-
-    public function timeZone($location) 
-    {
-        return date_default_timezone_set($location);
     }
 }
