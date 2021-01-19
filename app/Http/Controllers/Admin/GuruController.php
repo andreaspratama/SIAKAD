@@ -171,10 +171,11 @@ class GuruController extends Controller
         $item = Guru::findOrFail($id);
         $item->delete();
 
-        // Jadwalmapel::where('guru_id', $id)->delete();
+        Jadwalmapel::where('guru_id', $id)->delete();
 
         $hapus_guru = $item->user_id;
         User::where('id', $hapus_guru)->delete();
+        Absen::where('user_id', $hapus_guru)->delete();
 
         return redirect('/guru')->with('status', 'Data Berhasil Dihapus');
     }
@@ -268,4 +269,10 @@ class GuruController extends Controller
         $pdf = PDF::loadView('export.gurupdf',['guru' => $guru]);
         return $pdf->download('guru.pdf');
     }   
+
+    public function jadwal()
+    {
+        $items = Jadwalmapel::all();
+        return view('pages.admin.guru.jadwal', compact('items'));
+    }
 }

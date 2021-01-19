@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-4">Jadwal Bapak {{auth()->user()->guru->nama}}</h1>
+        <h1 class="h3 mb-3 text-gray-800 mt-4">Jadwal Bapak {{auth()->user()->name}}</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                   @foreach ($items as $item)
-                    @if (auth()->user()->guru->nama === $item->guru->nama)
+                    @if (auth()->user()->name === $item->guru->nama)
                       <tr>
                         <td>{{$item->mapel->nama_mapel}}</td>
                         <td>{{$item->guru->nama}}</td>

@@ -3,6 +3,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+      <img src="{{url('../../foto/bunayya.png')}}" width="40px" alt="">
       <div class="sidebar-brand-text mx-3">SIAKAD</div>
     </a>
 

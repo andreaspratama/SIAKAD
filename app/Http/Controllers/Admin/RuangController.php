@@ -81,7 +81,7 @@ class RuangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RuangRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
 
@@ -112,7 +112,7 @@ class RuangController extends Controller
         $item = Ruang::findOrFail($id);
         $item->delete();
 
-        // Jadwalmapel::where('ruang_id', $id)->delete();
+        Jadwalmapel::where('ruang_id', $id)->delete();
 
         return redirect()->route('ruang.index')->with('status', 'Data Berhasil Dihapus');
     }

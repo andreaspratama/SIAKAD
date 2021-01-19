@@ -31,7 +31,7 @@
                     <td>{{$po->nisn}}</td>
                     <td>{{$po->nama}}</td>
                     <td>
-                        @if ($po->jenispem == 0)
+                        @if ($po->jenispem == null)
                             Jenis Pembayaran Terhapus
                         @else
                             {{$po->jenispem->jenis}}

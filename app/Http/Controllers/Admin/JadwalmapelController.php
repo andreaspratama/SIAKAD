@@ -130,7 +130,7 @@ class JadwalmapelController extends Controller
     public function jadwal()
     {
         $items = Jadwalmapel::all();
-        // $items = $items = Jadwalmapel::with([
+        // $items = Jadwalmapel::with([
         //     'mapel', 'guru'
         // ])->get();
         

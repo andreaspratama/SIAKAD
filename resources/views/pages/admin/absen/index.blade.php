@@ -33,7 +33,13 @@
                   @foreach ($items as $item)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$item->user->name}}</td>
+                      <td>
+                        @if ($item->user == null)
+                            Guru Sudah Tidak Ada
+                        @else
+                            {{$item->user->name}}
+                        @endif
+                      </td>
                       <td>{{$item->tanggal}}</td>
                       <td>{{$item->time_in}}</td>
                       <td>{{$item->time_out}}</td>

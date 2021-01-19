@@ -126,7 +126,7 @@ class OnlinepembController extends Controller
 
     public function indexadmin()
     {
-        $items = Onlinepemb::with(['jenispem'])->get();
+        $items = Onlinepemb::with(['jenispem'])->orderby('id', 'DESC')->get();
 
         return view('pages.admin.onlinepemb.indexadmin', compact('items'));
     }

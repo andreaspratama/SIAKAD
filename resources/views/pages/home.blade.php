@@ -41,7 +41,11 @@
                             @if (auth()->user()->role == 'guru')
                                 <h1 class="mb-3">
                                     @if (auth()->user()->role == 'guru')
-                                        Selamat Datang Pak {{auth()->user()->name}}
+                                        @if (auth()->user()->guru->jns_kelamin == 'L')
+                                            Selamat Datang Bapak {{auth()->user()->name}}
+                                        @else
+                                            Selamat Datang Ibu {{auth()->user()->name}}
+                                        @endif
                                     @endif
                                     @if (auth()->user()->role == 'siswa')   
                                         Selamat Datang {{auth()->user()->name}}
