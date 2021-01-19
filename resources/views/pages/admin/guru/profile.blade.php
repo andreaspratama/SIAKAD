@@ -1,5 +1,9 @@
 @extends('layouts.admin.admin')
 
+@section('title')
+    Profile {{auth()->user()->guru->nama}}
+@endsection
+
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">

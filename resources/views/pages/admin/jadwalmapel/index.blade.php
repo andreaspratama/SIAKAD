@@ -40,28 +40,10 @@
                   @foreach ($items as $item)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>
-                        @if ($item->mapel == null)
-                            Mapel Terhapus
-                        @else
-                            {{$item->mapel->nama_mapel}}
-                        @endif
-                      </td>
-                      <td>
-                          @if ($item->guru == null)
-                              Guru Terhapus
-                          @else
-                              {{$item->guru->nama}}
-                          @endif
-                      </td>
+                      <td>{{$item->mapel->nama_mapel}}</td>
+                      <td>{{$item->guru->nama}}</td>
                       <td>{{$item->kelas}}</td>
-                      <td>
-                          @if ($item->ruang == null)
-                              Ruang Terhapus
-                          @else
-                              {{$item->ruang->nama_ruang}}
-                          @endif
-                      </td>
+                      <td>{{$item->ruang->nama_ruang}}</td>
                       <td>{{$item->hari}}</td>
                       <td>{{$item->jam_mulai}}</td>
                       <td>{{$item->jam_selesai}}</td>

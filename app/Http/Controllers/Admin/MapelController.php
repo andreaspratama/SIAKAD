@@ -82,7 +82,7 @@ class MapelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MapelRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
 
@@ -113,7 +113,7 @@ class MapelController extends Controller
         $item = Mapel::findOrFail($id);
         $item->delete();
 
-        // Jadwalmapel::where('mapel_id', $id)->delete();
+        Jadwalmapel::where('mapel_id', $id)->delete();
 
         return redirect()->route('mapel.index')->with('status', 'Data Berhasil Dihapus');
     }

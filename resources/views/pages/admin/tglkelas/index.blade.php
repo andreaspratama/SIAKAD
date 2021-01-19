@@ -44,7 +44,7 @@
                       <td>{{$item->asal_kls}}</td>
                       <td>{{$item->tgl_kls}}</td>
                       <td>
-                        @if ($item->thnakademik == 0)
+                        @if ($item->thnakademik == null)
                             Tahun Akademik Terhapus
                         @else
                             {{$item->thnakademik->tahun_akademik}}

@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>
-                        @if ($p->jenispem == 0)
+                        @if ($p->jenispem == null)
                             Jenis Pembayaran Terhapus
                         @else
                             {{$p->jenispem->jenis}}

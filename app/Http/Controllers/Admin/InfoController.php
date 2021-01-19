@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\InfoRequest;
 use App\Info;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class InfoController extends Controller
 {

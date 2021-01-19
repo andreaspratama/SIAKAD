@@ -30,7 +30,7 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>
-                        @if ($p->thnakademik == 0)
+                        @if ($p->thnakademik == null)
                             Tahun Akademik Terhapus
                         @else
                             {{$p->thnakademik->tahun_akademik}}

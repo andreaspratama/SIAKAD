@@ -16,4 +16,9 @@ class Guru extends Model
     {
         return $this->belongsToMany(Mapel::class)->withPivot(['ruang', 'kelas', 'hari', 'jam_mulai', 'jam_selesai']);
     }
+
+    public function jadwalmapel()
+    {
+        return $this->hasMany(Jadwalmapel::class);
+    }
 }

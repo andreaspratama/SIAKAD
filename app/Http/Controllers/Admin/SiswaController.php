@@ -202,6 +202,7 @@ class SiswaController extends Controller
 
         $hapus_siswa = $item->user_id;
         User::where('id', $hapus_siswa)->delete();
+        Absensiswa::where('user_id', $hapus_siswa)->delete();
 
         return redirect('/siswa')->with('status', 'Data berhasil Dihapus');
     }

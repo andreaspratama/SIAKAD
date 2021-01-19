@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800 mt-4 mb-4">Masukan Nilai</h1>
+        <h1 class="h3 mb-2 text-gray-800 mt-4 mb-4">Pilih Kelas</h1>
         
         
         <!-- DataTales Example -->

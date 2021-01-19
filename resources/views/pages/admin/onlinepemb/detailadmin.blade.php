@@ -35,7 +35,7 @@
                     <tr>
                         <th>Jenis Pembayaran</th>
                         <td>
-                            @if ($item->jenispem == 0)
+                            @if ($item->jenispem == null)
                                 Jenis Pembayaran Terhapus
                             @else
                                 {{$item->jenispem->jenis}}
