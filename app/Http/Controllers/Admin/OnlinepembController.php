@@ -51,7 +51,7 @@ class OnlinepembController extends Controller
         $pemb->nama = Auth::user()->siswa->nama;
         $pemb->jenispem_id = $request->jenispem_id;
         $pemb->tanggal = $tanggal;
-        $pemb->kelas = $request->kelas;
+        $pemb->kelas = Auth::user()->siswa->kelas;
         $pemb->image = $request->file('image')->store(
             'assets/gallery', 'public'
         );

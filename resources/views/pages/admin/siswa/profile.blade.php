@@ -6,10 +6,10 @@
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800 mt-4 mb-2">Profile {{auth()->user()->siswa->nama}}</h1>
+        <h1 class="h3 mb-4 text-gray-800 mt-4">Profile {{auth()->user()->siswa->nama}}</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow">

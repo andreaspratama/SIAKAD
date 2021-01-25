@@ -10,6 +10,7 @@
   <meta name="author" content="">
 
   <title>Login | SD IT Bunayya</title>
+  <link rel="shortcut icon" href="{{url('../../foto/bunayya.png')}}">
 
   <!-- Custom fonts for this template-->
   <link href="{{url('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -55,7 +56,7 @@
                     <button type="submit" class="btn btn-primary btn-user btn-block mb-3">
                       Masuk
                     </button>
-                    <a href="{{route('reset')}}" style="text-decoration: none; font-size: 15px;">Reset Password</a>
+                    {{-- <a href="{{route('reset')}}" style="text-decoration: none; font-size: 15px;">Reset Password</a> --}}
                   </form>
                 </div>
               </div>

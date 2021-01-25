@@ -9,7 +9,13 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-4">Profile Bapak {{auth()->user()->guru->nama}}</h1>
+        <h1 class="h3 mb-3 text-gray-800 mt-4">
+            @if (auth()->user()->guru->jns_kelamin == 'L')
+                Profile Bapak {{auth()->user()->name}}
+            @else
+                Profile Ibu {{auth()->user()->name}}
+            @endif
+        </h1>
 
         @if (session('status'))
             <div class="alert alert-success">

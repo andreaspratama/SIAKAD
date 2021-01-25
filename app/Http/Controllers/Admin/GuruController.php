@@ -250,7 +250,7 @@ class GuruController extends Controller
                         'note' => $note]);
             return redirect()->back();
         }
-        return $request->all(); 
+        // return $request->all(); 
     }
 
     public function profile()

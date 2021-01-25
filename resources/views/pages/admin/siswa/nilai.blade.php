@@ -6,7 +6,7 @@
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container">
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800 mt-4 mb-4">Nilai {{$item->nama}}</h1>

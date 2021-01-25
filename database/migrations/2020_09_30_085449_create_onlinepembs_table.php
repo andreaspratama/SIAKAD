@@ -15,7 +15,7 @@ class CreateOnlinepembsTable extends Migration
     {
         Schema::create('onlinepembs', function (Blueprint $table) {
             $table->id();
-            $table->integer('nisn');
+            $table->bigInteger('nisn');
             $table->string('nama');
             $table->integer('jenispem_id');
             $table->date('tanggal');

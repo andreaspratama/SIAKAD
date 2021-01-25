@@ -53,6 +53,8 @@ Route::prefix('/')
             Route::post('siswa/importexcel', 'SiswaController@importExcel')->name('importexcel');
             Route::get('siswa/exportpdf', 'SiswaController@exportPdf');
             Route::get('siswa/{siswa}/nilaiexport', 'SiswaController@exportNilaiPdf');
+            Route::get('ubahPassword', 'PasswordController@create')->name('password.create');
+            Route::put('ubahPassword', 'PasswordController@update')->name('password.update');
             
             Route::get('guru', 'GuruController@index');
             Route::get('guru/create', 'GuruController@create');
@@ -127,8 +129,8 @@ Route::prefix('/')
             Route::get('siswa/profile', 'SiswaController@profile');
             Route::get('siswa/absen', 'SiswaController@absen');
             Route::post('absensiswa', 'SiswaController@absenpros');
-            // Route::get('siswa/info', 'SiswaController@info');
-            // Route::get('siswa/info/{slug}', 'SiswaController@infoLebih');
+            // Route::get('info', 'HomeController@index');
+            // Route::get('/info/{slug}', 'HomeController@infoLebih');
             Route::get('siswa/profile/edit/{id}', 'SiswaController@profileedit');
             Route::get('siswa/nilai', 'SiswaController@lihatNilai');
             Route::get('siswa/jadwal', 'SiswaController@jadwal');
@@ -151,13 +153,5 @@ Route::prefix('/')
             Route::get('/siswa/{id}/{idmapel}/hapus', 'NilaiController@nilaihapus');
             Route::post('/siswa/{id}/nilaiupdate', 'NilaiController@nilaiupdate');
             // Route::post('guru/store', 'TugasController@store');
-        });
-
-        Route::group(['middleware' => ['auth', 'check:kepala_sekolah']], function(){
-            Route::get('kepalasekolah/siswa', 'KepalasekolahController@siswa');
-            Route::get('kepalasekolah/{kepalasekolah}/siswa', 'KepalasekolahController@detailsiswa');
-            Route::get('kepalasekolah/guru', 'KepalasekolahController@guru');
-            Route::get('kepalasekolah/{kepalasekolah}/guru', 'KepalasekolahController@detailguru');
-            Route::get('kepalasekolah/jadwalmapel', 'KepalasekolahController@jadwal');
         });
     });

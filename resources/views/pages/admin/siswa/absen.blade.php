@@ -6,18 +6,18 @@
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-4">Absensi Siswa {{auth()->user()->siswa->nama}}</h1>
+        <h1 class="h3 mb-4 text-gray-800 mt-4">Absensi Siswa {{auth()->user()->siswa->nama}}</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow">
           <div class="card-body">
               <div class="row mb-3">
-                <div class="card col-lg-8 ml-auto mr-auto">
+                <div class="card col-lg-12 ml-auto mr-auto">
                     <div class="card-header">
-                      <strong></strong>
+                        <strong>{{$info['status']}}</strong>
                     </div>
                     <div class="card-body">
                         <form action="/absensiswa" method="POST">
@@ -53,29 +53,31 @@
                   </div> --}}
               </div>
               <div class="row">
-                <div class="card col-lg-8 ml-auto mr-auto">
+                <div class="card col-lg-12 ml-auto mr-auto">
                     <div class="card-header">
                       Riwayat Absensi
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Tanggal</th>
-                                    <th>Jam Masuk</th>
-                                    <th>Catatan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($items as $item)
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
                                     <tr>
-                                        <td>{{$item->tanggal}}</td>
-                                        <td>{{$item->time_in}}</td>
-                                        <td>{{$item->note}}</td>
+                                        <th>Tanggal</th>
+                                        <th>Jam Masuk</th>
+                                        <th>Catatan</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($items as $item)
+                                        <tr>
+                                            <td>{{$item->tanggal}}</td>
+                                            <td>{{$item->time_in}}</td>
+                                            <td>{{$item->note}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         {{ $items->links() }}
                     </div>
                 </div>
@@ -91,3 +93,13 @@
     </div>
     <!-- /.container-fluid -->
 @endsection
+
+@push('addon-style')
+    <style>
+        @media (max-width: 575.98px) {
+            .btn-flat {
+                width: 100%;
+            }
+        }
+    </style>
+@endpush

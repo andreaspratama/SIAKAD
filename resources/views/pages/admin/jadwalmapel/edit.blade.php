@@ -23,7 +23,7 @@
                     <span class="input-group-text" id="gurus_id"><i class="fas fa-user"></i></span>
                   </div>
                   <select name="guru_id" required class="custom-select">
-                    <option value="{{$item->guru_id}}">Jangan Diubah</option>
+                    <option value="{{$item->guru_id}}">-- Ubah Bila Perlu --</option>
                     @foreach ($gurus as $gurus)
                         <option value="{{$gurus->id}}">
                             {{$gurus->nama}}
@@ -37,7 +37,7 @@
                     <span class="input-group-text" id="mapels_id"><i class="fas fa-book-reader"></i></span>
                   </div>
                   <select class="custom-select" name="mapel_id">
-                    <option value="{{$item->mapel_id}}">Jangan Diubah</option>
+                    <option value="{{$item->mapel_id}}">-- Ubah Bila Perlu --</option>
                     @foreach ($mapels as $mapels)
                         <option value="{{$mapels->id}}">
                           {{$mapels->nama_mapel}}
@@ -68,7 +68,7 @@
                     <span class="input-group-text" id="ruangs_id"><i class="fas fa-school"></i></span>
                   </div>
                   <select class="custom-select" name="ruang_id">
-                    <option value="{{$item->ruang_id}}">Jangan Diubah</option>
+                    <option value="{{$item->ruang_id}}">-- Ubah Bila Perlu --</option>
                     @foreach ($ruangs as $ruangs)
                         <option value="{{$ruangs->id}}">
                           {{$ruangs->nama_ruang}}

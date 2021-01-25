@@ -6,15 +6,15 @@
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800 mt-4 mb-2">Upload Bukti Pembayaran</h1>
+        <h1 class="h3 mb-4 text-gray-800 mt-4">Upload Bukti Pembayaran</h1>
 
         <!-- DataTales Example -->
-        <div class="card shadow">
+        <div class="card shadow col-lg-12 ml-auto mr-auto">
             <div class="card-body">
-                <form class="col-lg-8 ml-auto mr-auto" action="{{route('upload.store')}}" method="POST" enctype="multipart/form-data">
+                <form class="ml-auto mr-auto" action="{{route('upload.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="jenispem_id">Jenis Pembayaran</label>
@@ -39,23 +39,6 @@
                           </div>
                         @enderror
                     </div> --}}
-                    <div class="form-group">
-                        <label for="kelas">Kelas</label>
-                        <select class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
-                          <option>-- Pilih Kelas --</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                        </select>
-                        @error('kelas')
-                            <div class="invalid-feedback">
-                                {{$message}}
-                            </div>
-                        @enderror
-                    </div>
                     <div class="form-group">
                         <label for="image">Foto Bukti</label>
                         <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image">

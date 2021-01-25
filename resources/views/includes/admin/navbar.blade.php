@@ -47,6 +47,12 @@
       <!-- Dropdown - User Information -->
       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
       
+        @if (auth()->user()->role == 'admin')
+          <a class="dropdown-item" href="{{route('password.create')}}">
+            <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+            Ubah Password
+          </a>
+        @endif
         <a class="dropdown-item" href="/logout">
           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
           Logout
