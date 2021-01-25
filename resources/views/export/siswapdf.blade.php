@@ -24,7 +24,6 @@
                 <th>Alamat</th>
                 <th>Nama Ortu</th>
                 <th>Kelas</th>
-                <th>Asal Sekolah</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +37,6 @@
                     <td>{{$s->alamat}}</td>
                     <td>{{$s->nama_ortu}}</td>
                     <td>{{$s->kelas}}</td>
-                    <td>{{$s->asal_sklh}}</td>
                 </tr>
             @empty
                 <tr>
