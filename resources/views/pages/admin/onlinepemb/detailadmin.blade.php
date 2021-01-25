@@ -21,7 +21,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Nis</th>
+                        <th>Nisn</th>
                         <td>{{$item->nisn}}</td>
                     </tr>
                     <tr>

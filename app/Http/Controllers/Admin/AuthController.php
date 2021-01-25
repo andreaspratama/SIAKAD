@@ -36,19 +36,19 @@ class AuthController extends Controller
         return view('pages.admin.auth.gantipas');
     }
 
-    public function postreset(AuthRequest $request)
-    {
-        $username = $request->input('username');
+    // public function postreset(AuthRequest $request)
+    // {
+    //     $username = $request->input('username');
 
-        $user = User::where('username', $username)->first();
+    //     $user = User::where('username', $username)->first();
         
-        if($user) {
+    //     if($user) {
 
-            $user->password = Hash::make($request->input('password-baru'));
+    //         $user->password = Hash::make($request->input('password-baru'));
 
-            if($user->save()) {
-                return redirect('/')->with('statusreset', 'Password berhasil diubah');
-            }
-        }
-    }
+    //         if($user->save()) {
+    //             return redirect('/')->with('statusreset', 'Password berhasil diubah');
+    //         }
+    //     }
+    // }
 }

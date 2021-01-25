@@ -6,10 +6,10 @@
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-3">Jadwal Siswa {{auth()->user()->siswa->nama}}</h1>
+        <h1 class="h3 mb-4 text-gray-800 mt-4">Jadwal Siswa {{auth()->user()->siswa->nama}}</h1>
 
         @if (session('status'))
             <div class="alert alert-success">
@@ -35,13 +35,7 @@
                             @foreach ($items as $item)
                                 @if (auth()->user()->siswa->kelas === $item->kelas)
                                     <tr>
-                                        <td>
-                                            @if ($item->mapel == null)
-                                                Mapel Terhapus
-                                            @else
-                                                {{$item->mapel->nama_mapel}}
-                                            @endif
-                                        </td>
+                                        <td>{{$item->mapel->nama_mapel}}</td>
                                         <td>
                                             @if ($item->guru == null)
                                                 Guru Terhapus

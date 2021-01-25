@@ -16,7 +16,7 @@ class CreateTinggalkelasTable extends Migration
         Schema::create('tinggalkelas', function (Blueprint $table) {
             $table->id();
             $table->integer('thnakademik_id');
-            $table->integer('nisn');
+            $table->bigInteger('nisn');
             $table->string('nama');
             $table->integer('asal_kls');
             $table->integer('tgl_kls');

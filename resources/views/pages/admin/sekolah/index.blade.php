@@ -46,7 +46,7 @@
                           <img src="{{Storage::url($item->image)}}" alt="" style="width: 250px" class="img-thumbnail">
                       </td>
                       <td>
-                          <a href="{{route('sekolah.edit', $item->id)}}" class="btn btn-circle btn-warning">
+                          <a href="{{route('sekolah.edit', $item->id)}}" class="btn btn-circle btn-sm btn-warning">
                               <i class="fa fa-edit"></i>
                           </a>
                       </td>

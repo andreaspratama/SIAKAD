@@ -25,7 +25,6 @@ class OnlinepembRequest extends FormRequest
     {
         return [
             'jenispem_id' => 'required|exists:jenispems,id',
-            'kelas' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,giv,svg'
         ];
     }
@@ -35,7 +34,6 @@ class OnlinepembRequest extends FormRequest
         return [
             'jenispem_id.exists' => 'Jenis Pembayaran Tidak Sesuai',
             'jenispem_id.required' => 'Jenis Pembayaran Tidak Boleh Kosong',
-            'kelas.required' => 'Kelas Tidak Boleh Kosong',
             'image.required' => 'Gambar Tidak Boleh Kosong',
             'image.image' => 'File Harus Berupa Gambar',
             'image.mimes' => 'File harus berformat jpeg,jpg,giv,svg,png'

@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 text-gray-800">Data Absen</h1>
+        <h1 class="h3 text-gray-800">Data Absen Guru</h1>
         
         <a href="{{route('absenguru.cetakexcel')}}" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
         <a href="{{route('absenguru.cetakpdf')}}" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
@@ -33,13 +33,7 @@
                   @foreach ($items as $item)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>
-                        @if ($item->user == null)
-                            Guru Sudah Tidak Ada
-                        @else
-                            {{$item->user->name}}
-                        @endif
-                      </td>
+                      <td>{{$item->user->name}}</td>
                       <td>{{$item->tanggal}}</td>
                       <td>{{$item->time_in}}</td>
                       <td>{{$item->time_out}}</td>

@@ -10,7 +10,7 @@
         
         <div class="home">
             @if (auth()->user()->role == 'siswa')
-                <h1 class="h3 mb-4 text-gray-800 mt-4 mb-2">Info Akademik</h1>
+                <h1 class="h3 mb-4 text-gray-800 mt-4 mb-2 judul">Info Akademik</h1>
                 @foreach ($infos as $item)
                     <div class="eventEvent" data-aos="zoom-in">
                         <div class="row">
@@ -37,41 +37,41 @@
                 @endforeach
             @endif
             <div class="row">
-                        <div class="col align-self-center">
+                <div class="col align-self-center">
+                    @if (auth()->user()->role == 'guru')
+                        <h1 class="mb-3">
                             @if (auth()->user()->role == 'guru')
-                                <h1 class="mb-3">
-                                    @if (auth()->user()->role == 'guru')
-                                        @if (auth()->user()->guru->jns_kelamin == 'L')
-                                            Selamat Datang Bapak {{auth()->user()->name}}
-                                        @else
-                                            Selamat Datang Ibu {{auth()->user()->name}}
-                                        @endif
-                                    @endif
-                                    @if (auth()->user()->role == 'siswa')   
-                                        Selamat Datang {{auth()->user()->name}}
-                                    @endif
-                                </h1>
-                                <p class="mb-5">
-                                    @if (auth()->user()->role == 'guru')
-                                        Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang <br>
-                                        {{-- @if (auth()->user()->role == 'guru')
-                                            <a href="{{route('dashboard.guru')}}" class="btn btn-primary mt-3">Masuk Dashboard</a>
-                                        @endif --}}
-                                    @endif
-                                    {{-- @if (auth()->user()->role == 'siswa')
-                                        Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang <br>
-                                    @endif --}}
-                                </p>
+                                @if (auth()->user()->guru->jns_kelamin == 'L')
+                                    Selamat Datang Bapak {{auth()->user()->name}}
+                                @else
+                                    Selamat Datang Ibu {{auth()->user()->name}}
+                                @endif
                             @endif
-                        </div>
-                        <div class="col d-none d-sm-none d-md-block">
+                            @if (auth()->user()->role == 'siswa')   
+                                Selamat Datang {{auth()->user()->name}}
+                            @endif
+                        </h1>
+                        <p class="mb-5">
                             @if (auth()->user()->role == 'guru')
-                                <img width="450" src="frontend/images/pend.jpg" alt="">
+                                Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang <br>
+                                {{-- @if (auth()->user()->role == 'guru')
+                                    <a href="{{route('dashboard.guru')}}" class="btn btn-primarmt-3">Masuk Dashboard</a>
+                                @endif --}}
                             @endif
                             {{-- @if (auth()->user()->role == 'siswa')
-                                <img width="450" src="frontend/images/pend.jpg" alt="">
+                                Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang <br>
                             @endif --}}
-                        </div>
+                        </p>
+                    @endif
+                </div>
+                <div class="col d-none d-sm-none d-md-block">
+                    @if (auth()->user()->role == 'guru')
+                        <img width="450" src="frontend/images/pend.jpg" alt="">
+                    @endif
+                    {{-- @if (auth()->user()->role == 'siswa')
+                        <img width="450" src="frontend/images/pend.jpg" alt="">
+                    @endif --}}
+                </div>
             </div>
             @if (auth()->user()->role == 'admin')
                 <div class="row">
@@ -145,6 +145,12 @@
         .eventEvent .eventComponent .btn-read:hover{
             background-color: rgb(74, 74, 248);
             color: #fff;
+        }
+
+        @media (max-width: 575.98px) {
+            .judul {
+                text-align: center;
+            }
         }
     </style>
 @endpush

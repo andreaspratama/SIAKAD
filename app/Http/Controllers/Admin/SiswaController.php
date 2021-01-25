@@ -336,14 +336,12 @@ class SiswaController extends Controller
         if(is_null($cek_absen)) {
             $info = array(
                 "status" => "Anda Belum Mengisi Absen Hari Ini",
-                "btnIn" => "",
-                "btnOut" => "disabled"
+                "btnIn" => ""
             );
         } else {
             $info = array(
                 "status" => "Absensi Hari Ini Telah Berakhir",
-                "btnIn" => "disabled",
-                "btnOut" => "disabled"
+                "btnIn" => "disabled"
             );
             // $info = array(
             //     "status" => "Jangan Lupa Absen Keluar",

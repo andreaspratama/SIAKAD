@@ -9,7 +9,13 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-3 text-gray-800 mt-4">Jadwal Bapak {{auth()->user()->name}}</h1>
+        <h1 class="h3 mb-3 text-gray-800 mt-4">
+          @if (auth()->user()->guru->jns_kelamin == 'L')
+              Jadwal Bapak {{auth()->user()->name}}
+          @else
+              Jadwal Ibu {{auth()->user()->name}}
+          @endif
+        </h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
