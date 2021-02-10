@@ -21,4 +21,9 @@ class Guru extends Model
     {
         return $this->hasMany(Jadwalmapel::class);
     }
+
+    public function pg()
+    {
+        return $this->hasMany('App\Penilaianguru');
+    }
 }

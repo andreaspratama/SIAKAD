@@ -13,29 +13,14 @@ class JadwalController extends Controller
         $jadwal = Jadwalmapel::all();
 
         if(!$jadwal) {
-            return response()->json(['message' => 'Gagal']);
+            return response()->json(['message' => 'Data not found']);
         } else {
-            return response()->json($jadwal);
+            return response()->json(
+                [
+                    "message" => 'Success',
+                    "data" => $jadwal
+                ]
+            );
         }
-        // $id = $request->input('id');
-        // $nama = $request->input('nama');
-
-        // if($id)
-        // {
-        //     $siswa = Siswa::find($id);
-
-        //     if($siswa) {
-        //         return response()->json([$siswa, 'message' => 'sukses'], 200);
-        //     } else {
-        //         return response()->json(['message' => 'gagal']);
-        //     }
-        // }
-
-        // $siswa = Siswa::where('kelas', 'like', '%' . $kelas . '%')->first();
-        // if($siswa) {
-        //     return response()->json($siswa);
-        // } else {
-        //     return response()->json(['message' => 'gagal']);
-        // }
     }
 }
