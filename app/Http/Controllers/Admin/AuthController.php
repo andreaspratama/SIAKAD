@@ -16,11 +16,6 @@ class AuthController extends Controller
     {
         return view('pages.admin.auth.login');
     }
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/');
-    }
     
     public function postlogin(Request $request)
     {
@@ -29,6 +24,12 @@ class AuthController extends Controller
         }
 
         return redirect('/')->with('status', 'Username / Password tidak sesuai');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 
     public function reset()

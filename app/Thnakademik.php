@@ -16,4 +16,9 @@ class Thnakademik extends Model
     {
         return $this->hasMany('App\Tinggalkelas');
     }
+
+    public function pg()
+    {
+        return $this->hasMany('App\Penilaianguru');
+    }
 }

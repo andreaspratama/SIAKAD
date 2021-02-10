@@ -51,6 +51,11 @@
       </div>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="{{route('penilaianguru.index')}}">
+        <i class="fas fa-star"></i>
+        <span>Penilaian Guru</span></a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-money-bill-wave-alt"></i>
         <span>Pembayaran</span>

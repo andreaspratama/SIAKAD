@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Siswa;
+use App\Guru;
 use Illuminate\Http\Request;
 
-class SiswaController extends Controller
+class GuruController extends Controller
 {
     public function index(Request $request)
     {
-        $siswa = Siswa::all();
+        $guru = Guru::all();
 
-        if($siswa) {
+        if($guru) {
             return response()->json(
                 [
                     "message" => 'Success',
-                    "data" => $siswa
+                    "data" => $guru
                 ]
             );
         } else {
@@ -26,13 +26,13 @@ class SiswaController extends Controller
 
     public function show($id)
     {
-        $siswa = Siswa::find($id);
+        $guru = Guru::find($id);
 
-        if($siswa) {
+        if($guru) {
             return response()->json(
                 [
                     "message" => 'Success',
-                    "data" => $siswa
+                    "data" => $guru
                 ]
             );
         } else {

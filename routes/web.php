@@ -115,6 +115,7 @@ Route::prefix('/')
             Route::get('cetakPembayaranOnlineExcel', 'OnlinepembController@cetakEXCEL')->name('pembayaranonline.cetakexcel');
             Route::get('buktiPembOnline', 'OnlinepembController@indexadmin')->name('online.pemb');
             Route::get('buktiPembOnline/{id}/detail', 'OnlinepembController@detail')->name('detail.pemb');
+            Route::resource('penilaianguru', 'Penilaianguruc');
 
             // Route::get('nilai', 'NilaiController@index');
             // Route::get('siswa/{siswa}/nilai', 'NilaiController@detail');

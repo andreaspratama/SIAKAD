@@ -21,5 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('/siswa/{id}/tambahnilai', 'ApiController@tambahnilai');
 Route::post('login', 'API\AuthController@login');
 Route::get('siswa', 'API\SiswaController@index');
+Route::get('siswa/{id}', 'API\SiswaController@show');
+Route::get('guru', 'API\GuruController@index');
+Route::get('guru/{id}', 'API\GuruController@show');
 Route::get('jadwal', 'API\JadwalController@index');
 Route::post('onlinepem', 'API\OnlinepemController@proses');
