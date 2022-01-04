@@ -30,14 +30,15 @@ class NilaiController extends Controller
     {
         $item = Siswa::findOrFail($id);
         $matapelajarans = Mapel::all();
+        $thnakademiks = Thnakademik::all();
 
-        return view('pages.admin.siswa.tambahnilai', compact('item', 'matapelajarans'));
+        return view('pages.admin.siswa.tambahnilai', compact('item', 'matapelajarans', 'thnakademiks'));
     }
 
     public function nilai(Request $request, $id)
     {
         $siswa = Siswa::findOrFail($id);
-        $siswa->mapel()->attach($request->mapel, ['nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
+        $siswa->mapel()->attach($request->mapel, ['thnakademik_id' => $request->thnakademik_id, 'nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
 
         return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Ditambahkan');
     }

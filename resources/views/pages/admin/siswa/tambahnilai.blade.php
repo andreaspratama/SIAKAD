@@ -23,6 +23,7 @@
                           <thead>
                             <tr>
                               <th>Nama Mapel</th>
+                              <th>Nama Mapel</th>
                               <th>Nilai UH1</th>
                               <th>Nilai UH2</th>
                               <th>Nilai UTS</th>
@@ -35,6 +36,9 @@
                               @foreach ($item->mapel as $mapel)
                                   <tr>
                                     <td>{{$mapel->nama_mapel}}</td>
+                                    @foreach ($item->thnakademik as $thak)
+                                        <td>{{$thak->tahun_akademik}}</td>
+                                    @endforeach
                                     <td>{{$mapel->pivot->nilai_uh1}}</td>
                                     <td>{{$mapel->pivot->nilai_uh2}}</td>
                                     <td>{{$mapel->pivot->uts}}</td>
@@ -80,6 +84,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="mapel"><i class="fas fa-book-reader"></i></span>
                     </div>
+                    <select class="custom-select" name="thnakademik_id" required>
+                        <option>-- Pilih Tahun Akademik --</option>
+                        @foreach ($thnakademiks as $thnak)
+                            <option value="{{$thnak->id}}">
+                            {{$thnak->tahun_akademik}} / {{$thnak->semester}}
+                            </option>
+                        @endforeach
+                    </select>
                     <select class="custom-select" name="mapel" required>
                         <option>-- Pilih Mapel --</option>
                         @foreach ($matapelajarans as $matapelajaran)

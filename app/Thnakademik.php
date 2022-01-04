@@ -21,4 +21,14 @@ class Thnakademik extends Model
     {
         return $this->hasMany('App\Penilaianguru');
     }
+
+    public function mapel()
+    {
+        return $this->belongsToMany(Mapel::class)->withPivot(['thnakademik_id', 'nilai_uh1', 'nilai_uh2', 'uts', 'uas', 'status']);
+    }
+
+    public function siswa()
+    {
+        return $this->belongsToMany(Siswa::class)->withPivot(['thnakademik_id', 'nilai_uh1', 'nilai_uh2', 'uts', 'uas', 'status']);
+    }
 }
