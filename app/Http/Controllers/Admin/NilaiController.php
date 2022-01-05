@@ -35,10 +35,23 @@ class NilaiController extends Controller
         return view('pages.admin.siswa.tambahnilai', compact('item', 'matapelajarans', 'thnakademiks'));
     }
 
+    public function detailNilai($id)
+    {
+        $item = Siswa::findOrFail($id);
+        $matapelajarans = Mapel::all();
+        $thnakademiks = Thnakademik::all();
+
+        return view('pages.admin.siswa.detailNilai', compact('item', 'matapelajarans', 'thnakademiks'));
+    }
+
     public function nilai(Request $request, $id)
     {
+        // dd($request->all());
+
         $siswa = Siswa::findOrFail($id);
-        $siswa->mapel()->attach($request->mapel, ['thnakademik_id' => $request->thnakademik_id, 'nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
+        $siswa->mapel()->attach($request->mapel, ['nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
+
+        $siswa->thnakademik()->attach($request->thnakademik);
 
         return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Ditambahkan');
     }
@@ -72,5 +85,23 @@ class NilaiController extends Controller
         $siswa->mapel()->detach($idmapel);
 
         return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Dihapus');
+    }
+
+    public function cetakNilai($id)
+    {
+        $data = Siswa::findOrFail($id);
+        $items = Thnakademik::all();
+        return view('pages.admin.siswa.cetakNilaiSiswa', compact('items', 'data'));
+    }
+
+    public function cetakNilaiPeraka($id, $thnakademik)
+    {
+        // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
+        $cetakPeraka = Siswa::findOrFail($id)->thnakademik('tahun_akademik', [$thnakademik]);
+
+        dd($cetakPeraka);
+
+        $pdf = PDF::loadview('export.absenpertanggalpdf', compact('absenPertanggal'));
+        return $pdf->download('laporan-absen.pdf');
     }
 }

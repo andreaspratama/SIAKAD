@@ -11,6 +11,7 @@ use App\Mapel;
 use App\Sekolah;
 use App\Tugas;
 use App\Info;
+use App\Thnakademik;
 use App\Absensiswa;
 // use Auth;
 use App\Exports\SiswaExport;
@@ -253,10 +254,12 @@ class SiswaController extends Controller
     {
         $item = Auth::user()->siswa;
         $mapel = Mapel::all();
+        $thnakademik = Thnakademik::all();
 
         return view('pages.admin.siswa.nilai', [
             'item' => $item,
-            'mapel' => $mapel
+            'mapel' => $mapel,
+            'thnakademik' => $thnakademik
         ]);
     }
 

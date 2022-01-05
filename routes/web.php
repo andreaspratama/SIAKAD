@@ -149,10 +149,13 @@ Route::prefix('/')
             Route::get('guru/nilai', 'NilaiController@index');
             Route::get('guru/nilaiProses/{kelas}', 'NilaiController@proses');
             Route::get('siswa/{siswa}/nilai', 'NilaiController@detail');
+            Route::get('siswa/{siswa}/nilai/detail', 'NilaiController@detailNilai');
             Route::post('siswa/{siswa}/nilaitambah', 'NilaiController@nilai');
             Route::get('/siswa/{id}/{idmapel}/nilaitambah', 'NilaiController@nilaitambah');
             Route::get('/siswa/{id}/{idmapel}/hapus', 'NilaiController@nilaihapus');
             Route::post('/siswa/{id}/nilaiupdate', 'NilaiController@nilaiupdate');
+            Route::get('cetakNilai/{id}', 'NilaiController@cetakNilai')->name('nilai.cetak');
+            Route::get('cetakNilaiPeraka/{id}/{thnakademik}', 'NilaiController@cetakNilaiPeraka')->name('cetaknilai.cetakaka');
             // Route::post('guru/store', 'TugasController@store');
         });
     });

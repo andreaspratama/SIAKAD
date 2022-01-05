@@ -20,6 +20,7 @@
               <table class="table table-bordered text-center table-striped" id="table" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th>Tahun Akademik</th>
                     <th>Mapel</th>
                     <th>Nilai UH1</th>
                     <th>Nilai UH2</th>
@@ -31,6 +32,11 @@
                 <tbody>
                     @foreach ($item->mapel as $mapel)
                       <tr>
+                        <td>
+                          @foreach ($item->thnakademik as $ak)
+                              {{$ak->tahun_akademik}} - {{$ak->semester}}
+                          @endforeach
+                        </td>
                         <td>{{$mapel->nama_mapel}}</td>
                         <td>{{$mapel->pivot->nilai_uh1}}</td>
                         <td>{{$mapel->pivot->nilai_uh2}}</td>

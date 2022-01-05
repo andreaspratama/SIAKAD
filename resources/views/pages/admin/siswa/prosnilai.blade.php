@@ -46,6 +46,9 @@
                                   <i class="fa fa-trash"></i>
                               </button>
                           </form> --}}
+                          <a href="/siswa/{{$pn->id}}/nilai/detail" class="btn btn-sm btn-success">
+                            Detail
+                          </a>
                         </td>
                     </tr>
                   @endforeach

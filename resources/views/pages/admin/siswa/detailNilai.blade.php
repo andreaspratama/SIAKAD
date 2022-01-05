@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    Tambah atau Edit Nilai
+    Detail Nilai
 @endsection
 
 @section('content')
@@ -15,9 +15,10 @@
             <div class="card-body">
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        {{-- <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#exampleModal">
                             Tambah Nilai
-                        </button>
+                        </button> --}}
+                      <a href="{{route('nilai.cetak', $item->id)}}" class="btn btn-primary btn-sm mb-2">Print Nilai</a>
                       <div class="table-responsive">
                         <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                           <thead>
@@ -29,7 +30,6 @@
                               <th>Nilai UTS</th>
                               <th>Nilai UAS</th>
                               <th>Status</th>
-                              <th>Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -46,15 +46,6 @@
                                     <td>{{$mapel->pivot->uts}}</td>
                                     <td>{{$mapel->pivot->uas}}</td>
                                     <td>{{$mapel->pivot->status}}</td>
-                                    <td>
-                                      <a href="/siswa/{{$item->id}}/{{$mapel->id}}/nilaitambah" class="btn btn-primary btn-sm">Tambah / Edit</a>
-                                      {{-- <a href="/siswa/{{$item->id}}/{{$mapel->id}}/hapus" class="btn btn-danger btn-sm">Hapus</a> --}}
-                                      {{-- <form action="/siswa/{{$item->id}}/{{$mapel->id}}/nilaihapus" method="post" class="btn btn-danger btn-sm d-inline">
-                                        @csrf
-                                        @method('delete')
-                                        Hapus
-                                      </form> --}}
-                                    </td>
                                   </tr>
                               @endforeach
                           </tbody>
