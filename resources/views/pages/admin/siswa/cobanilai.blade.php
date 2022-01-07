@@ -27,20 +27,6 @@
             <a href="" onclick="this.href='/guru/nilaiProsesKelas/'+ document.getElementById('kelas').value" class="btn btn-primary"><i class="fas fa-spinner mr-2"></i>Proses Nilai</a>
           </div>
         </div>
-        {{-- <div class="card shadow mb-4">
-          <div class="card-body">
-            <div class="form-group">
-              <label for="">Unit</label>
-              <select class="form-control mb-3" id="unit">
-                <option>-- Pilih Unit --</option>
-                @foreach ($items as $item)
-                  <option value={{$item->unit}}>{{$item->unit}}</option>
-                @endforeach
-              </select>
-            </div>
-            <a href="" onclick="this.href='/guru/nilaiProsesUnit/'+ document.getElementById('unit').value" class="btn btn-primary"><i class="fas fa-spinner mr-2"></i>Proses Nilai</a>
-          </div>
-        </div> --}}
 
     </div>
     <!-- /.container-fluid -->

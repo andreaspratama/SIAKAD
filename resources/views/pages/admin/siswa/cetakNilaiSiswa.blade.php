@@ -15,9 +15,12 @@
           <div class="card-body">
             <label for="">Kelas</label>
             <select class="form-control mb-3" id="thnakademik">
-              @foreach ($items as $item)
-                <option value="{{$item->id}}">{{$item->tahun_akademik}} / {{$item->semester}}</option>
-              @endforeach
+                        <option>-- Pilih Tahun Akademik --</option>
+                        @foreach ($thnakademik as $thnak)
+                            <option value="{{$thnak->id}}">
+                              {{$thnak->tahun_akademik}} / {{$thnak->semester}}
+                            </option>
+                        @endforeach
             </select>
             {{-- <label for="">Tahun Akademik</label>
             <div class="input-group mb-3">

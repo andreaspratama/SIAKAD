@@ -60,24 +60,20 @@ class SiswaController extends Controller
     public function store(SiswaRequest $request)
     {
         // insert ke table users
-        $user = new User;
-        $user->role = 'siswa';
-        $user->name = $request->nama;
-        $user->image = $request->file('image')->store(
-            'assets/gallery', 'public'
-        );
-        $user->username = $request->nisn;
-        $user->password = bcrypt($request->nisn);
-        $user->remember_token = Str::random(60);
-        $user->save();
+        // $user = new User;
+        // $user->role = 'siswa';
+        // $user->name = $request->nama;
+        // $user->image = $request->file('image')->store(
+        //     'assets/gallery', 'public'
+        // );
+        // $user->username = $request->nisn;
+        // $user->password = bcrypt($request->nisn);
+        // $user->remember_token = Str::random(60);
+        // $user->save();
         
         // insert table siswa
-        $request->request->add(['user_id' => $user->id]);
+        // $request->request->add(['user_id' => $user->id]);
         $data = $request->all();
-        $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
-        );
-
         Siswa::create($data);
         
         return redirect('/siswa')->with('status', 'Data Berhasil Ditambahkan');
@@ -130,36 +126,29 @@ class SiswaController extends Controller
         $update_siswa = $data->user_id;
         // dd($j);
 
-        if(request('image')) {
-            Storage::delete($data->image);
-            $image = request()->file('image')->store('assets/gallery', 'public');
-        } elseif($data->image) {
-            $image = $data->image;
-        } else {
-            $image = null;
-        }
+        // if(request('image')) {
+        //     Storage::delete($data->image);
+        //     $image = request()->file('image')->store('assets/gallery', 'public');
+        // } elseif($data->image) {
+        //     $image = $data->image;
+        // } else {
+        //     $image = null;
+        // }
 
         $data->update([
             'nisn' => $request->nisn,
             'nama' => $request->nama,
-            'tpt_lahir' => $request->tpt_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'jns_kelamin' => $request->jns_kelamin,
-            'agama' => $request->agama,
-            'alamat' => $request->alamat,
-            'nama_ortu' => $request->nama_ortu,
             'kelas' => $request->kelas,
-            'asal_sklh' => $request->asal_sklh,
-            'image' => $image
+            'unit' => $request->unit
         ]);
 
-        $baru = User::find($update_siswa);
-        $baru->name = $request->nama;
-        $baru->image = $image;
-        $baru->username = $request->nisn;
-        $baru->password = bcrypt($request->nisn);
-        $baru->remember_token = Str::random(60);
-        $baru->save();
+        // $baru = User::find($update_siswa);
+        // $baru->name = $request->nama;
+        // $baru->image = $image;
+        // $baru->username = $request->nisn;
+        // $baru->password = bcrypt($request->nisn);
+        // $baru->remember_token = Str::random(60);
+        // $baru->save();
 
         // $messages = [
         //     'required' => 'Tidak boleh kosong',
@@ -282,15 +271,13 @@ class SiswaController extends Controller
 
     public function importExcel(Request $request)
     {
-        // Excel::import(new SiswaImport, $request->file('DataSiswa'));
-
+        // Excel::import(new \App\Imports\SiswaImport,$request->file('file'));
         $file = $request->file('file');
-        // dd($file);
         $namaFile = $file->getClientOriginalName();
         $file->move('DataSiswa', $namaFile);
 
         Excel::import(new SiswaImport, public_path('/DataSiswa/'.$namaFile));
-
+        
         return redirect('/siswa')->with('status', 'Data Berhasil Ditambahkan');
     }
 

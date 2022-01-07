@@ -41,47 +41,9 @@
           <a class="collapse-item" href="{{route('sekolah.index')}}">Data Sekolah</a>
           <a class="collapse-item" href="/siswa">Data Siswa</a>
           <a class="collapse-item" href="/guru">Data Guru</a>
-          <a class="collapse-item" href="{{route('thnakademik.index')}}">Tahun Akademik</a>
           <a class="collapse-item" href="{{route('mapel.index')}}">Mata Pelajaran</a>
-          <a class="collapse-item" href="{{route('ruang.index')}}">Ruang Kelas</a>
-          <a class="collapse-item" href="{{route('exkul.index')}}">Data Exkul</a>
+          <a class="collapse-item" href="{{route('thnakademik.index')}}">Tahun Akademik</a>
           <a class="collapse-item" href="/jadwalmapel">Jadwal Pelajaran</a>
-          <a class="collapse-item" href="{{route('tinggalkelas.index')}}">Data Tinggal Kelas</a>
-        </div>
-      </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{route('penilaianguru.index')}}">
-        <i class="fas fa-star"></i>
-        <span>Penilaian Guru</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-money-bill-wave-alt"></i>
-        <span>Pembayaran</span>
-      </a>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Components:</h6>
-          <a class="collapse-item" href="{{route('jenispem.index')}}">Jenis Pembayaran</a>
-          <a class="collapse-item" href="{{route('pembayaran.index')}}">Pembayaran</a>
-          <a class="collapse-item" href="{{route('online.pemb')}}">Pembayaran Online</a>
-          <a class="collapse-item" href="{{route('pembayaran.cetak')}}">Cetak Pertanggal</a>
-        </div>
-      </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-users"></i>
-        <span>Absen</span>
-      </a>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Components:</h6>
-          <a class="collapse-item" href="{{route('absen.index')}}">Absen Guru</a>
-          <a class="collapse-item" href="{{route('absensiswa.index')}}">Absen Siswa</a>
-          <a class="collapse-item" href="{{route('absen.cetak')}}">Cetak Pertanggal Guru</a>
-          <a class="collapse-item" href="{{route('absensiswa.cetak')}}">Cetak Pertanggal Siswa</a>
         </div>
       </div>
     </li>
@@ -98,11 +60,11 @@
     @endif
 
     @if (auth()->user()->role === 'guru')
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" href="/guru/jadwal">
           <i class="fas fa-book-reader"></i>
           <span>Jadwal</span></a>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link" href="/guru/nilai">
           <i class="fas fa-book-reader"></i>

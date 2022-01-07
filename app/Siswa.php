@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswa extends Model
 {
-    protected $fillable = [
-        'nisn', 'nama', 'tpt_lahir', 'tgl_lahir', 'jns_kelamin', 'agama', 'alamat', 'nama_ortu', 'kelas', 'asal_sklh', 'image', 'user_id'
-    ];
+    protected $guarded = [];
+    // protected $fillable = [
+    //     'nisn', 'nama', 'kelas', 'unit'
+    // ];
 
     protected $hidden = [];
 

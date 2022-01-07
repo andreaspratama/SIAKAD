@@ -40,8 +40,13 @@
                                         {{$ak->tahun_akademik}} - {{$ak->semester}}
                                       @endforeach
                                     </td>
-                                    <td>{{$mapel->nama_mapel}}</td>
-                                    <td>{{$mapel->pivot->nilai_uh1}}</td>
+                                    <td>
+                                      @if ($mapel->pivot->nilai_uh1 = 90)
+                                          A
+                                      @else
+                                          No
+                                      @endif
+                                    </td>
                                     <td>{{$mapel->pivot->nilai_uh2}}</td>
                                     <td>{{$mapel->pivot->uts}}</td>
                                     <td>{{$mapel->pivot->uas}}</td>
@@ -62,7 +67,7 @@
                       </div>
                     </div>
                 </div>
-                <a href="/guru/nilaiProses/{{$item->kelas}}" class="btn btn-secondary btn-sm">Kembali</a>
+                <a href="/guru/nilaiProsesKelas/{{$item->kelas}}" class="btn btn-secondary btn-sm">Kembali</a>
             </div>
         </div>
 
@@ -81,19 +86,26 @@
             <div class="modal-body">
                 <form action="/siswa/{{$item->id}}/nilaitambah" method="POST">
                     @csrf
-                    <label for="mapel">Mapel</label>
-                    <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="mapel"><i class="fas fa-book-reader"></i></span>
-                    </div>
-                    <select class="custom-select" name="thnakademik" id="thnakademik" required>
+                    <div class="form-group">
+                      <label for="tahunakademik">Tahun Akademik</label>
+                      <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="tahunakademik"><i class="fas fa-book-reader"></i></span>
+                      </div>
+                      <select class="custom-select" name="thnakademik" id="thnakademik" required>
                         <option>-- Pilih Tahun Akademik --</option>
                         @foreach ($thnakademiks as $thnak)
                             <option value="{{$thnak->id}}">
                             {{$thnak->tahun_akademik}} / {{$thnak->semester}}
                             </option>
                         @endforeach
-                    </select>
+                      </select>
+                    </div>
+                    <label for="mapel">Mapel</label>
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="mapel"><i class="fas fa-book-reader"></i></span>
+                    </div>
                     <select class="custom-select" name="mapel" required>
                         <option>-- Pilih Mapel --</option>
                         @foreach ($matapelajarans as $matapelajaran)

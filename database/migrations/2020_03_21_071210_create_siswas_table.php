@@ -17,14 +17,8 @@ class CreateSiswasTable extends Migration
             $table->id();
             $table->bigInteger('nisn');
             $table->string('nama');
-            $table->string('tpt_lahir');
-            $table->date('tgl_lahir');
-            $table->string('jns_kelamin');
-            $table->string('agama');
-            $table->string('alamat');
-            $table->string('nama_ortu');
-            $table->integer('kelas');
-            $table->string('asal_sklh');
+            $table->string('unit');
+            $table->string('kelas');
             $table->text('image')->nullable();
             $table->softDeletes();
             $table->timestamps();

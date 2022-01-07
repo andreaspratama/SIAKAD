@@ -13,6 +13,7 @@
         
         <a href="/siswa/exportexcel" class="btn btn-success btn-sm mb-3 px-3 py-2">Laporan Excel</a>
         <a href="/siswa/exportpdf" class="btn btn-danger btn-sm mb-3 px-3 py-2">Laporan PDF</a>
+        <a href="/siswa/exportpdf" class="btn btn-success btn-sm mb-3 px-3 py-2" data-toggle="modal" data-target="#import">Import Data</a>
         {{-- <button type="button" class="btn btn-primary btn-sm mb-3 px-3 py-2" data-toggle="modal" data-target="#exampleModal">
           Import Data
         </button> --}}
@@ -32,6 +33,7 @@
                     <th>Nisn</th>
                     <th>Nama</th>
                     <th>Kelas</th>
+                    <th>Unit</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -42,6 +44,7 @@
                       <td>{{$item->nisn}}</td>
                       <td>{{$item->nama}}</td>
                       <td>{{$item->kelas}}</td>
+                      <td>{{$item->unit}}</td>
                       <td>
                         <a href="/siswa/{{$item->id}}/show"" class="btn btn-circle btn-info btn-sm">
                             <i class="fa fa-eye"></i>
@@ -82,6 +85,29 @@
                 </div>
                 <button type="submit" class="btn btn-primary float-right">Save changes</button>
               </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Import Excel Siswa -->
+      <div class="modal fade" id="import" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {!!Form::open(['route' => 'importexcel', 'class' => 'form-horizontal','enctype' => 'multipart/form-data'])!!}
+
+              {!!Form::file('file')!!}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>

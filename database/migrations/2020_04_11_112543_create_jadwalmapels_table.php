@@ -17,11 +17,8 @@ class CreateJadwalmapelsTable extends Migration
             $table->id();
             $table->integer('guru_id');
             $table->integer('mapel_id');
-            $table->string('ruang_id');
-            $table->integer('kelas');
-            $table->string('hari');
-            $table->time('jam_mulai');
-            $table->time('jam_selesai');
+            $table->string('unit');
+            $table->string('kelas');
             $table->softDeletes();
             $table->timestamps();
         });

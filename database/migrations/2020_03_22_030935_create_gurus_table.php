@@ -17,11 +17,6 @@ class CreateGurusTable extends Migration
             $table->id();
             $table->bigInteger('nip');
             $table->string('nama');
-            $table->string('tpt_lahir');
-            $table->date('tgl_lahir');
-            $table->string('jns_kelamin');
-            $table->string('agama');
-            $table->string('alamat');
             $table->text('image')->nullable();
             $table->softDeletes();
             $table->timestamps();

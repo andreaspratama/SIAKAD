@@ -9,7 +9,7 @@
     <div class="container">
         
         <div class="home">
-            @if (auth()->user()->role == 'siswa')
+            {{-- @if (auth()->user()->role == 'siswa')
                 <h1 class="h3 mb-4 text-gray-800 mt-4 mb-2 judul">Info Akademik</h1>
                 @foreach ($infos as $item)
                     <div class="eventEvent" data-aos="zoom-in">
@@ -35,17 +35,13 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
+            @endif --}}
             <div class="row">
                 <div class="col align-self-center">
                     @if (auth()->user()->role == 'guru')
                         <h1 class="mb-3">
                             @if (auth()->user()->role == 'guru')
-                                @if (auth()->user()->guru->jns_kelamin == 'L')
-                                    Selamat Datang Bapak {{auth()->user()->name}}
-                                @else
-                                    Selamat Datang Ibu {{auth()->user()->name}}
-                                @endif
+                                Selamat Datang {{auth()->user()->name}}
                             @endif
                             @if (auth()->user()->role == 'siswa')   
                                 Selamat Datang {{auth()->user()->name}}
@@ -53,14 +49,8 @@
                         </h1>
                         <p class="mb-5">
                             @if (auth()->user()->role == 'guru')
-                                Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang <br>
-                                {{-- @if (auth()->user()->role == 'guru')
-                                    <a href="{{route('dashboard.guru')}}" class="btn btn-primarmt-3">Masuk Dashboard</a>
-                                @endif --}}
+                                Selamat Datang di Sistem Penilaian TDC YSKI Semarang <br>
                             @endif
-                            {{-- @if (auth()->user()->role == 'siswa')
-                                Selamat Datang di Sistem Informasi Akademik SD IT Bunayya Semarang <br>
-                            @endif --}}
                         </p>
                     @endif
                 </div>
@@ -68,9 +58,6 @@
                     @if (auth()->user()->role == 'guru')
                         <img width="450" src="frontend/images/pend.jpg" alt="">
                     @endif
-                    {{-- @if (auth()->user()->role == 'siswa')
-                        <img width="450" src="frontend/images/pend.jpg" alt="">
-                    @endif --}}
                 </div>
             </div>
             @if (auth()->user()->role == 'admin')

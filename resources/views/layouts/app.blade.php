@@ -43,7 +43,6 @@
             @if(auth()->user()->role == 'guru')
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link align-self-center mr-3" href="{{route('dashboard.guru')}}">Dashboard</a>
-                    <a class="nav-item nav-link align-self-center mr-3" href="/guru/absen">Absen</a>
                     <a href="/logout" class="btn btn-primary get-started">Keluar</a>
                 </div>
             @endif

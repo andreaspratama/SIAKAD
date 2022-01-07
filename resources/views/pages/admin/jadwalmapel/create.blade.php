@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    Tambah Data Jadwal Mata Pelajaran
+    Tambah Data Jadwal Mengajar
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tambah Data Guru</h1>
+        <h1 class="h3 mb-2 text-gray-800">Tambah Data Jadwal</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -44,79 +44,36 @@
                     @endforeach
                   </select>
                 </div>
-                <label for="ruang_id">Ruang</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="ruangs_id"><i class="fas fa-school"></i></span>
-                  </div>
-                  <select class="custom-select" name="ruang_id">
-                    <option>-- Pilih Ruang --</option>
-                    @foreach ($ruangs as $ruangs)
-                        <option value="{{$ruangs->id}}">
-                          {{$ruangs->nama_ruang}}
-                        </option>
-                    @endforeach
-                  </select>
-                </div>
                 <div class="form-group">
-                    <label for="kelas">Kelas</label>
+                    <label for="unit">Unit</label>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" for="kelas"><i class="fas fa-user-graduate"></i></label>
+                        <label class="input-group-text" for="unit"><i class="fas fa-user-graduate"></i></label>
                       </div>
-                      <select class="custom-select" name="kelas">
+                      <select class="custom-select" name="unit">
                         <option>-- Pilih --</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
+                        <option value="K1">K1</option>
+                        <option value="K2">K2</option>
+                        <option value="K3">K3</option>
+                        <option value="SMP">SMP</option>
+                        <option value="SMA">SMA</option>
                       </select>
                     </div>
                   </div>
-                  <label for="hari">Hari</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="hari"><i class="fas fa-cloud-sun"></i></span>
-                    </div>
-                    <select class="custom-select" name="hari" required>
-                      <option value="Senin">Senin</option>
-                      <option value="Selasa">Selasa</option>
-                      <option value="Rabu">Rabu</option>
-                      <option value="Kamis">Kamis</option>
-                      <option value="Jumat">Jumat</option>
-                      <option value="Sabtu">Sabtu</option>
-                    </select>
-                  </div>
                   <div class="form-group">
-                    <label for="jam_mulai">Jam Mulai</label>
+                    <label for="kelas">Kelas</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="jam_mulai"><i class="far fa-clock"></i></span>
+                        <span class="input-group-text" id="kelas"><i class="far fa-user"></i></span>
                       </div>
-                      <input type="time" class="form-control @error('jam_mulai') is-invalid @enderror" placeholder="Jam Mulai" name="jam_mulai" value="{{old('jam_mulai')}}">
-                      @error('jam_mulai')
+                      <input type="text" class="form-control @error('kelas') is-invalid @enderror" placeholder="Kelas" name="kelas" value="{{old('kelas')}}">
+                      @error('kelas')
                         <div class="invalid-feedback">
                             {{$message}}
                         </div>
                       @enderror
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="jam_selesai">Jam Selesai</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="jam_selesai"><i class="far fa-clock"></i></span>
-                      </div>
-                      <input type="time" class="form-control @error('jam_selesai') is-invalid @enderror" placeholder="Jam Mulai" name="jam_selesai" value="{{old('jam_selesai')}}">
-                      @error('jam_selesai')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                      @enderror
-                    </div>
-                </div>
               <button type="submit" class="btn btn-success btn-sm">Simpan</button>
               <button type="reset" class="btn btn-warning btn-sm">Reset</button>
               <a href="/jadwalmapel" class="btn btn-secondary btn-sm">Kembali</a>

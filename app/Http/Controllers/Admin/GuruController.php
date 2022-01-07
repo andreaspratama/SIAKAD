@@ -127,11 +127,6 @@ class GuruController extends Controller
         $data->update([
             'nip' => $request->nip,
             'nama' => $request->nama,
-            'tpt_lahir' => $request->tpt_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'jns_kelamin' => $request->jns_kelamin,
-            'agama' => $request->agama,
-            'alamat' => $request->alamat,
             'image' => $image
         ]);
 

@@ -15,11 +15,26 @@ class NilaiController extends Controller
 {
     public function index()
     {
-        // $items = Jadwalmapel::all();
-        return view('pages.admin.siswa.masuknilai');
+        $items = Jadwalmapel::all();
+        
+        return view('pages.admin.siswa.masuknilai', compact('items'));
     }
 
-    public function proses($kelas)
+    public function cobaNilai()
+    {
+        $items = Jadwalmapel::all();
+
+        return view('pages.admin.siswa.cobanilai', compact('items'));
+    }
+
+    public function prosesUnit($unit)
+    {
+        $pnilai = Siswa::all()->whereBetween('unit', [$unit]);
+
+        return view('pages.admin.siswa.pranilai', compact('pnilai'));
+    }
+
+    public function prosesKelas($kelas)
     {
         $pnilai = Siswa::all()->whereBetween('kelas', [$kelas]);
 
@@ -49,7 +64,7 @@ class NilaiController extends Controller
         // dd($request->all());
 
         $siswa = Siswa::findOrFail($id);
-        $siswa->mapel()->attach($request->mapel, ['nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
+        $siswa->mapel()->attach($request->mapel, ['thnakademik_id' => $request->thnakademik, 'nilai_uh1' => $request->nilai_uh1, 'nilai_uh2' => $request->nilai_uh2, 'uts' => $request->uts, 'uas' => $request->uas, 'status' => $request->status]);
 
         $siswa->thnakademik()->attach($request->thnakademik);
 
@@ -90,14 +105,15 @@ class NilaiController extends Controller
     public function cetakNilai($id)
     {
         $data = Siswa::findOrFail($id);
-        $items = Thnakademik::all();
-        return view('pages.admin.siswa.cetakNilaiSiswa', compact('items', 'data'));
+        $thnakademik = Thnakademik::all();
+        return view('pages.admin.siswa.cetakNilaiSiswa', compact('thnakademik', 'data'));
     }
 
-    public function cetakNilaiPeraka($id, $thnakademik)
+    public function cetakNilaiPeraka($thnakademik)
     {
         // dd(["Tanggal Awal : ".$tglawal, "Tanggal Akhir : ".$tglakhir]);
-        $cetakPeraka = Siswa::findOrFail($id)->thnakademik('tahun_akademik', [$thnakademik]);
+        $data = Siswa::all();
+        $cetakPeraka = $data->mapel()->whereBetween('thnakademik_id', [$thnakademik]);
 
         dd($cetakPeraka);
 

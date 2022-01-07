@@ -26,11 +26,6 @@ class GuruRequest extends FormRequest
         return [
             'nip' => 'required|unique:gurus,nip',
             'nama' => 'required|string|min:3',
-            'tpt_lahir' => 'required|min:3',
-            'tgl_lahir' => 'required',
-            'jns_kelamin' => 'required',
-            'agama' => 'required',
-            'alamat' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,giv,svg'
         ];
     }
@@ -43,11 +38,6 @@ class GuruRequest extends FormRequest
             'nama.required' => 'Nama tidak boleh kosong',
             'nama.min' => 'Nama minimal 3 karakter',
             'nama.string' => 'Nama harus huruf',
-            'tpt_lahir.required' => 'Tempat tanggal lahir tidak boleh kosong',
-            'tpt_lahir.min' => 'Tempat tanggal lahir minimal 3 karakter',
-            'tgl_lahir.required' => 'Tanggal lahir tidak boleh kosong',
-            'alamat.required' => 'Alamat tidak boleh kosong',
-            'alamat.min' => 'Alamat minimal 3 karakter',
             'image.image' => 'File harus gambar',
             'image.required' => 'Foto harus dimasukan',
             'image.mimes' => 'File harus berformat jpeg,jpg,giv,svg,png'
